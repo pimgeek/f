@@ -1,12 +1,14 @@
 ; pimflow main
 ; by pimgeek
 
-; need a function to clear memory
-; prepare for gui env
-(use 'clojure.repl)
-(use 'seesaw.core)
-(use 'seesaw.dev)
-(native!)
+(ns f.core
+  (:use
+    [clojure.repl]
+    [seesaw.core]
+    [seesaw.dev]
+	)
+  )
+
 (defn p [frame ui] 
   (config! frame :content ui
     )
