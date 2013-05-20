@@ -1,7 +1,7 @@
 ; pimflow main
 ; by pimgeek
 
-(ns f.core
+(ns f.core ; with trptcolin's help
   (:use
     [clojure.repl]
     [seesaw.core]
