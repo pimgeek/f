@@ -26,24 +26,26 @@
 (defn run-app []
   (def main-frm (frame :title "Flow"))
   (def trigger-btn (button :text "Open"))
-  (def mpanel
-    (mig-panel
-      :constraints ["wrap 2"
-      ]
-      :items [
-        [trigger-btn "wrap"]
-      ]
-    )
-  )
-  (add! mpanel ["2nd" "wrap"])
-  (add! mpanel ["3rd"])
+  (def prev-btn (button :text "上一步"))
+  (def next-btn (button :text "下一步"))
+;  (def mpanel
+;    (mig-panel
+;      :constraints ["wrap 2"
+;      ]
+;      :items [
+;        [trigger-btn "wrap"]
+;      ]
+;    )
+;  )
+; (add! mpanel ["2nd" "wrap"])
+; (add! mpanel ["3rd"])
   (def bpanel (border-panel
     :north trigger-btn
-    :center (label :text "center")
-    :west (label :text "west")
-    :east (label :text "east")
-    :south (label :text "source")
-    :border [5 "dashed" 10]
+    :center (label :text "这条笔记很有用")
+    :west prev-btn
+    :east next-btn
+    :south (label :text "tag1, tag2, tag3")
+    :border 3
     :vgap 50 :hgap 50 :border 15))
   (p main-frm bpanel)
   (v main-frm)
