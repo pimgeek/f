@@ -24,6 +24,7 @@
 ; define main frame and its widgets
 
 (defn run-app []
+  (native!)
   (def main-frm (frame :title "Flow"))
   (def trigger-btn (button :text "Open"))
   (def prev-btn (button :text "上一步"))
