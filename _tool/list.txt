@@ -1,3 +1,0 @@
-launchy
-truecrypt
-zim-wiki
