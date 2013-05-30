@@ -11,3 +11,11 @@
       ((null? l) #t)
       ((atom? (car l)) (lat? (cdr l)))
       (else #f))))
+
+(atom? 'a)
+(atom? '())
+(atom? '(a b))
+; (lat? 'a)
+(lat? '())
+(lat? '(a b))
+(lat? '(a (b)))
