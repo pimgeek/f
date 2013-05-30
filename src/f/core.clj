@@ -6,8 +6,8 @@
   (:use
     [clojure.repl]
     [seesaw.core]
-    [seesaw.mig]
     [seesaw.dev]
+    [seesaw.graphics]
   )
 )
 ;
@@ -25,29 +25,37 @@
 
 (defn run-app []
   (native!)
-  (def main-frm (frame :title "Flow"))
-  (def trigger-btn (button :text "Open"))
+  (def m-frm (frame :title "Flow"))
+  (def lid-btn (button :text "Open"))
   (def prev-btn (button :text "上一步"))
   (def next-btn (button :text "下一步"))
-;  (def mpanel
-;    (mig-panel
-;      :constraints ["wrap 2"
-;      ]
-;      :items [
-;        [trigger-btn "wrap"]
-;      ]
-;    )
-;  )
-; (add! mpanel ["2nd" "wrap"])
-; (add! mpanel ["3rd"])
-  (def bpanel (border-panel
-    :north trigger-btn
+  (defn note-rect [c g]
+    (let [w          (width  c)
+          h          (height c)
+          line-style (style :foreground "#333333" :stroke 3 :cap :round)
+          d          5]
+      (draw g
+        (rounded-rect 10 10 240 180 25 25) 
+        line-style
+      )
+    )
+  )
+  (def m-cvs (canvas))
+  (config! m-cvs :paint note-rect)
+  (def m-panel (border-panel
+    :north lid-btn
     :center (label :text "这条笔记很有用")
     :west prev-btn
     :east next-btn
-    :south (label :text "tag1, tag2, tag3")
+    :south (label)
     :border 3
     :vgap 50 :hgap 50 :border 15))
-  (p main-frm bpanel)
-  (v main-frm)
+  (def m-sp
+    (top-bottom-split
+      (scrollable m-panel)
+      (scrollable m-cvs)
+    )
+  )
+  (p m-frm m-sp)
+  (v m-frm)
 )
