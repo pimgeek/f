@@ -9,9 +9,9 @@
    [seesaw.dev]
    [seesaw.graphics]
    )
-  (:gen-class)
+  (:gen-class :main true)
   )
-(defn -main f.core [& args] (run-app))  ; setup main function                                                          ; setup util functions 
+                           ; setup util functions 
 
 (defn p [frame ui]    ; put ui on frame
   (config! frame :content ui
@@ -26,7 +26,7 @@
 
 (defn run-app []
   (native!)
-  (def m-frm (frame :title "Flow"))
+  (def m-frm (frame :title "Flow" :minimum-size [800 :by 600] ))
   (def lid-btn (button :text "Open"))
   (def prev-btn (button :text "上一步"))
   (def next-btn (button :text "下一步"))
@@ -60,3 +60,5 @@
   (p m-frm m-sp)
   (v m-frm)
   )
+
+(defn -main [] (run-app))  ; setup main function   
