@@ -1,27 +1,28 @@
-; pimflow main
-; by pimgeek
-; 
-; setup namespace
+                                        ; pimflow main
+                                        ; by pimgeek
+                                        ; 
+                                        ; setup namespace
 (ns f.core           ; with trptcolin's help and his blog post.
   (:use
-    [clojure.repl]
-    [seesaw.core]
-    [seesaw.dev]
-    [seesaw.graphics]
+   [clojure.repl]
+   [seesaw.core]
+   [seesaw.dev]
+   [seesaw.graphics]
+   )
+  (:gen-class)
   )
-)
-;
-; setup util functions 
+(defn -main f.core [& args] (run-app))  ; setup main function                                                          ; setup util functions 
+
 (defn p [frame ui]    ; put ui on frame
   (config! frame :content ui
+           )
   )
-)
 (defn v [frame]       ; make the frame visible
   (-> frame pack! show!
+      )
   )
-)
-  
-; define main frame and its widgets
+
+                                        ; define main frame and its widgets
 
 (defn run-app []
   (native!)
@@ -35,27 +36,27 @@
           line-style (style :foreground "#333333" :stroke 3 :cap :round)
           d          5]
       (draw g
-        (rounded-rect 10 10 240 180 25 25) 
-        line-style
+            (rounded-rect 10 10 240 180 25 25) 
+            line-style
+            )
       )
     )
-  )
   (def m-cvs (canvas))
   (config! m-cvs :paint note-rect)
   (def m-panel (border-panel
-    :north lid-btn
-    :center (label :text "这条笔记很有用")
-    :west prev-btn
-    :east next-btn
-    :south (label)
-    :border 3
-    :vgap 50 :hgap 50 :border 15))
+                :north lid-btn
+                :center (label :text "这条笔记很有用")
+                :west prev-btn
+                :east next-btn
+                :south (label)
+                :border 3
+                :vgap 50 :hgap 50 :border 15))
   (def m-sp
     (top-bottom-split
-      (scrollable m-panel)
-      (scrollable m-cvs)
+     (scrollable m-panel)
+     (scrollable m-cvs)
+     )
     )
-  )
   (p m-frm m-sp)
   (v m-frm)
-)
+  )
