@@ -11,7 +11,7 @@
    )
   (:gen-class :main true)
   )
-                           ; setup util functions 
+                                        ; setup util functions 
 
 (defn p [frame ui]    ; put ui on frame
   (config! frame :content ui
@@ -21,7 +21,14 @@
   (-> frame pack! show!
       )
   )
+                                        ; get the list of note files
+(defn my-ls [path]
+  (doseq [res (.listFiles (File. path))]
+    (println (.getName res))
+    )
+  )
 
+                                        ; read the file list into gui
                                         ; define main frame and its widgets
 
 (defn run-app []
