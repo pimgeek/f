@@ -9,6 +9,9 @@
    [seesaw.dev]
    [seesaw.graphics]
    )
+  (:import
+   java.io.File
+   )
   (:gen-class :main true)
   )
                                         ; setup util functions 
