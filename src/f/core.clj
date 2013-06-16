@@ -5,32 +5,34 @@
 (ns f.core           ; with trptcolin's help and his blog post.
   (:use
    [clojure.repl]
+   [clojure.java.io]
    [seesaw.core]
    [seesaw.dev]
    [seesaw.graphics]
-   )
-  (:import
-   java.io.File
    )
   (:gen-class :main true)
   )
                                         ; setup util functions 
 
 (defn p [frame ui]    ; put ui on frame
-  (config! frame :content ui
-           )
+  (config! frame :content ui)
   )
 (defn v [frame]       ; make the frame visible
   (-> frame pack! show!
       )
   )
-                                        ; get the list of note files
-(defn my-ls [path]
-  (doseq [res (.listFiles (File. path))]
-    (println (.getName res))
+                                        ; get the list of note files by path
+                                        ; need to have edge condition verification
+(defn ls-notes [path]
+  (def fnames
+    (for [x (file-seq (file path))]
+      (.getPath x)
     )
   )
-
+  (doseq [x fnames]
+    (prn x)
+  )
+)
                                         ; read the file list into gui
                                         ; define main frame and its widgets
 
