@@ -1,4 +1,4 @@
-#lang r5rs
+#!/usr/bin/plt-r5rs
 
 (define perf-tbl 
   '(
