@@ -27,12 +27,23 @@
   (def fnames
     (for [x (file-seq (file path))]
       (.getPath x)
+      )
     )
-  )
   (doseq [x fnames]
     (prn x)
+    )
   )
-)
+
+(defn count-files [path]
+  (cond ((nil? path) '())
+        (else 
+         (def files (file-seq (file path)))
+         (defn my-get-name [x] (-> x .getName))
+         (def filenames (map my-get-name files))
+         (count (filter (fn [x] (re-find #"\.txt$" x)) filenames))
+         )
+        )
+  )
                                         ; read the file list into gui
                                         ; define main frame and its widgets
 
