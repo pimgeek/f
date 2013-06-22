@@ -35,15 +35,17 @@
   )
 
 (defn count-files [path]
-  (cond ((nil? path) '())
-        (else 
-         (def files (file-seq (file path)))
-         (defn my-get-name [x] (-> x .getName))
-         (def filenames (map my-get-name files))
-         (count (filter (fn [x] (re-find #"\.txt$" x)) filenames))
-         )
-        )
+  (cond
+    (nil? path) nil
+    :else 
+      (do
+       (def files (file-seq (file path)))
+       (defn my-get-name [x] (-> x .getName))
+       (def filenames (map my-get-name files))
+       (count (filter (fn [x] (re-find #"\.txt$" x)) filenames))
+      )
   )
+)
                                         ; read the file list into gui
                                         ; define main frame and its widgets
 
@@ -71,7 +73,7 @@
                 :center (label :text "这条笔记很有用")
                 :west prev-btn
                 :east next-btn
-                :south (label)
+                :south (label :text (count-files "/mnt/o/_zim"))
                 :border 3
                 :vgap 50 :hgap 50 :border 15))
   (def m-sp
