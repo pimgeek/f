@@ -12,6 +12,7 @@
 )
 
 ; get the list of note files by path
+;
 ; need to have edge condition verification
 (defn list-notes [path]
   (def fnames
