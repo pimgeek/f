@@ -1,7 +1,7 @@
-                                        ; pimflow main
-                                        ; by pimgeek
-                                        ; 
-                                        ; setup namespace
+; pimflow main
+; by pimgeek
+; 
+; setup namespace
 (ns f.core           ; with trptcolin's help and his blog post.
   (:use
    [clojure.repl]
@@ -9,30 +9,17 @@
    [seesaw.core]
    [seesaw.dev]
    [seesaw.graphics]
-   )
-  (:gen-class :main true)
   )
-                                        ; setup util functions 
+  (:gen-class :main true)
+)
+; setup util functions 
 
 (defn p [frame ui]    ; put ui on frame
   (config! frame :content ui)
-  )
+)
 (defn v [frame]       ; make the frame visible
-  (-> frame pack! show!
-      )
-  )
-                                        ; get the list of note files by path
-                                        ; need to have edge condition verification
-(defn ls-notes [path]
-  (def fnames
-    (for [x (file-seq (file path))]
-      (.getPath x)
-      )
-    )
-  (doseq [x fnames]
-    (prn x)
-    )
-  )
+  (-> frame pack! show!)
+)
 
 (defn count-files [path]
   (cond
@@ -46,8 +33,8 @@
       )
   )
 )
-                                        ; read the file list into gui
-                                        ; define main frame and its widgets
+; read the file list into gui
+; define main frame and its widgets
 
 (defn run-app []
   (native!)
@@ -61,11 +48,11 @@
           line-style (style :foreground "#333333" :stroke 3 :cap :round)
           d          5]
       (draw g
-            (rounded-rect 10 10 240 180 25 25) 
-            line-style
-            )
+        (rounded-rect 10 10 240 180 25 25) 
+         line-style
       )
     )
+  )
   (def m-cvs (canvas))
   (config! m-cvs :paint note-rect)
   (def m-panel (border-panel
@@ -75,15 +62,16 @@
                 :east next-btn
                 :south (label :text (count-files "/mnt/o/_zim"))
                 :border 3
-                :vgap 50 :hgap 50 :border 15))
+                :vgap 50 :hgap 50 :border 15)
+  )
   (def m-sp
     (top-bottom-split
-     (scrollable m-panel)
-     (scrollable m-cvs)
-     )
+      (scrollable m-panel)
+      (scrollable m-cvs)
     )
+  )
   (p m-frm m-sp)
   (v m-frm)
-  )
+)
 
 (defn -main [] (run-app))  ; setup main function   
