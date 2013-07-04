@@ -9,6 +9,7 @@
    [seesaw.core]
    [seesaw.dev]
    [seesaw.graphics]
+   [clojure.tools.cli]
   )
   (:gen-class :main true)
 )
@@ -74,4 +75,13 @@
   (v m-frm)
 )
 
-(defn -main [] (run-app))  ; setup main function   
+(defn -main [& args]
+  (def arg-vec
+    (cli args
+      ["-r" "--root" "specify the root dir of your notes." :default "./notes"]
+    )
+  )
+  (prn arg-vec)
+  ;  (list-notes (:root arg-map))
+  ;  (li)
+)
