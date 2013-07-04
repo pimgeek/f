@@ -6,9 +6,10 @@
 ; setup namespace
 (ns f.core           ; with trptcolin's help and his blog post.
   (:use
-   [clojure.repl]
-   [clojure.java.io]
+    [clojure.repl]
+    [clojure.java.io]
   )
+  (:gen-class :main true)
 )
 
 ; get the list of note files by path
@@ -27,5 +28,5 @@
 )
 
 ; test running
-(list-notes "/mnt/o/_zim/.")
+(list-notes "/home/pimgeek/pim-wudi/_play/notes")
 
