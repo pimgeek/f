@@ -25,16 +25,18 @@ cd \
 REM ** 
 REM ** delete all zim related files (without directories)
 REM ** 
-del /s /q %SECDRV1_LETTER%\_zim\*.*
+del /q /s %SECDRV1_LETTER%\_zim\*.*
 cd %SECDRV1_LETTER%\_zim\
+
 REM ** 
-REM ** delete all empty directories (this operation is very dangerous!)
+REM ** delete all empty directories (very dangerous)
 REM ** 
-for /d %%i in (%SECDRV1_LETTER%\_zim\*.*) do rmdir /s /q %%i
+for /d %%i in (%SECDRV1_LETTER%\_zim\*.*) do rmdir /q /s %%i
 REM ** 
 REM ** extract text files from zim-database, including empty directory
 REM ** 
-xcopy /q /e /y %SECDRV2_LETTER%\_zim\*.txt %SECDRV1_LETTER%\_zim\
+xcopy /q /s /y %SECDRV2_LETTER%\_zim\*.txt %SECDRV1_LETTER%\_zim\
+xcopy /q /s /y %SECDRV2_LETTER%\_zim\*.owl %SECDRV1_LETTER%\_zim\
 REM ** 
 REM ** extract zim index files
 REM ** 
@@ -42,11 +44,12 @@ xcopy /q /y %SECDRV2_LETTER%\_zim\.zim\*.* %SECDRV1_LETTER%\_zim\.zim\
 REM ** 
 REM ** extract zim notebook config file
 REM ** 
-xcopy /q /y %SECDRV2_LETTER%\_zim\notebook.zim %SECDRV1_LETTER%\_zim\.zim\
+xcopy /q /y %SECDRV2_LETTER%\_zim\notebook.zim %SECDRV1_LETTER%\_zim\
 
 REM shutdown the quick launch tool
 taskkill /f /im launchy.exe
 taskkill /f /im eyedefender.exe
+taskkill /f /im flux.exe
 taskkill /f /im goagent.exe
 taskkill /f /im ieproxytoggle.exe
 
