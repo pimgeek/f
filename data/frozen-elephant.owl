@@ -10,12 +10,12 @@
 
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://localhost:8080/ontology/frozen-elephant-in-fridge-task-dependency-analysis"
+     xml:base="http://localhost:8080/ontology/frozen-elephant-in-fridge-task-dependency-analysis-2.0"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://localhost:8080/ontology/frozen-elephant-in-fridge-task-dependency-analysis">
+     ontologyIRI="http://localhost:8080/ontology/frozen-elephant-in-fridge-task-dependency-analysis-2.0">
     <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
@@ -37,55 +37,37 @@
 &gt; ... 以此类推.</Literal>
     </Annotation>
     <Declaration>
-        <Class IRI="#AchievedStep"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#AchievedTodoStep"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#GeneralStep"/>
+        <Class IRI="#ActivatedTodoStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#GoalStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#PendingStep"/>
+        <Class IRI="#SequentiallyAchievedTodoStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#PendingTodoStep"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#PreGoalStep"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#TerminalStep"/>
+        <Class IRI="#StartStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#TodoStep"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#directlyPrecede"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isDirectlyPrecededBy"/>
+        <ObjectProperty IRI="#precede"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#transitivelyPrecede"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#isGTDConditionMet"/>
+        <DataProperty IRI="#isDone"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#electricity-supply-is-ready"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#left-null"/>
+        <NamedIndividual IRI="#left-nil-step"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#right-null"/>
+        <NamedIndividual IRI="#right-nil-step"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#the-electric-wire-of-the-fridge-is-plugged"/>
@@ -100,285 +82,224 @@
         <NamedIndividual IRI="#the-frozen-elephant-is-kept-inside-the-fridge"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-closed"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-closed"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-opened"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-opened"/>
     </Declaration>
     <EquivalentClasses>
-        <Class IRI="#AchievedStep"/>
+        <Class IRI="#ActivatedTodoStep"/>
         <ObjectIntersectionOf>
-            <ObjectUnionOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
-                    <Class IRI="#AchievedStep"/>
-                </ObjectSomeValuesFrom>
-                <DataHasValue>
-                    <DataProperty IRI="#isGTDConditionMet"/>
-                    <Literal datatypeIRI="&xsd;boolean">true</Literal>
-                </DataHasValue>
-            </ObjectUnionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#transitivelyPrecede"/>
-                <Class IRI="#GoalStep"/>
+                <ObjectProperty IRI="#isPrecededBy"/>
+                <Class IRI="#SequentiallyAchievedTodoStep"/>
             </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#precede"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#isPrecededBy"/>
+                    <ObjectSomeValuesFrom>
+                        <ObjectProperty IRI="#isPrecededBy"/>
+                        <Class IRI="#SequentiallyAchievedTodoStep"/>
+                    </ObjectSomeValuesFrom>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataHasValue>
+                <DataProperty IRI="#isDone"/>
+                <Literal datatypeIRI="&xsd;boolean">false</Literal>
+            </DataHasValue>
         </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#AchievedTodoStep"/>
-        <DataHasValue>
-            <DataProperty IRI="#isGTDConditionMet"/>
-            <Literal datatypeIRI="&xsd;boolean">true</Literal>
-        </DataHasValue>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#GoalStep"/>
         <ObjectHasValue>
-            <ObjectProperty IRI="#directlyPrecede"/>
-            <NamedIndividual IRI="#right-null"/>
+            <ObjectProperty IRI="#precede"/>
+            <NamedIndividual IRI="#right-nil-step"/>
         </ObjectHasValue>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#PendingStep"/>
+        <Class IRI="#SequentiallyAchievedTodoStep"/>
         <ObjectIntersectionOf>
             <ObjectUnionOf>
+                <Class IRI="#StartStep"/>
                 <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
-                    <Class IRI="#PendingStep"/>
+                    <ObjectProperty IRI="#isPrecededBy"/>
+                    <Class IRI="#SequentiallyAchievedTodoStep"/>
                 </ObjectSomeValuesFrom>
-                <DataHasValue>
-                    <DataProperty IRI="#isGTDConditionMet"/>
-                    <Literal datatypeIRI="&xsd;boolean">false</Literal>
-                </DataHasValue>
             </ObjectUnionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#transitivelyPrecede"/>
-                <Class IRI="#GoalStep"/>
-            </ObjectSomeValuesFrom>
+            <DataHasValue>
+                <DataProperty IRI="#isDone"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataHasValue>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#PendingTodoStep"/>
-        <DataHasValue>
-            <DataProperty IRI="#isGTDConditionMet"/>
-            <Literal datatypeIRI="&xsd;boolean">false</Literal>
-        </DataHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#PreGoalStep"/>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#transitivelyPrecede"/>
-                <Class IRI="#GoalStep"/>
-            </ObjectSomeValuesFrom>
-            <ObjectAllValuesFrom>
-                <ObjectProperty IRI="#transitivelyPrecede"/>
-                <Class IRI="#GoalStep"/>
-            </ObjectAllValuesFrom>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#TodoStep"/>
+        <Class IRI="#StartStep"/>
         <ObjectHasValue>
-            <ObjectProperty IRI="#isDirectlyPrecededBy"/>
-            <NamedIndividual IRI="#left-null"/>
+            <ObjectProperty IRI="#isPrecededBy"/>
+            <NamedIndividual IRI="#left-nil-step"/>
         </ObjectHasValue>
     </EquivalentClasses>
     <SubClassOf>
-        <Class IRI="#AchievedStep"/>
-        <Class IRI="#PreGoalStep"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#AchievedTodoStep"/>
+        <Class IRI="#ActivatedTodoStep"/>
         <Class IRI="#TodoStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#GoalStep"/>
-        <Class IRI="#GeneralStep"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#PendingStep"/>
-        <Class IRI="#PreGoalStep"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#PendingTodoStep"/>
         <Class IRI="#TodoStep"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#PreGoalStep"/>
-        <Class IRI="#GeneralStep"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#TerminalStep"/>
-        <Class IRI="#GeneralStep"/>
-    </SubClassOf>
-    <SubClassOf>
+        <Class IRI="#SequentiallyAchievedTodoStep"/>
         <Class IRI="#TodoStep"/>
-        <Class IRI="#GeneralStep"/>
     </SubClassOf>
-    <DisjointClasses>
-        <Class IRI="#AchievedStep"/>
-        <Class IRI="#PendingTodoStep"/>
-    </DisjointClasses>
+    <SubClassOf>
+        <Class IRI="#StartStep"/>
+        <Class IRI="#TodoStep"/>
+    </SubClassOf>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
+        <Class IRI="#TodoStep"/>
         <NamedIndividual IRI="#electricity-supply-is-ready"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
-        <NamedIndividual IRI="#left-null"/>
+        <Class IRI="#TodoStep"/>
+        <NamedIndividual IRI="#left-nil-step"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#TerminalStep"/>
-        <NamedIndividual IRI="#left-null"/>
+        <Class IRI="#TodoStep"/>
+        <NamedIndividual IRI="#right-nil-step"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
-        <NamedIndividual IRI="#right-null"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#TerminalStep"/>
-        <NamedIndividual IRI="#right-null"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
+        <Class IRI="#TodoStep"/>
         <NamedIndividual IRI="#the-electric-wire-of-the-fridge-is-plugged"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
+        <Class IRI="#TodoStep"/>
         <NamedIndividual IRI="#the-elephant-is-kept-inside-the-fridge"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
+        <Class IRI="#TodoStep"/>
         <NamedIndividual IRI="#the-elephant-is-put-into-the-fridge"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
+        <Class IRI="#TodoStep"/>
         <NamedIndividual IRI="#the-frozen-elephant-is-kept-inside-the-fridge"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-closed"/>
+        <Class IRI="#TodoStep"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-closed"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="#GeneralStep"/>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-opened"/>
+        <Class IRI="#TodoStep"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-opened"/>
     </ClassAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isDirectlyPrecededBy"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
         <NamedIndividual IRI="#electricity-supply-is-ready"/>
-        <NamedIndividual IRI="#left-null"/>
+        <NamedIndividual IRI="#left-nil-step"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isDirectlyPrecededBy"/>
-        <NamedIndividual IRI="#right-null"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
+        <NamedIndividual IRI="#right-nil-step"/>
         <NamedIndividual IRI="#the-frozen-elephant-is-kept-inside-the-fridge"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
         <NamedIndividual IRI="#the-electric-wire-of-the-fridge-is-plugged"/>
         <NamedIndividual IRI="#electricity-supply-is-ready"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
         <NamedIndividual IRI="#the-elephant-is-kept-inside-the-fridge"/>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-closed"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-closed"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
         <NamedIndividual IRI="#the-elephant-is-put-into-the-fridge"/>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-opened"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-opened"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
-        <NamedIndividual IRI="#the-frozen-elephant-is-kept-inside-the-fridge"/>
-        <NamedIndividual IRI="#the-elephant-is-kept-inside-the-fridge"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
         <NamedIndividual IRI="#the-frozen-elephant-is-kept-inside-the-fridge"/>
         <NamedIndividual IRI="#the-electric-wire-of-the-fridge-is-plugged"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-closed"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
+        <NamedIndividual IRI="#the-frozen-elephant-is-kept-inside-the-fridge"/>
+        <NamedIndividual IRI="#the-elephant-is-kept-inside-the-fridge"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isPrecededBy"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-closed"/>
         <NamedIndividual IRI="#the-elephant-is-put-into-the-fridge"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isDirectlyPrecededBy"/>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-opened"/>
-        <NamedIndividual IRI="#left-null"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-opened"/>
+        <NamedIndividual IRI="#left-nil-step"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#isGTDConditionMet"/>
+        <DataProperty IRI="#isDone"/>
         <NamedIndividual IRI="#electricity-supply-is-ready"/>
         <Literal datatypeIRI="&xsd;boolean">true</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="#isGTDConditionMet"/>
-        <NamedIndividual IRI="#the-gate-of-fridge-is-opened"/>
+        <DataProperty IRI="#isDone"/>
+        <NamedIndividual IRI="#the-electric-wire-of-the-fridge-is-plugged"/>
         <Literal datatypeIRI="&xsd;boolean">false</Literal>
     </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isDone"/>
+        <NamedIndividual IRI="#the-elephant-is-kept-inside-the-fridge"/>
+        <Literal datatypeIRI="&xsd;boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isDone"/>
+        <NamedIndividual IRI="#the-elephant-is-put-into-the-fridge"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isDone"/>
+        <NamedIndividual IRI="#the-frozen-elephant-is-kept-inside-the-fridge"/>
+        <Literal datatypeIRI="&xsd;boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isDone"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-closed"/>
+        <Literal datatypeIRI="&xsd;boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#isDone"/>
+        <NamedIndividual IRI="#the-gate-of-the-fridge-is-opened"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#directlyPrecede"/>
-        <ObjectProperty IRI="#isDirectlyPrecededBy"/>
+        <ObjectProperty IRI="#isPrecededBy"/>
+        <ObjectProperty IRI="#precede"/>
     </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#transitivelyPrecede"/>
-        <ObjectProperty IRI="#isTransitivelyPrecededBy"/>
-    </InverseObjectProperties>
-    <TransitiveObjectProperty>
-        <ObjectProperty IRI="#transitivelyPrecede"/>
-    </TransitiveObjectProperty>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#AchievedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经达成的步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#AchievedTodoStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经做好准备的步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#GeneralStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">一般步骤</Literal>
+        <IRI>#ActivatedTodoStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已可以开始执行的步骤(完善)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#GoalStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目的步骤</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤(完善)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#PendingStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">尚未达成的步骤</Literal>
+        <IRI>#SequentiallyAchievedTodoStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经依序完成的目标(完善)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#PendingTodoStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">尚未做好准备的步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#PreGoalStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">达成目标之前的步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#TerminalStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">终结步骤-为方便推理而设的端点</Literal>
+        <IRI>#StartStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤(完善)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#TodoStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#directlyPrecede</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">直接的优先于</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">操作步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -387,28 +308,28 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#isDirectlyPrecededBy</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">直接的后继于</Literal>
+        <IRI>#isDone</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">是否完成?</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#isGTDConditionMet</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">GTD-的条件是否被满足?</Literal>
+        <IRI>#isPrecededBy</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">后继于</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#isTransitivelyPrecededBy</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">直接或递推的后继于</Literal>
+        <IRI>#left-nil-step</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#left-null</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">左端</Literal>
+        <IRI>#precede</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">优先于</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#right-null</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">右端</Literal>
+        <IRI>#right-nil-step</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">终止步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -432,18 +353,13 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#the-gate-of-fridge-is-closed</IRI>
+        <IRI>#the-gate-of-the-fridge-is-closed</IRI>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">冰箱门被关闭</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#the-gate-of-fridge-is-opened</IRI>
+        <IRI>#the-gate-of-the-fridge-is-opened</IRI>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">冰箱门被打开</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#transitivelyPrecede</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">直接或递推的优先于</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
