@@ -37,16 +37,16 @@
 &gt; ... 以此类推.</Literal>
     </Annotation>
     <Declaration>
-        <Class IRI="#AchievedStep"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#ActivatedStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#GoalStep"/>
+        <Class IRI="#AdjacentAchievedStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#PendingStep"/>
+        <Class IRI="#AdjacentPendingStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GoalStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#StartStep"/>
@@ -64,13 +64,29 @@
         <Class IRI="#WorthlessStep"/>
     </Declaration>
     <EquivalentClasses>
-        <Class IRI="#AchievedStep"/>
+        <Class IRI="#ActivatedStep"/>
         <ObjectIntersectionOf>
             <ObjectUnionOf>
                 <Class IRI="#StartStep"/>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <Class IRI="#AchievedStep"/>
+                    <Class IRI="#AdjacentAchievedStep"/>
+                </ObjectSomeValuesFrom>
+            </ObjectUnionOf>
+            <DataHasValue>
+                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
+                <Literal datatypeIRI="&xsd;boolean">false</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AdjacentAchievedStep"/>
+        <ObjectIntersectionOf>
+            <ObjectUnionOf>
+                <Class IRI="#StartStep"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="#AdjacentAchievedStep"/>
                 </ObjectSomeValuesFrom>
             </ObjectUnionOf>
             <DataHasValue>
@@ -80,22 +96,18 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#ActivatedStep"/>
+        <Class IRI="#AdjacentPendingStep"/>
         <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                <Class IRI="#AchievedStep"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+            <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <ObjectSomeValuesFrom>
-                        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                        <Class IRI="#AchievedStep"/>
-                    </ObjectSomeValuesFrom>
+                    <Class IRI="#ActivatedStep"/>
                 </ObjectSomeValuesFrom>
-            </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="#AdjacentPendingStep"/>
+                </ObjectSomeValuesFrom>
+            </ObjectUnionOf>
             <DataHasValue>
                 <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
                 <Literal datatypeIRI="&xsd;boolean">false</Literal>
@@ -103,26 +115,18 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#PendingStep"/>
-        <ObjectUnionOf>
-            <ObjectIntersectionOf>
-                <ObjectUnionOf>
-                    <Class IRI="#GoalStep"/>
-                    <ObjectSomeValuesFrom>
-                        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
-                        <Class IRI="#PendingStep"/>
-                    </ObjectSomeValuesFrom>
-                </ObjectUnionOf>
-                <DataHasValue>
-                    <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
-                    <Literal datatypeIRI="&xsd;boolean">false</Literal>
-                </DataHasValue>
-            </ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                <Class IRI="#AchievedStep"/>
-            </ObjectSomeValuesFrom>
-        </ObjectUnionOf>
+        <Class IRI="#GoalStep"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+            <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#right-nil-step"/>
+        </ObjectHasValue>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#StartStep"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+            <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#left-nil-step"/>
+        </ObjectHasValue>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#TodoFlowConnectedStep"/>
@@ -144,6 +148,13 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
+        <Class IRI="#TodoFlowDefinedStep"/>
+        <DataHasValue>
+            <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isINVESTCompliant"/>
+            <Literal datatypeIRI="&xsd;boolean">true</Literal>
+        </DataHasValue>
+    </EquivalentClasses>
+    <EquivalentClasses>
         <Class IRI="#TodoFlowIsolatedStep"/>
         <ObjectIntersectionOf>
             <ObjectComplementOf>
@@ -163,7 +174,7 @@
     <EquivalentClasses>
         <Class IRI="#WorthlessStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#PendingStep"/>
+            <Class IRI="#AdjacentPendingStep"/>
             <DataHasValue>
                 <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
                 <Literal datatypeIRI="&xsd;boolean">true</Literal>
@@ -171,19 +182,19 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <SubClassOf>
-        <Class IRI="#AchievedStep"/>
-        <Class IRI="#TodoFlowConnectedStep"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#ActivatedStep"/>
         <Class IRI="#TodoFlowConnectedStep"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#GoalStep"/>
+        <Class IRI="#AdjacentAchievedStep"/>
         <Class IRI="#TodoFlowConnectedStep"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#PendingStep"/>
+        <Class IRI="#AdjacentPendingStep"/>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GoalStep"/>
         <Class IRI="#TodoFlowConnectedStep"/>
     </SubClassOf>
     <SubClassOf>
@@ -198,20 +209,6 @@
         <Class IRI="#TodoFlowIsolatedStep"/>
         <Class IRI="#TodoFlowDefinedStep"/>
     </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#WorthlessStep"/>
-        <Class IRI="#TodoFlowConnectedStep"/>
-    </SubClassOf>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#AchievedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">有一种边界条件我没考虑到. 当两条依赖路径都存在时, 只要有一条路径完成度达到距离目标一步之遥, 就会出现误判.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#AchievedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经依序完成的目标(完善)</Literal>
-    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#ActivatedStep</IRI>
@@ -224,12 +221,22 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#ActivatedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已可以开始执行的步骤(完善)</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已可以开始执行的步骤(目测完善)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AdjacentAchievedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">有一种边界条件我没考虑到. 当两条依赖路径都存在时, 只要有一条路径完成度达到距离目标一步之遥, 就会出现误判.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AdjacentAchievedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经依序完成的目标(完善)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#GoalStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤(完善)</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤(目测完善)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
