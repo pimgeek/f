@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://localhost:8080/ontology/todoflow-defined-step.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://localhost:8080/ontology/todoflow-defined-step.owl">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">* 这是一个OWL+推理机练习专用本体, 里面记载了一系列有先后依赖关系的操作步骤.
+
+* 整个操作步骤集合的总目的, 是把大象放进冰箱里, 并且冷冻起来保存.
+
+* 利用 HermiT 推理机分析这个本体, 可以为具有不同特点的步骤做自动分类.
+
+* 比如
+
+&gt; 所有步骤的最开始步骤, 会被自动归为 [起始步骤集合].
+&gt; 所有步骤中最接近目标达成的那个步骤, 会被自动归为 [目标步骤集合].
+&gt; 所有被标记为已执行的步骤, 会被自动归为 [已经做好准备的集合]
+&gt; ... 以此类推.</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#AchievedStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ActivatedStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GoalStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PendingStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StartStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TodoFlowDefinedStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TodoFlowIsolatedStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WorthlessStep"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#AchievedStep"/>
+        <ObjectIntersectionOf>
+            <ObjectUnionOf>
+                <Class IRI="#StartStep"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="#AchievedStep"/>
+                </ObjectSomeValuesFrom>
+            </ObjectUnionOf>
+            <DataHasValue>
+                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ActivatedStep"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <Class IRI="#AchievedStep"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <ObjectSomeValuesFrom>
+                        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                        <Class IRI="#AchievedStep"/>
+                    </ObjectSomeValuesFrom>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+            <DataHasValue>
+                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
+                <Literal datatypeIRI="&xsd;boolean">false</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PendingStep"/>
+        <ObjectUnionOf>
+            <ObjectIntersectionOf>
+                <ObjectUnionOf>
+                    <Class IRI="#GoalStep"/>
+                    <ObjectSomeValuesFrom>
+                        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+                        <Class IRI="#PendingStep"/>
+                    </ObjectSomeValuesFrom>
+                </ObjectUnionOf>
+                <DataHasValue>
+                    <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
+                    <Literal datatypeIRI="&xsd;boolean">false</Literal>
+                </DataHasValue>
+            </ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <Class IRI="#AchievedStep"/>
+            </ObjectSomeValuesFrom>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TodoFlowConnectedStep"/>
+        <ObjectIntersectionOf>
+            <ObjectUnionOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
+                </ObjectSomeValuesFrom>
+            </ObjectUnionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isINVESTCompliant"/>
+                <Datatype abbreviatedIRI="xsd:boolean"/>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TodoFlowIsolatedStep"/>
+        <ObjectIntersectionOf>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
+                </ObjectSomeValuesFrom>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WorthlessStep"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PendingStep"/>
+            <DataHasValue>
+                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AchievedStep"/>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ActivatedStep"/>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GoalStep"/>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PendingStep"/>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StartStep"/>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TodoFlowConnectedStep"/>
+        <Class IRI="#TodoFlowDefinedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TodoFlowIsolatedStep"/>
+        <Class IRI="#TodoFlowDefinedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WorthlessStep"/>
+        <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AchievedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">有一种边界条件我没考虑到. 当两条依赖路径都存在时, 只要有一条路径完成度达到距离目标一步之遥, 就会出现误判.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AchievedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经依序完成的目标(完善)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ActivatedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">此集合依赖于 SequentiallyAchievedTodoStep, 要避免循环引用.
+此集合的定义不够精准, 仍然存在漏网之鱼. 
+
+1 两条平行的执行步骤序列, 单是一条序列能走通, 也可以激活后续步骤, 这不符合预期.
+2 两条平行的执行步骤序列都能走通了, 但后续步骤突然不能被激活了.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ActivatedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已可以开始执行的步骤(完善)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GoalStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤(完善)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StartStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤(目测完善)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TodoFlowConnectedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已互联的操作步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WorthlessStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">得不偿失的步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>owl:Thing</AbbreviatedIRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">事物</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
