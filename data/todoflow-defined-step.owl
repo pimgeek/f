@@ -46,7 +46,13 @@
         <Class IRI="#AdjacentPendingStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#GoalStep"/>
+        <Class IRI="#FinalStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OutOfReachGoal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PrematureStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#StartStep"/>
@@ -55,13 +61,16 @@
         <Class IRI="#TodoFlowConnectedStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#TodoFlowDefinedStep"/>
+        <Class IRI="#TodoFlowINVESTStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#TodoFlowIsolatedStep"/>
+        <AnnotationProperty IRI="#isEdgeChecked"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#WorthlessStep"/>
+        <AnnotationProperty IRI="#isEqvChecked"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#isEyeChecked"/>
     </Declaration>
     <EquivalentClasses>
         <Class IRI="#ActivatedStep"/>
@@ -82,6 +91,7 @@
     <EquivalentClasses>
         <Class IRI="#AdjacentAchievedStep"/>
         <ObjectIntersectionOf>
+            <Class IRI="#TodoFlowConnectedStep"/>
             <ObjectUnionOf>
                 <Class IRI="#StartStep"/>
                 <ObjectSomeValuesFrom>
@@ -98,10 +108,11 @@
     <EquivalentClasses>
         <Class IRI="#AdjacentPendingStep"/>
         <ObjectIntersectionOf>
+            <Class IRI="#TodoFlowConnectedStep"/>
             <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <Class IRI="#ActivatedStep"/>
+                    <Class IRI="#AdjacentAchievedStep"/>
                 </ObjectSomeValuesFrom>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
@@ -115,22 +126,52 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#GoalStep"/>
-        <ObjectHasValue>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
-            <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#right-nil-step"/>
-        </ObjectHasValue>
+        <Class IRI="#FinalStep"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#TodoFlowConnectedStep"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+                <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#frozen-elephant-closing-step"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OutOfReachGoal"/>
+        <ObjectUnionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <Class IRI="#ActivatedStep"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <Class IRI="#OutOfReachGoal"/>
+            </ObjectSomeValuesFrom>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PrematureStep"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#OutOfReachGoal"/>
+            <DataHasValue>
+                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
+                <Literal datatypeIRI="&xsd;boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#StartStep"/>
-        <ObjectHasValue>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-            <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#left-nil-step"/>
-        </ObjectHasValue>
+        <ObjectIntersectionOf>
+            <Class IRI="#TodoFlowConnectedStep"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#frozen-elephant-starting-step"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#TodoFlowConnectedStep"/>
         <ObjectIntersectionOf>
+            <Class IRI="#TodoFlowINVESTStep"/>
             <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
@@ -141,49 +182,18 @@
                     <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
                 </ObjectSomeValuesFrom>
             </ObjectUnionOf>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isINVESTCompliant"/>
-                <Datatype abbreviatedIRI="xsd:boolean"/>
-            </DataSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#TodoFlowDefinedStep"/>
+        <Class IRI="#TodoFlowINVESTStep"/>
         <DataHasValue>
-            <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isINVESTCompliant"/>
+            <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isINVEST"/>
             <Literal datatypeIRI="&xsd;boolean">true</Literal>
         </DataHasValue>
     </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#TodoFlowIsolatedStep"/>
-        <ObjectIntersectionOf>
-            <ObjectComplementOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
-                </ObjectSomeValuesFrom>
-            </ObjectComplementOf>
-            <ObjectComplementOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
-                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
-                </ObjectSomeValuesFrom>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#WorthlessStep"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#AdjacentPendingStep"/>
-            <DataHasValue>
-                <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
-                <Literal datatypeIRI="&xsd;boolean">true</Literal>
-            </DataHasValue>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#ActivatedStep"/>
-        <Class IRI="#TodoFlowConnectedStep"/>
+        <Class IRI="#AdjacentPendingStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AdjacentAchievedStep"/>
@@ -194,8 +204,16 @@
         <Class IRI="#TodoFlowConnectedStep"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#GoalStep"/>
+        <Class IRI="#FinalStep"/>
         <Class IRI="#TodoFlowConnectedStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OutOfReachGoal"/>
+        <Class IRI="#AdjacentPendingStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PrematureStep"/>
+        <Class IRI="#OutOfReachGoal"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#StartStep"/>
@@ -203,11 +221,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TodoFlowConnectedStep"/>
-        <Class IRI="#TodoFlowDefinedStep"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#TodoFlowIsolatedStep"/>
-        <Class IRI="#TodoFlowDefinedStep"/>
+        <Class IRI="#TodoFlowINVESTStep"/>
     </SubClassOf>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -235,13 +249,23 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#GoalStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤(目测完善)</Literal>
+        <IRI>#FinalStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PrematureStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">先需条件还不具足, 就急急忙忙完成了的步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PrematureStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">过早完成的步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#StartStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤(目测完善)</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤(目测完善,未检查边界条件)</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -249,9 +273,23 @@
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已互联的操作步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TodoFlowINVESTStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目的:
+
+1 把某个给定本体中的所有步骤型实例做分类
+
+2 分类过后, 能够明确地发现:
+
+  a) 哪些是应该先完成而且已经完成的步骤 (AdjacentAchievedStep)
+  b) 哪些是紧邻着已经完成的步骤集合, 而且马上可以开始做的步骤 (ActivatedStep)
+  c) 哪些是尽管目前已经完成, 但因为不满足 AdjacentAchieveStep 的条件, 所以无法激活更多的步骤 (PrematureStep)
+  d) 哪些是目前完全没必要考虑的步骤 (OutOfReachStep)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#WorthlessStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">得不偿失的步骤</Literal>
+        <IRI>#TodoFlowINVESTStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经得到定义的步骤集合</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
