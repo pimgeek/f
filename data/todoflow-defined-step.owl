@@ -46,7 +46,7 @@
         <Class IRI="#AdjacentPendingStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#FinalStep"/>
+        <Class IRI="#EndStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#OutOfReachGoal"/>
@@ -72,6 +72,14 @@
     <Declaration>
         <AnnotationProperty IRI="#isEyeChecked"/>
     </Declaration>
+    <EquivalentClasses>
+        <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedEnd"/>
+        <Class IRI="#EndStep"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedStart"/>
+        <Class IRI="#StartStep"/>
+    </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#ActivatedStep"/>
         <ObjectIntersectionOf>
@@ -126,16 +134,6 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#FinalStep"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#TodoFlowConnectedStep"/>
-            <ObjectHasValue>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
-                <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#frozen-elephant-closing-step"/>
-            </ObjectHasValue>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
         <Class IRI="#OutOfReachGoal"/>
         <ObjectUnionOf>
             <ObjectSomeValuesFrom>
@@ -159,27 +157,17 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#StartStep"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#TodoFlowConnectedStep"/>
-            <ObjectHasValue>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                <NamedIndividual IRI="http://localhost:8080/ontology/todo-flow-defined-step#frozen-elephant-starting-step"/>
-            </ObjectHasValue>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
         <Class IRI="#TodoFlowConnectedStep"/>
         <ObjectIntersectionOf>
             <Class IRI="#TodoFlowINVESTStep"/>
             <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
+                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedInput"/>
                 </ObjectSomeValuesFrom>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
-                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#TodoFlowInput"/>
+                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedInput"/>
                 </ObjectSomeValuesFrom>
             </ObjectUnionOf>
         </ObjectIntersectionOf>
@@ -204,7 +192,7 @@
         <Class IRI="#TodoFlowConnectedStep"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#FinalStep"/>
+        <Class IRI="#EndStep"/>
         <Class IRI="#TodoFlowConnectedStep"/>
     </SubClassOf>
     <SubClassOf>
@@ -249,7 +237,7 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#FinalStep</IRI>
+        <IRI>#EndStep</IRI>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
