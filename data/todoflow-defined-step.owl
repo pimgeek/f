@@ -49,7 +49,7 @@
         <Class IRI="#EndStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#OutOfReachGoal"/>
+        <Class IRI="#OutOfReachStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#PrematureStep"/>
@@ -61,7 +61,7 @@
         <Class IRI="#TodoFlowConnectedStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#TodoFlowINVESTStep"/>
+        <Class IRI="#TodoFlowImportedStep"/>
     </Declaration>
     <Declaration>
         <AnnotationProperty IRI="#isEdgeChecked"/>
@@ -72,14 +72,6 @@
     <Declaration>
         <AnnotationProperty IRI="#isEyeChecked"/>
     </Declaration>
-    <EquivalentClasses>
-        <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedEnd"/>
-        <Class IRI="#EndStep"/>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedStart"/>
-        <Class IRI="#StartStep"/>
-    </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#ActivatedStep"/>
         <ObjectIntersectionOf>
@@ -134,7 +126,7 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#OutOfReachGoal"/>
+        <Class IRI="#OutOfReachStep"/>
         <ObjectUnionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
@@ -142,14 +134,14 @@
             </ObjectSomeValuesFrom>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                <Class IRI="#OutOfReachGoal"/>
+                <Class IRI="#OutOfReachStep"/>
             </ObjectSomeValuesFrom>
         </ObjectUnionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#PrematureStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#OutOfReachGoal"/>
+            <Class IRI="#OutOfReachStep"/>
             <DataHasValue>
                 <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isDone"/>
                 <Literal datatypeIRI="&xsd;boolean">true</Literal>
@@ -159,7 +151,7 @@
     <EquivalentClasses>
         <Class IRI="#TodoFlowConnectedStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#TodoFlowINVESTStep"/>
+            <Class IRI="#TodoFlowImportedStep"/>
             <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
@@ -171,13 +163,6 @@
                 </ObjectSomeValuesFrom>
             </ObjectUnionOf>
         </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#TodoFlowINVESTStep"/>
-        <DataHasValue>
-            <DataProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isINVEST"/>
-            <Literal datatypeIRI="&xsd;boolean">true</Literal>
-        </DataHasValue>
     </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#ActivatedStep"/>
@@ -196,12 +181,12 @@
         <Class IRI="#TodoFlowConnectedStep"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#OutOfReachGoal"/>
+        <Class IRI="#OutOfReachStep"/>
         <Class IRI="#AdjacentPendingStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#PrematureStep"/>
-        <Class IRI="#OutOfReachGoal"/>
+        <Class IRI="#OutOfReachStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#StartStep"/>
@@ -209,7 +194,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TodoFlowConnectedStep"/>
-        <Class IRI="#TodoFlowINVESTStep"/>
+        <Class IRI="#TodoFlowImportedStep"/>
     </SubClassOf>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -223,7 +208,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#ActivatedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已可以开始执行的步骤(目测完善)</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已可以开始执行的步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -233,7 +218,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#AdjacentAchievedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经依序完成的目标(完善)</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">我</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -253,7 +238,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#StartStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤(目测完善,未检查边界条件)</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -262,8 +247,8 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#TodoFlowINVESTStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目的:
+        <IRI>#TodoFlowImportedStep</IRI>
+        <Literal datatypeIRI="&xsd;string">目的:
 
 1 把某个给定本体中的所有步骤型实例做分类
 
@@ -276,13 +261,8 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#TodoFlowINVESTStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经得到定义的步骤集合</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <AbbreviatedIRI>owl:Thing</AbbreviatedIRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">事物</Literal>
+        <IRI>#TodoFlowImportedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">导入的步骤</Literal>
     </AnnotationAssertion>
 </Ontology>
 
