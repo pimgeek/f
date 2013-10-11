@@ -10,23 +10,20 @@
 
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://localhost:8080/ontology/todoflow-defined-step.owl"
+     xml:base="http://localhost:8080/ontology/classified-doable-step.owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://localhost:8080/ontology/todoflow-defined-step.owl">
+     ontologyIRI="http://localhost:8080/ontology/classified-doable-step.owl">
     <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Annotation>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">* 这是一个OWL+推理机练习专用本体, 里面记载了一系列有先后依赖关系的操作步骤.
-
-* 整个操作步骤集合的总目的, 是把大象放进冰箱里, 并且冷冻起来保存.
-
 * 利用 HermiT 推理机分析这个本体, 可以为具有不同特点的步骤做自动分类.
 
 * 比如
@@ -36,6 +33,14 @@
 &gt; 所有被标记为已执行的步骤, 会被自动归为 [已经做好准备的集合]
 &gt; ... 以此类推.</Literal>
     </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">永远不要在 Active Ontology 这个页签上做本体切换, 不然麻烦大了.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">任务分类本体</Literal>
+    </Annotation>
     <Declaration>
         <Class IRI="#ActivatedStep"/>
     </Declaration>
@@ -44,6 +49,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="#AdjacentPendingStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ConnectedDoableStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DoableStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#EndStep"/>
@@ -58,12 +69,6 @@
         <Class IRI="#StartStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#TodoFlowConnectedStep"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#TodoFlowImportedStep"/>
-    </Declaration>
-    <Declaration>
         <AnnotationProperty IRI="#isEdgeChecked"/>
     </Declaration>
     <Declaration>
@@ -75,6 +80,7 @@
     <EquivalentClasses>
         <Class IRI="#ActivatedStep"/>
         <ObjectIntersectionOf>
+            <Class IRI="#AdjacentPendingStep"/>
             <ObjectUnionOf>
                 <Class IRI="#StartStep"/>
                 <ObjectSomeValuesFrom>
@@ -91,7 +97,7 @@
     <EquivalentClasses>
         <Class IRI="#AdjacentAchievedStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#TodoFlowConnectedStep"/>
+            <Class IRI="#ConnectedDoableStep"/>
             <ObjectUnionOf>
                 <Class IRI="#StartStep"/>
                 <ObjectSomeValuesFrom>
@@ -108,7 +114,7 @@
     <EquivalentClasses>
         <Class IRI="#AdjacentPendingStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#TodoFlowConnectedStep"/>
+            <Class IRI="#ConnectedDoableStep"/>
             <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
@@ -126,17 +132,33 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#OutOfReachStep"/>
+        <Class IRI="#ConnectedDoableStep"/>
         <ObjectUnionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                <Class IRI="#ActivatedStep"/>
+                <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBeClassifiedTaskItem"/>
             </ObjectSomeValuesFrom>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                <Class IRI="#OutOfReachStep"/>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+                <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBeClassifiedTaskItem"/>
             </ObjectSomeValuesFrom>
         </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OutOfReachStep"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#AdjacentPendingStep"/>
+            <ObjectUnionOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="#ActivatedStep"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="#OutOfReachStep"/>
+                </ObjectSomeValuesFrom>
+            </ObjectUnionOf>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#PrematureStep"/>
@@ -148,37 +170,25 @@
             </DataHasValue>
         </ObjectIntersectionOf>
     </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#TodoFlowConnectedStep"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#TodoFlowImportedStep"/>
-            <ObjectUnionOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedInput"/>
-                </ObjectSomeValuesFrom>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
-                    <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ConcernedInput"/>
-                </ObjectSomeValuesFrom>
-            </ObjectUnionOf>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#ActivatedStep"/>
         <Class IRI="#AdjacentPendingStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AdjacentAchievedStep"/>
-        <Class IRI="#TodoFlowConnectedStep"/>
+        <Class IRI="#ConnectedDoableStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#AdjacentPendingStep"/>
-        <Class IRI="#TodoFlowConnectedStep"/>
+        <Class IRI="#ConnectedDoableStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ConnectedDoableStep"/>
+        <Class IRI="#DoableStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#EndStep"/>
-        <Class IRI="#TodoFlowConnectedStep"/>
+        <Class IRI="#ConnectedDoableStep"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#OutOfReachStep"/>
@@ -190,11 +200,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#StartStep"/>
-        <Class IRI="#TodoFlowConnectedStep"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#TodoFlowConnectedStep"/>
-        <Class IRI="#TodoFlowImportedStep"/>
+        <Class IRI="#ConnectedDoableStep"/>
     </SubClassOf>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -222,6 +228,30 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ConnectedDoableStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已互联的操作步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DoableStep</IRI>
+        <Literal datatypeIRI="&xsd;string">目的:
+
+1 把某个给定本体中的所有步骤型实例做分类
+
+2 分类过后, 能够明确地发现:
+
+  a) 哪些是应该先完成而且已经完成的步骤 (AdjacentAchievedStep)
+  b) 哪些是紧邻着已经完成的步骤集合, 而且马上可以开始做的步骤 (ActivatedStep)
+  c) 哪些是尽管目前已经完成, 但因为不满足 AdjacentAchieveStep 的条件, 所以无法激活更多的步骤 (PrematureStep)
+  d) 哪些是目前完全没必要考虑的步骤 (OutOfReachStep)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DoableStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">导入的步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#EndStep</IRI>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤</Literal>
     </AnnotationAssertion>
@@ -239,30 +269,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#StartStep</IRI>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#TodoFlowConnectedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已互联的操作步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#TodoFlowImportedStep</IRI>
-        <Literal datatypeIRI="&xsd;string">目的:
-
-1 把某个给定本体中的所有步骤型实例做分类
-
-2 分类过后, 能够明确地发现:
-
-  a) 哪些是应该先完成而且已经完成的步骤 (AdjacentAchievedStep)
-  b) 哪些是紧邻着已经完成的步骤集合, 而且马上可以开始做的步骤 (ActivatedStep)
-  c) 哪些是尽管目前已经完成, 但因为不满足 AdjacentAchieveStep 的条件, 所以无法激活更多的步骤 (PrematureStep)
-  d) 哪些是目前完全没必要考虑的步骤 (OutOfReachStep)</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#TodoFlowImportedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">导入的步骤</Literal>
     </AnnotationAssertion>
 </Ontology>
 
