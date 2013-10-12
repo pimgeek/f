@@ -30,6 +30,9 @@
         <Literal datatypeIRI="&rdf;PlainLiteral">一周内熟悉一个行业</Literal>
     </Annotation>
     <Declaration>
+        <Class IRI="#Bingo"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#IndustryAnalysisConcept"/>
     </Declaration>
     <Declaration>
@@ -48,16 +51,7 @@
         <Class IRI="#IndustryKeyChain"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#IndustryKeyRevenueShareholder"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#IndustryMarketConcentrationRate"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#IndustryPainPoint"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#IndustryPriceMaker"/>
     </Declaration>
     <Declaration>
         <Class IRI="#IndustryValue"/>
@@ -65,6 +59,13 @@
     <Declaration>
         <Class IRI="#IndustryValueGenerator"/>
     </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Bingo"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#formEcologicalCycle"/>
+            <Class IRI="#IndustryAnalysisConcept"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#IndustryCoreTech"/>
         <ObjectSomeValuesFrom>
@@ -75,15 +76,8 @@
     <EquivalentClasses>
         <Class IRI="#IndustryDeservedRevenue"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isEarnedBy"/>
-            <Class IRI="#IndustryKeyChain"/>
-        </ObjectSomeValuesFrom>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#IndustryEndUser"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#financiallyReward"/>
-            <Class IRI="#IndustryValueGenerator"/>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isFinanciallyPaidBy"/>
+            <Class IRI="#IndustryEndUser"/>
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -94,24 +88,10 @@
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#IndustryKeyRevenueShareholder"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#receive"/>
-            <Class IRI="#IndustryDeservedRevenue"/>
-        </ObjectSomeValuesFrom>
-    </EquivalentClasses>
-    <EquivalentClasses>
         <Class IRI="#IndustryPainPoint"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isEnduredBy"/>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#annoy"/>
             <Class IRI="#IndustryEndUser"/>
-        </ObjectSomeValuesFrom>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#IndustryPriceMaker"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#influence"/>
-            <Class IRI="#IndustryDeservedRevenue"/>
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
@@ -125,8 +105,12 @@
         <Class IRI="#IndustryValueGenerator"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#generate"/>
-                <Class IRI="#IndustryValue"/>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#invent"/>
+                <Class IRI="#IndustryCoreTech"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isFinanciallyRewardedBy"/>
+                <Class IRI="#IndustryKeyChain"/>
             </ObjectSomeValuesFrom>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#seizeNicheOpportunityIn"/>
@@ -134,6 +118,10 @@
             </ObjectSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Bingo"/>
+        <Class IRI="#IndustryAnalysisConcept"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#IndustryCoreTech"/>
         <Class IRI="#IndustryAnalysisConcept"/>
@@ -155,19 +143,7 @@
         <Class IRI="#IndustryAnalysisConcept"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#IndustryKeyRevenueShareholder"/>
-        <Class IRI="#IndustryAnalysisConcept"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#IndustryMarketConcentrationRate"/>
-        <Class IRI="#IndustryAnalysisConcept"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#IndustryPainPoint"/>
-        <Class IRI="#IndustryAnalysisConcept"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#IndustryPriceMaker"/>
         <Class IRI="#IndustryAnalysisConcept"/>
     </SubClassOf>
     <SubClassOf>
@@ -178,11 +154,6 @@
         <Class IRI="#IndustryValueGenerator"/>
         <Class IRI="#IndustryAnalysisConcept"/>
     </SubClassOf>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#IndustryPriceMaker</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">与其它类之间的关系不明.</Literal>
-    </AnnotationAssertion>
 </Ontology>
 
 
