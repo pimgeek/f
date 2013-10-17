@@ -30,16 +30,16 @@
         <Literal datatypeIRI="&rdf;PlainLiteral">一周内熟悉一个行业</Literal>
     </Annotation>
     <Declaration>
-        <Class IRI="#Bingo"/>
+        <Class IRI="#ContentCreationChain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ContentDistrubutionChain"/>
     </Declaration>
     <Declaration>
         <Class IRI="#IndustryAnalysisConcept"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#IndustryCoreTech"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#IndustryCoreValue"/>
+        <Class IRI="#IndustryCoreResource"/>
     </Declaration>
     <Declaration>
         <Class IRI="#IndustryDeservedRevenue"/>
@@ -54,22 +54,18 @@
         <Class IRI="#IndustryPainPoint"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#IndustryPlayer"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#IndustryValue"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#IndustryValueGenerator"/>
+        <Class IRI="#IndustryValueCreator"/>
     </Declaration>
     <EquivalentClasses>
-        <Class IRI="#Bingo"/>
+        <Class IRI="#IndustryCoreResource"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#formEcologicalCycle"/>
-            <Class IRI="#IndustryAnalysisConcept"/>
-        </ObjectSomeValuesFrom>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#IndustryCoreTech"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#technologicallyContributeTo"/>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#resourcefullySupport"/>
             <Class IRI="#IndustryValue"/>
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
@@ -90,24 +86,28 @@
     <EquivalentClasses>
         <Class IRI="#IndustryPainPoint"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#annoy"/>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#annoyEndUser"/>
             <Class IRI="#IndustryEndUser"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#IndustryPlayer"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#createLeverWith"/>
+            <Class IRI="#IndustryCoreResource"/>
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#IndustryValue"/>
         <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#lessen"/>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#lessenAnnoyingExperience"/>
             <Class IRI="#IndustryPainPoint"/>
         </ObjectSomeValuesFrom>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#IndustryValueGenerator"/>
+        <Class IRI="#IndustryValueCreator"/>
         <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#invent"/>
-                <Class IRI="#IndustryCoreTech"/>
-            </ObjectSomeValuesFrom>
+            <Class IRI="#IndustryPlayer"/>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isFinanciallyRewardedBy"/>
                 <Class IRI="#IndustryKeyChain"/>
@@ -119,16 +119,16 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <SubClassOf>
-        <Class IRI="#Bingo"/>
-        <Class IRI="#IndustryAnalysisConcept"/>
+        <Class IRI="#ContentCreationChain"/>
+        <Class IRI="#IndustryKeyChain"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#IndustryCoreTech"/>
-        <Class IRI="#IndustryAnalysisConcept"/>
+        <Class IRI="#ContentDistrubutionChain"/>
+        <Class IRI="#IndustryKeyChain"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#IndustryCoreValue"/>
-        <Class IRI="#IndustryValue"/>
+        <Class IRI="#IndustryCoreResource"/>
+        <Class IRI="#IndustryAnalysisConcept"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#IndustryDeservedRevenue"/>
@@ -147,13 +147,76 @@
         <Class IRI="#IndustryAnalysisConcept"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="#IndustryPlayer"/>
+        <Class IRI="#IndustryAnalysisConcept"/>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="#IndustryValue"/>
         <Class IRI="#IndustryAnalysisConcept"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#IndustryValueGenerator"/>
-        <Class IRI="#IndustryAnalysisConcept"/>
+        <Class IRI="#IndustryValueCreator"/>
+        <Class IRI="#IndustryPlayer"/>
     </SubClassOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#testOP"/>
+        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#antiTestOP"/>
+    </InverseObjectProperties>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ContentCreationChain</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">内容创造价值链</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ContentDistrubutionChain</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">内容分发渠道价值链</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryAnalysisConcept</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业分析相关概念类</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryCoreResource</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业的核心科技</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryDeservedRevenue</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业内应得的盈收</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryEndUser</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业的最终用户</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryKeyChain</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业内的关键价值链</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryPainPoint</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业要应对的痛点</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryPlayer</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">行业的参与竞争者</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryValue</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业创造的价值</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IndustryValueCreator</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">行业价值的创造者</Literal>
+    </AnnotationAssertion>
 </Ontology>
 
 
