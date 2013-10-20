@@ -60,13 +60,13 @@
         <Class IRI="#OutOfReachStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#PrematureStep"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#StartStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#TodoAnalysisConcept"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TouchedStep"/>
     </Declaration>
     <Declaration>
         <AnnotationProperty IRI="#isEdgeChecked"/>
@@ -146,22 +146,19 @@
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#OutOfReachStep"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#AdjacentPendingStep"/>
-            <ObjectUnionOf>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <Class IRI="#ActivatedStep"/>
-                </ObjectSomeValuesFrom>
-                <ObjectSomeValuesFrom>
-                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                    <Class IRI="#OutOfReachStep"/>
-                </ObjectSomeValuesFrom>
-            </ObjectUnionOf>
-        </ObjectIntersectionOf>
+        <ObjectUnionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <Class IRI="#ActivatedStep"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <Class IRI="#OutOfReachStep"/>
+            </ObjectSomeValuesFrom>
+        </ObjectUnionOf>
     </EquivalentClasses>
     <EquivalentClasses>
-        <Class IRI="#PrematureStep"/>
+        <Class IRI="#TouchedStep"/>
         <ObjectIntersectionOf>
             <Class IRI="#OutOfReachStep"/>
             <DataHasValue>
@@ -195,12 +192,12 @@
         <Class IRI="#AdjacentPendingStep"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#PrematureStep"/>
-        <Class IRI="#OutOfReachStep"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#StartStep"/>
         <Class IRI="#ConnectedTodoStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TouchedStep"/>
+        <Class IRI="#OutOfReachStep"/>
     </SubClassOf>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -219,7 +216,8 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#AdjacentAchievedStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">有一种边界条件我没考虑到. 当两条依赖路径都存在时, 只要有一条路径完成度达到距离目标一步之遥, 就会出现误判.</Literal>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">有一种边界条件我没考虑到. 当两条依赖路径都存在时, 
+只要有一条路径完成度达到距离目标一步之遥, 就会出现误判.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -235,16 +233,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#EndStep</IRI>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#PrematureStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">先需条件还不具足, 就急急忙忙完成了的步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#PrematureStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">过早完成的步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -269,6 +257,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#TodoAnalysisConcept</IRI>
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经分为子类的可做的步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#TouchedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">先需条件还不具足, 就急急忙忙完成了的步骤</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TouchedStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">过早完成的步骤</Literal>
     </AnnotationAssertion>
 </Ontology>
 
