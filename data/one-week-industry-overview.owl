@@ -158,10 +158,6 @@
         <Class IRI="#IndustryValueCreator"/>
         <Class IRI="#IndustryPlayer"/>
     </SubClassOf>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#testOP"/>
-        <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#antiTestOP"/>
-    </InverseObjectProperties>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#ContentCreationChain</IRI>
