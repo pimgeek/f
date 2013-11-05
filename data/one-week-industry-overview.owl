@@ -62,6 +62,12 @@
     <Declaration>
         <Class IRI="#IndustryValueCreator"/>
     </Declaration>
+    <Declaration>
+        <Class IRI="#PopularProduct"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SensibleProductFeature"/>
+    </Declaration>
     <EquivalentClasses>
         <Class IRI="#IndustryCoreResource"/>
         <ObjectSomeValuesFrom>
@@ -118,6 +124,20 @@
             </ObjectSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PopularProduct"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isAsAProductFeaturedBy"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SensibleProductFeature"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#featureProduct"/>
+            <Class IRI="#PopularProduct"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#ContentCreationChain"/>
         <Class IRI="#IndustryKeyChain"/>
@@ -157,6 +177,14 @@
     <SubClassOf>
         <Class IRI="#IndustryValueCreator"/>
         <Class IRI="#IndustryPlayer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PopularProduct"/>
+        <Class IRI="#IndustryAnalysisConcept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SensibleProductFeature"/>
+        <Class IRI="#IndustryAnalysisConcept"/>
     </SubClassOf>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
