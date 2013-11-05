@@ -57,6 +57,12 @@
         <Class IRI="#EndStep"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#FringeStep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Goal"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#OutOfReachStep"/>
     </Declaration>
     <Declaration>
@@ -145,6 +151,39 @@
         </ObjectUnionOf>
     </EquivalentClasses>
     <EquivalentClasses>
+        <Class IRI="#EndStep"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#contributeTo"/>
+                <Class IRI="#Goal"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isAsEndCoupledWith"/>
+                <Class IRI="#ConnectedTodoStep"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#FringeStep"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                <Class IRI="#AdjacentAchievedStep"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
+                    <Class IRI="#ActivatedStep"/>
+                </ObjectSomeValuesFrom>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Goal"/>
+        <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBeAchievedGoal"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
         <Class IRI="#OutOfReachStep"/>
         <ObjectUnionOf>
             <ObjectSomeValuesFrom>
@@ -156,6 +195,19 @@
                 <Class IRI="#OutOfReachStep"/>
             </ObjectSomeValuesFrom>
         </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#StartStep"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#contributeTo"/>
+                <Class IRI="#Goal"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#coupleWithEnd"/>
+                <Class IRI="#ConnectedTodoStep"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#TouchedStep"/>
@@ -186,6 +238,14 @@
     <SubClassOf>
         <Class IRI="#EndStep"/>
         <Class IRI="#ConnectedTodoStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FringeStep"/>
+        <Class IRI="#ConnectedTodoStep"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Goal"/>
+        <Class IRI="#TodoAnalysisConcept"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#OutOfReachStep"/>
@@ -242,7 +302,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#TodoAnalysisConcept</IRI>
-        <Literal datatypeIRI="&xsd;string">目的:
+        <Literal datatypeIRI="&xsd;string">目的
 
 1 把某个给定本体中的所有步骤型实例做分类
 
