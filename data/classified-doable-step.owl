@@ -66,10 +66,10 @@
         <Class IRI="#OutOfReachStep"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#StartStep"/>
+        <Class IRI="#REM_GoalProgressTracker"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#TodoAnalysisConcept"/>
+        <Class IRI="#StartStep"/>
     </Declaration>
     <Declaration>
         <Class IRI="#TouchedStep"/>
@@ -86,7 +86,6 @@
     <EquivalentClasses>
         <Class IRI="#ActivatedStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#AdjacentPendingStep"/>
             <ObjectUnionOf>
                 <Class IRI="#StartStep"/>
                 <ObjectSomeValuesFrom>
@@ -103,7 +102,6 @@
     <EquivalentClasses>
         <Class IRI="#AdjacentAchievedStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#ConnectedTodoStep"/>
             <ObjectUnionOf>
                 <Class IRI="#StartStep"/>
                 <ObjectSomeValuesFrom>
@@ -120,7 +118,6 @@
     <EquivalentClasses>
         <Class IRI="#AdjacentPendingStep"/>
         <ObjectIntersectionOf>
-            <Class IRI="#ConnectedTodoStep"/>
             <ObjectUnionOf>
                 <ObjectSomeValuesFrom>
                     <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
@@ -142,11 +139,11 @@
         <ObjectUnionOf>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isPrecededBy"/>
-                <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBeClassifiedToDoItem"/>
+                <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBePlannedToDoItem"/>
             </ObjectSomeValuesFrom>
             <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#precede"/>
-                <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBeClassifiedToDoItem"/>
+                <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBePlannedToDoItem"/>
             </ObjectSomeValuesFrom>
         </ObjectUnionOf>
     </EquivalentClasses>
@@ -154,12 +151,12 @@
         <Class IRI="#EndStep"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#contributeTo"/>
-                <Class IRI="#Goal"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isAsEndCoupledWith"/>
                 <Class IRI="#ConnectedTodoStep"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#naturallyLeadTo"/>
+                <Class IRI="#Goal"/>
             </ObjectSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
@@ -181,7 +178,7 @@
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#Goal"/>
-        <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#ToBeAchievedGoal"/>
+        <Class IRI="http://localhost:8080/ontology/pim-core-data.owl#GoalHooker"/>
     </EquivalentClasses>
     <EquivalentClasses>
         <Class IRI="#OutOfReachStep"/>
@@ -200,12 +197,12 @@
         <Class IRI="#StartStep"/>
         <ObjectIntersectionOf>
             <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#contributeTo"/>
-                <Class IRI="#Goal"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
                 <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#coupleWithEnd"/>
                 <Class IRI="#ConnectedTodoStep"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="http://localhost:8080/ontology/pim-core-data.owl#isNaturallyLedToBy"/>
+                <Class IRI="#Goal"/>
             </ObjectSomeValuesFrom>
         </ObjectIntersectionOf>
     </EquivalentClasses>
@@ -233,7 +230,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#ConnectedTodoStep"/>
-        <Class IRI="#TodoAnalysisConcept"/>
+        <Class IRI="#REM_GoalProgressTracker"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#EndStep"/>
@@ -245,7 +242,7 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Goal"/>
-        <Class IRI="#TodoAnalysisConcept"/>
+        <Class IRI="#REM_GoalProgressTracker"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#OutOfReachStep"/>
@@ -295,13 +292,8 @@
         <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">目标步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#StartStep</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#TodoAnalysisConcept</IRI>
+        <IRI>#REM_GoalProgressTracker</IRI>
         <Literal datatypeIRI="&xsd;string">目的
 
 1 把某个给定本体中的所有步骤型实例做分类
@@ -315,8 +307,13 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#TodoAnalysisConcept</IRI>
-        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">已经分为子类的可做的步骤</Literal>
+        <IRI>#REM_GoalProgressTracker</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">用自动推理的手段-针对给定的目标及其相关任务做分析并跟踪目标进度</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StartStep</IRI>
+        <Literal xml:lang="zh" datatypeIRI="&rdf;PlainLiteral">起始步骤</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
