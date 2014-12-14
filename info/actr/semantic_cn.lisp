@@ -1,3 +1,4 @@
+;; -*- coding:utf-8 -*- ;;
 (clear-all)
 
 (define-model 生物对象归类认知模型

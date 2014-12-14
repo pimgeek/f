@@ -1,3 +1,4 @@
+;; -*- coding:utf-8 -*- ;;
 (clear-all)
 
 (define-model 两个数相加的认知模型

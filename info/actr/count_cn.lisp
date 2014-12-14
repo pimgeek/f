@@ -1,3 +1,4 @@
+;; -*- coding:utf-8 -*- ;;
 (clear-all)
 
 (define-model 连续数若干个数的认知模型

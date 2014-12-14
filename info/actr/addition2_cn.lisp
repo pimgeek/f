@@ -1,3 +1,4 @@
+;; -*- coding:utf-8 -*- ;;
 (clear-all)
 
 (define-model 简单加法运算认知模型
