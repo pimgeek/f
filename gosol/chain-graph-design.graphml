@@ -20,15 +20,15 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="118.8564453125" width="157.673828125" x="782.9555456132948" y="423.8882523060938"/>
+              <y:Geometry height="118.8564453125" width="182.67862812499925" x="770.453145613295" y="423.8882523060938"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="157.673828125" x="0.0" y="0.0">初始目标
-仅有一个大概目标</y:NodeLabel>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="182.67862812499925" x="0.0" y="0.0">第00次演化
+开始仅有一个模糊的目标</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="0" bottomF="0.0" left="17" leftF="17.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="30" leftF="29.502399999999852" right="13" rightF="12.502399999999398" top="0" topF="0.0"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="-3034.870626261705" y="-5348.18115234375"/>
@@ -82,7 +82,7 @@
               <y:Geometry height="209.88995234374943" width="182.67862812499925" x="770.453145613295" y="585.504229718751"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="59.12939453125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="182.67862812499925" x="0.0" y="0.0">第一次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="59.12939453125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="182.67862812499925" x="0.0" y="0.0">第01次演化
 为达到目标，需要设定
 起始和终止的标准</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
@@ -210,16 +210,16 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="192.9101305312504" width="384.35745256249993" x="1006.4963366594479" y="593.994140625"/>
+              <y:Geometry height="209.88995234374943" width="384.35745256249993" x="1006.4963366594479" y="585.504229718751"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="59.12939453125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="384.35745256249993" x="0.0" y="0.0">第二次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="59.12939453125" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="384.35745256249993" x="0.0" y="0.0">第02次演化
 围绕目标开始设问，可从起始点出发正推，也可从终
 止点出发反推，设问点之间相互关联形成设问路径。</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="0" bottomF="0.0" left="50" leftF="49.57565782883967" right="57" rightF="56.86533823366335" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="8" bottomF="8.489910906250088" left="50" leftF="49.57565782883967" right="57" rightF="56.86533823366335" top="8" topF="8.489910906248952"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="-2812.003663340552" y="-5177.505859375"/>
@@ -416,7 +416,7 @@
               <y:Geometry height="253.81767950000153" width="384.35745256249993" x="1006.4963366594479" y="853.6002300624987"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="384.35745256249993" x="0.0" y="0.0">第三次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="384.35745256249993" x="0.0" y="0.0">第03次演化
 在必要时，设问点本身也可以细化，形成重重递归的过程</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
@@ -815,7 +815,7 @@
               <y:Geometry height="277.11670837500037" width="386.1929525625085" x="1444.676414440697" y="841.9507156249992"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="386.1929525625085" x="0.0" y="0.0">第四次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="386.1929525625085" x="0.0" y="0.0">第04次演化
 此外，借助设问过程形成的设问路径，可以不止一条</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
@@ -1286,7 +1286,7 @@
               <y:Geometry height="401.8491499843758" width="488.8898494999787" x="1393.327965971962" y="1171.9258255262166"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="488.8898494999787" x="0.0" y="0.0">第五次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="488.8898494999787" x="0.0" y="0.0">第05次演化
 把某个设问点路径“调通”的过程，既可以自己完成，也可以求助专家</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
@@ -2211,7 +2211,7 @@
               <y:Geometry height="326.7955106242714" width="488.88984949997825" x="1928.4932793833461" y="1191.3152063965435"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="488.88984949997825" x="0.0" y="0.0">第六次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="488.88984949997825" x="0.0" y="0.0">第06次演化
 行得通的设问点路径，也可以不止一条</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
@@ -2887,7 +2887,7 @@
               <y:Geometry height="373.2816216991321" width="434.7815393646845" x="1962.037311383349" y="1549.3958253871178"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="434.7815393646845" x="0.0" y="0.0">第七次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="434.7815393646845" x="0.0" y="0.0">第07次演化
 不同的求解目标，可以引用同一个设问点知识库中的设问点</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
@@ -3431,7 +3431,7 @@
               <y:Geometry height="411.3235062795884" width="560.3229612168061" x="2491.541262783193" y="1530.3748830968898"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="560.3229612168061" x="0.0" y="0.0">第八次演化
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="40.7529296875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="560.3229612168061" x="0.0" y="0.0">第08次演化
 交互界面设计</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
@@ -4139,20 +4139,18 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="315.8682344309834" width="504.96052075853754" x="1436.8043886743694" y="339.52655931249956"/>
+              <y:Geometry height="256.5294359687505" width="543.9016554865702" x="1454.6391379868637" y="538.86474609375"/>
               <y:Fill hasColor="false" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-              <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="18" fontStyle="bold" hasLineColor="false" height="158.3623046875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="504.96052075853754" x="0.0" y="0.0">　　附注: 
-1. 每个设问点对应着一个未解决的具体问题
-2. 当设问点上关联了一个包含有效解决方案的知识文档，
-则认为这个问题已经得到解决。
-3. 关联了知识文档的设问点以绿色标明
-4. 设问点之间的有向连线表示(后一个设问的解决有赖于
-前一个设问的解决)</y:NodeLabel>
+              <y:NodeLabel alignment="left" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="18" fontStyle="bold" hasLineColor="false" height="114.2587890625" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="543.9016554865702" x="0.0" y="0.0">附注: 
+1. 每个设问点对应一个未解决的具体问题。
+2. 当设问点关联了一个有效解决方案，则认为此问题已经得解。
+3. 关联了有效解决方案的设问点以绿色标明。
+4. 设问点间的有向连线表示设问点之间的先需和后继关系。</y:NodeLabel>
               <y:Shape type="roundrectangle"/>
               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-              <y:BorderInsets bottom="24" bottomF="23.725193743483032" left="50" leftF="49.57565782883967" right="177" rightF="177.46840642970096" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="8" bottomF="8.489910906250088" left="134" leftF="134.07858845383635" right="132" rightF="131.90661053273698" top="0" topF="0.0"/>
             </y:GroupNode>
             <y:GroupNode>
               <y:Geometry height="50.0" width="50.0" x="-2381.6956113256306" y="-5351.116995375"/>
@@ -4177,7 +4175,7 @@
         <node id="n9::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="30.0" x="1609.2833878782108" y="512.8888639999996"/>
+              <y:Geometry height="30.0" width="30.0" x="1711.6210678157017" y="668.12353515625"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" modelName="custom" textColor="#000000" visible="true" width="76.673828125" x="-23.3369140625" y="34.0">怎样做出一个
@@ -4203,7 +4201,7 @@
         <node id="n9::n1">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="30.0" x="1501.380046503209" y="581.5"/>
+              <y:Geometry height="30.0" width="30.0" x="1603.7177264407" y="736.7346711562504"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="1.0" y="5.6494140625">始　<y:LabelModel>
@@ -4220,7 +4218,7 @@
         <node id="n9::n2">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="30.0" width="30.0" x="1719.296503003206" y="581.5"/>
+              <y:Geometry height="30.0" width="30.0" x="1821.634182940697" y="736.7346711562504"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="1.0" y="5.6494140625">　终<y:LabelModel>
@@ -4237,7 +4235,7 @@
         <node id="n9::n3">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="31.572863999999754" width="31.572863999999754" x="1701.8511270032068" y="580.7135680000001"/>
+              <y:Geometry height="31.572863999999754" width="31.572863999999754" x="1804.1888069406978" y="735.9482391562506"/>
               <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
               <y:BorderStyle color="#FFFFFF" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="13.786431999999877" y="13.786431999999877">
@@ -4255,7 +4253,7 @@
         <node id="n9::n4">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1555.0828184556235" y="606.3303999999998"/>
+              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1657.4204983931145" y="761.5650711562503"/>
               <y:Fill color="#008000" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="3.169600000000173" y="3.1696000000000595">
@@ -4273,7 +4271,7 @@
         <node id="n9::n5">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1602.148407003208" y="606.3303999999998"/>
+              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1704.486086940699" y="761.5650711562503"/>
               <y:Fill color="#008000" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="3.169600000000173" y="3.1696000000000595">
@@ -4291,7 +4289,7 @@
         <node id="n9::n6">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1697.158948378209" y="606.3303999999998"/>
+              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1799.4966283157" y="761.5650711562503"/>
               <y:Fill color="#008000" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="3.169600000000173" y="3.1696000000000595">
@@ -4309,7 +4307,7 @@
         <node id="n9::n7">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1649.6536776907083" y="606.3303999999998"/>
+              <y:Geometry height="10.339200000000119" width="10.339200000000119" x="1751.9913576281992" y="761.5650711562503"/>
               <y:Fill color="#008000" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="3.169600000000173" y="3.1696000000000595">
@@ -4327,7 +4325,7 @@
         <node id="n9::n8">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="31.572863999999754" width="31.572863999999754" x="1516.8590443782114" y="580.7135680000001"/>
+              <y:Geometry height="31.572863999999754" width="31.572863999999754" x="1619.1967243157023" y="735.9482391562506"/>
               <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
               <y:BorderStyle color="#FFFFFF" type="line" width="1.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="13.786431999999877" y="13.786431999999877">
@@ -4353,7 +4351,7 @@
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="28.0" x="-36.883062909161254" y="3.330800037445897">演化
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="28.0" x="-36.88306290916137" y="3.3308000374460107">演化
 过程<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
@@ -4369,7 +4367,7 @@
     <edge id="e1" source="n1" target="n2">
       <data key="d10">
         <y:PolyLineEdge visible="false">
-          <y:Path sx="0.0" sy="0.0" tx="-51.656657022151194" ty="-69.60403785181825"/>
+          <y:Path sx="0.0" sy="0.0" tx="-51.656657022151194" ty="-75.73053912419626"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
