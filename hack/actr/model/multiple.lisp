@@ -1,0 +1,6 @@
+(clear-all)
+(load "F:/pim-wudi/_dev/mind/f/info/actr/count_cn.lisp")
+(load "F:/pim-wudi/_dev/mind/f/info/actr/nixi.lisp")
+(load "F:/pim-wudi/_dev/mind/f/info/actr/semantic_cn.lisp")
+(with-model 生物对象归类认知模型 (goal-focus g3))
+(run 1)
