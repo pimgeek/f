@@ -10,11 +10,15 @@
 # 001 最简单的例子
 # 002 尝试打印中文字符
 # 003 引入 'cgi' 模块
+# 004 尝试利用 cgi 模块读取网页的查询参数
+# 注意：如果需要在字符界面下操作，要用 Ctrl+D 提交
 
 require 'cgi'
 
 cgi = CGI.new
-
+params = cgi.params
 puts cgi.header
 puts '<h1>你好，世界！</h1>' 
-
+puts params
+puts '<br />'
+puts params['var']
