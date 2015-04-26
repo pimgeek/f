@@ -12,6 +12,7 @@
 # 003 引入 'cgi' 模块
 # 004 尝试利用 cgi 模块读取网页的查询参数
 # 注意：如果需要在字符界面下操作，要用 Ctrl+D 提交
+# 005 尝试利用 cgi 模块读取网页查询参数的所有变量名
 
 require 'cgi'
 
@@ -22,3 +23,5 @@ puts '<h1>你好，世界！</h1>'
 puts params
 puts '<br />'
 puts params['var']
+puts '<br />'
+puts params.keys
