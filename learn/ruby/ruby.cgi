@@ -9,7 +9,12 @@
 
 # 001 最简单的例子
 # 002 尝试打印中文字符
-puts 'Content-type: text/plain'
-puts
-puts '你好，世界！' 
+# 003 引入 'cgi' 模块
+
+require 'cgi'
+
+cgi = CGI.new
+
+puts cgi.header
+puts '<h1>你好，世界！</h1>' 
 
