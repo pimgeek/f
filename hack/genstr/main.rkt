@@ -8,15 +8,27 @@
 ; 这个函数是 racket 自带的
 ; (permutation '(a b))
 
-; 从零开始，生成一个自然数的序列
+; 给定一个元素和一个列表，从列表中移除第一个
+; 与该元素相同的元素，返回剩余元素的列表
 ; 这个函数是 racket 自带的
-; (range 5)
+; (remove 'a '(a b a c))
 
-; 获得一个列表的所有元素的序号，形成一个新的列表
-(define (lst-to-idxlst lst)
-  (let
-    ([len (length lst)])
-      (range len)))
+; 从给定列表中随机取出一个元素
+(define (random-pick lst)
+  (list-ref
+    lst (random (length lst))))
+
+; 从给定列表中随机取出 n 个元素，并且要求每次取出元素
+; 所在的位置都不重复
+(define (random-pick-n lst n)
+  (cond
+    ([= n 0] '())
+    ([= n 1] (list (random-pick lst)))
+    (else    (let*
+               ([picked (random-pick lst)]
+                [newlst (remove picked lst)])
+               (cons picked
+                 (random-pick-n newlst (- n 1)))))))
 
 ; 定义一些有趣的字符串
 (define candid-strlst
@@ -32,12 +44,6 @@
 ; 代码测试区
 ; (strlst-to-str '("a" "123" "MP"))
 
-(permutations candid-strlst)
-
-(lst-to-idxlst candid-strlst)
-
-(list-ref '(a b c) (random 2))
-
-(list-ref candid-strlst 0)
-
-
+(map strlst-to-str
+  (permutations
+    (random-pick-n candid-strlst 3)))
