@@ -1,5 +1,7 @@
 #!/usr/bin/racket
 
+#lang racket
+
 ; 把一个以字符串为元素的列表转化为一个单独的字符串
 (define (strlst-to-str strlst)
   (apply string-append strlst))
@@ -34,6 +36,11 @@
 (define candid-strlst
   (list 
     "i"
+    "tao"
+    "zen"
+    "idea"
+    "kao"
+    "pen"
     "xue"
     "xi"
     "note"
@@ -41,9 +48,41 @@
     "123"
     ))
 
+; 定义一些表示偏好、倾向的字符串
+(define prefer-strlst
+  (list
+    "i"
+    "51"
+    "5i"
+    "91"
+    "9i"
+    "17"
+    "duo"
+    ))
+
+; 定义一些表示被喜欢，被使用的东西的字符串
+(define thing-strlst
+  (list
+    "note"
+    "biji"
+    "xuexi"
+    "lianxi"
+    "xue"
+    "lian"
+    "ji"
+    "du"
+    "do"
+    ""
+    ))
+
 ; 代码测试区
 ; (strlst-to-str '("a" "123" "MP"))
+(for ([idx (range 10)])
+  (let*
+   ([l1 (random-pick-n prefer-strlst (quotient (length prefer-strlst) 2))]
+    [l2 (random-pick-n thing-strlst (quotient (length thing-strlst) 2))])
+   (displayln
+     (map strlst-to-str
+       (permutations
+         (list (random-pick l1) (random-pick l2)))))))
 
-(map strlst-to-str
-  (permutations
-    (random-pick-n candid-strlst 3)))
