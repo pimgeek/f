@@ -78,11 +78,8 @@
 ; 代码测试区
 ; (strlst-to-str '("a" "123" "MP"))
 (for ([idx (range 10)])
-  (let*
-   ([l1 (random-pick-n prefer-strlst (quotient (length prefer-strlst) 2))]
-    [l2 (random-pick-n thing-strlst (quotient (length thing-strlst) 2))])
-   (displayln
-     (map strlst-to-str
-       (permutations
-         (list (random-pick l1) (random-pick l2)))))))
+  (displayln
+    (map strlst-to-str
+      (permutations
+        (list (random-pick prefer-strlst) (random-pick thing-strlst))))))
 
