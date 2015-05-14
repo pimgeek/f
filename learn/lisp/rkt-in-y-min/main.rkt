@@ -135,49 +135,64 @@ x ; => x: undefined ...
 ;; 3. 结构与集合
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Structs
+;; 结构 struct
 (struct dog (name breed age))
+
 (define my-pet
   (dog "lassie" "collie" 5))
-my-pet ; => #<dog>
+
+my-pet ; => #<dog> 类型的结构
+
 (dog? my-pet) ; => #t
+
 (dog-name my-pet) ; => "lassie"
 
-;;; Pairs (immutable)
-;; `cons' constructs pairs, `car' and `cdr' extract the first
-;; and second elements
+;;; 二元组 pair (不可修改)
+;; 利用 `cons' 可以构造 pair, 
+;; 用 car 可以抽取 pair 的第一个元素
+;; 用 cdr 可以抽取 pair 的第二个元素
 (cons 1 2) ; => '(1 . 2)
+
 (car (cons 1 2)) ; => 1
+
 (cdr (cons 1 2)) ; => 2
 
-;;; Lists
+;;; 列表 list
 
-;; Lists are linked-list data structures, made of `cons' pairs and end
-;; with a `null' (or '()) to mark the end of the list
+;; list 是链接列表型数据结构，由以 cons 构造出的 pair 构成，
+;; 并且始终以 null 或者 '() 作为 list 的结尾标记
 (cons 1 (cons 2 (cons 3 null))) ; => '(1 2 3)
-;; `list' is a convenience variadic constructor for lists
+
+;; 使用 list 可以便捷地构造列表数据结构
+;; 它是一个参数列表长度不固定的函数
 (list 1 2 3) ; => '(1 2 3)
-;; and a quote can also be used for a literal list value
+
+;; 利用 quote 可以构造列表常量
 '(1 2 3) ; => '(1 2 3)
 
-;; Can still use `cons' to add an item to the beginning of a list
+;; 可以使用 cons 为列表的头部添加元素
 (cons 4 '(1 2 3)) ; => '(4 1 2 3)
 
-;; Use `append' to add lists together
+;; 可以使用 append 把两个列表连接起来
 (append '(1 2) '(3 4)) ; => '(1 2 3 4)
 
-;; Lists are a very basic type, so there is a *lot* of functionality for
-;; them, a few examples:
+;; 列表是非常基础的数据类型，所以有大量的函数可以处理它们
+;; 下面给出几个例子：
 (map add1 '(1 2 3))          ; => '(2 3 4)
+
 (map + '(1 2 3) '(10 20 30)) ; => '(11 22 33)
+
 (filter even? '(1 2 3 4))    ; => '(2 4)
+
 (count even? '(1 2 3 4))     ; => 2
+
 (take '(1 2 3 4) 2)          ; => '(1 2)
+
 (drop '(1 2 3 4) 2)          ; => '(3 4)
 
-;;; Vectors
+;;; 向量 vector
 
-;; Vectors are fixed-length arrays
+;; 向量是固定长度的序列
 #(1 2 3) ; => '#(1 2 3)
 
 ;; Use `vector-append' to add vectors together
