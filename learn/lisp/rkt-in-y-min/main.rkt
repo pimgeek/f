@@ -246,74 +246,97 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; 3. 函数
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Use `lambda' to create functions.
-;; A function always returns the value of its last expression
+;; 使用 lambda 创建函数
+;; 函数总是返回它内部最后一个表达式的值
 (lambda () "Hello World") ; => #<procedure>
-;; Can also use a unicode `λ'
-(λ () "Hello World")     ; => same function
 
-;; Use parens to call all functions, including a lambda expression
+;; 也可以使用 Unicode 字符 λ 代替 lambda
+(λ () "Hello World")     ; => 与上面定义效果一样
+
+;; 使用括号来调用所有函数，也包括 lambda 表达式
 ((lambda () "Hello World")) ; => "Hello World"
+
 ((λ () "Hello World"))      ; => "Hello World"
 
-;; Assign a function to a var
+;; 把函数赋值给一个变量
 (define hello-world (lambda () "Hello World"))
+
 (hello-world) ; => "Hello World"
 
-;; You can shorten this using the function definition syntactic sugar:
+;; 你也可以使用下面这个用于定义函数的语法糖缩短代码：
 (define (hello-world2) "Hello World")
 
-;; The () in the above is the list of arguments for the function
+;; lambda 后面的 () 中是这个函数的参数列表
 (define hello
   (lambda (name)
     (string-append "Hello " name)))
+
 (hello "Steve") ; => "Hello Steve"
-;; ... or equivalently, using a sugared definition:
+
+;; 或者，等价的语法糖式定义如下：
 (define (hello2 name)
   (string-append "Hello " name))
 
-;; You can have multi-variadic functions too, using `case-lambda'
+;; 你还可以定义参数列表长度不固定的函数
+;; 只要利用 case-lambda
 (define hello3
   (case-lambda
     [() "Hello World"]
     [(name) (string-append "Hello " name)]))
+
 (hello3 "Jake") ; => "Hello Jake"
+
 (hello3) ; => "Hello World"
-;; ... or specify optional arguments with a default value expression
+
+;; 或者也可以制定可选参数，并且为可选参数指定默认值
 (define (hello4 [name "World"])
   (string-append "Hello " name))
 
-;; Functions can pack extra arguments up in a list
+(hello4 "Jake") ; => "Hello Jake"
+
+(hello4) ; => "Hello World"
+
+;; 还可以把函数的参数都打包放进一个列表中
 (define (count-args . args)
   (format "You passed ~a args: ~a" (length args) args))
+
 (count-args 1 2 3) ; => "You passed 3 args: (1 2 3)"
-;; ... or with the unsugared `lambda' form:
+
+;; 或者利用不带语法糖的 lambda 形式
 (define count-args2
   (lambda args
     (format "You passed ~a args: ~a" (length args) args)))
 
-;; You can mix regular and packed arguments
+;; 你可以同时使用常规参数和打包的参数
 (define (hello-count name . args)
   (format "Hello ~a, you passed ~a extra args" name (length args)))
+
 (hello-count "Finn" 1 2 3)
 ; => "Hello Finn, you passed 3 extra args"
-;; ... unsugared:
+
+;; 不带语法糖：
 (define hello-count2
   (lambda (name . args)
     (format "Hello ~a, you passed ~a extra args" name (length args))))
 
-;; And with keywords
+;; 还可以带上关键词 keyword 
+;; 使用 keyword 以后，就不必严格按定义顺序，一个不落地使用所有参数)
 (define (hello-k #:name [name "World"] #:greeting [g "Hello"] . args)
   (format "~a ~a, ~a extra args" g name (length args)))
+
 (hello-k)                 ; => "Hello World, 0 extra args"
+
 (hello-k 1 2 3)           ; => "Hello World, 3 extra args"
+
 (hello-k #:greeting "Hi") ; => "Hi World, 0 extra args"
+
 (hello-k #:name "Finn" #:greeting "Hey") ; => "Hey Finn, 0 extra args"
+
 (hello-k 1 2 3 #:greeting "Hi" #:name "Finn" 4 5 6)
                                          ; => "Hi Finn, 6 extra args"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 4. Equality
+;; 4. 相等关系
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; for numbers use `='
