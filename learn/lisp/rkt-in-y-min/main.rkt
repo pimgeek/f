@@ -173,7 +173,7 @@ my-pet ; => #<dog> 类型的结构
 ;; 可以使用 cons 为列表的头部添加元素
 (cons 4 '(1 2 3)) ; => '(4 1 2 3)
 
-;; 可以使用 append 把两个列表连接起来
+;; 可以使用 append 把两个列表合并到一起
 (append '(1 2) '(3 4)) ; => '(1 2 3 4)
 
 ;; 列表是非常基础的数据类型，所以有大量的函数可以处理它们
@@ -195,52 +195,55 @@ my-pet ; => #<dog> 类型的结构
 ;; 向量是固定长度的序列
 #(1 2 3) ; => '#(1 2 3)
 
-;; Use `vector-append' to add vectors together
+;; 使用 vector-append 把多个向量合并到一起
 (vector-append #(1 2 3) #(4 5 6)) ; => #(1 2 3 4 5 6)
 
-;;; Sets
+;;; 集合 set
 
-;; Create a set from a list
+;; 从列表创建一个集合
 (list->set '(1 2 3 1 2 3 3 2 1 3 2 1)) ; => (set 1 2 3)
 
-;; Add a member with `set-add'
-;; (Functional: returns the extended set rather than mutate the input)
+;; 使用 set-add 为集合添加成员
+;; 函数式特性：返回一个新的集合，而不是修改作为输入的集合
 (set-add (set 1 2 3) 4) ; => (set 1 2 3 4)
 
-;; Remove one with `set-remove'
+;; 利用 set-remove 从集合中移除成员
 (set-remove (set 1 2 3) 1) ; => (set 2 3)
 
-;; Test for existence with `set-member?'
+;; 利用 set-member? 测试某个元素是否包含于特定集合
 (set-member? (set 1 2 3) 1) ; => #t
+
 (set-member? (set 1 2 3) 4) ; => #f
 
-;;; Hashes
+;;; 哈希
 
-;; Create an immutable hash table (mutable example below)
+;; 创建一个不可修改的哈希表(下方有可修改的列子)
 (define m (hash 'a 1 'b 2 'c 3))
 
-;; Retrieve a value
+;; 从哈希表中取回一个值
 (hash-ref m 'a) ; => 1
 
-;; Retrieving a non-present value is an exception
-; (hash-ref m 'd) => no value found
+;; 尝试获取尚不存在的值，会造成异常
+(hash-ref m 'd) => no value found
 
-;; You can provide a default value for missing keys
+;; 对于哈希 key 没有对应 value 的情况，可以给出一个默认值
 (hash-ref m 'd 0) ; => 0
 
-;; Use `hash-set' to extend an immutable hash table
-;; (Returns the extended hash instead of mutating it)
+;; 使用 hash-set 扩展一个不可修改的哈希表
+;; 返回的是一个新的得到扩展的哈希表，而不会修改原来的哈希表
 (define m2 (hash-set m 'd 4))
 m2 ; => '#hash((b . 2) (a . 1) (d . 4) (c . 3))
 
-;; Remember, these hashes are immutable!
+;; 一定要记住，这些哈希表是不可修改的！
 m ; => '#hash((b . 2) (a . 1) (c . 3))  <-- no `d'
 
-;; Use `hash-remove' to remove keys (functional too)
+;; 使用 hash-remove 移除哈希表中的一部分 key (同样是函数式的)
 (hash-remove m 'a) ; => '#hash((b . 2) (c . 3))
 
+m ; => '#hash((b . 2) (a . 1) (c . 3))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 3. Functions
+;; 3. 函数
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Use `lambda' to create functions.
