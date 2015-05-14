@@ -339,50 +339,59 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 ;; 4. 相等关系
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; for numbers use `='
+;; 对于数字，使用 =
 (= 3 3.0) ; => #t
+
 (= 2 1)   ; => #f
 
-;; `eq?' returns #t if 2 arguments refer to the same object (in memory), 
-;; #f otherwise.
-;; In other words, it's a simple pointer comparison.
+;; eq? 返回真，当且仅当它的两个参数指向同一个对象(位于内存中)
+;; 否则就返回 #f。换言之，这是一个简单的指针比较
 (eq? '() '()) ; => #t, since there exists only one empty list in memory
+
 (let ([x '()] [y '()])
-  (eq? x y))  ; => #t, same as above
+  (eq? x y))  ; => #t, 同上
 
 (eq? (list 3) (list 3)) ; => #f
+
 (let ([x (list 3)] [y (list 3)])
-  (eq? x y))            ; => #f — not the same list in memory!
+  (eq? x y))            ; => #f - 在内存中两个列表并不相同
 
 (let* ([x (list 3)] [y x])
-  (eq? x y)) ; => #t, since x and y now point to the same stuff
+  (eq? x y)) ; => #t - 因为现在 x y 都指向相同的内存位置了
 
 (eq? 'yes 'yes) ; => #t
+
 (eq? 'yes 'no)  ; => #f
 
-(eq? 3 3)   ; => #t — be careful here
-            ; It’s better to use `=' for number comparisons.
+(eq? 3 3)   ; => #t - 请注意
+            ; 对于数字，最好使用 = 来做比较
+
 (eq? 3 3.0) ; => #f
 
 (eq? (expt 2 100) (expt 2 100))               ; => #f
+
 (eq? (integer->char 955) (integer->char 955)) ; => #f
 
 (eq? (string-append "foo" "bar") (string-append "foo" "bar")) ; => #f
 
-;; `eqv?' supports the comparison of number and character datatypes.
-;; for other datatypes, `eqv?' and `eq?' return the same result.
+;; eqv? 支持对数字和字符两种数据类型的比较
+;; 对其它数据类型，eqv? 与 eq? 返回相同的结果
 (eqv? 3 3.0)                                   ; => #f
+
 (eqv? (expt 2 100) (expt 2 100))               ; => #t
+
 (eqv? (integer->char 955) (integer->char 955)) ; => #t
 
 (eqv? (string-append "foo" "bar") (string-append "foo" "bar"))   ; => #f
 
-;; `equal?' supports the comparison of the following datatypes:
-;; strings, byte strings, pairs, mutable pairs, vectors, boxes, 
-;; hash tables, and inspectable structures.
-;; for other datatypes, `equal?' and `eqv?' return the same result.
+;; equal? 支持对下列数据类型的比较
+;; 字符串，字节字符串，二元组，可修改二元组，向量，盒子
+;; 哈希表，以及可细查的数据结构
+;; 对其它数据类型，equal? 与 eqv? 返回相同的结果
 (equal? 3 3.0)                                                   ; => #f
+
 (equal? (string-append "foo" "bar") (string-append "foo" "bar")) ; => #t
+
 (equal? (list 3) (list 3))                                       ; => #t
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
