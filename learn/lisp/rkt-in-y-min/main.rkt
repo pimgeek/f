@@ -395,66 +395,70 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (equal? (list 3) (list 3))                                       ; => #t
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 5. Control Flow
+;; 5. 分支控制
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Conditionals
+;;; 条件判断
 
-(if #t               ; test expression
-    "this is true"   ; then expression
-    "this is false") ; else expression
-; => "this is true"
+(if #t                ; 测试表达式
+    "测试表达式为真"  ; 测试表达式为真时的表达式
+    "测试表达式为假") ; 测试表达式为假时的表达式
+; => "测试表达式为真"
 
-;; In conditionals, all non-#f values are treated as true
+;; 在条件测试表达式中，所有非 #f 的值都被认为是真值
 (member 'Groucho '(Harpo Groucho Zeppo)) ; => '(Groucho Zeppo)
+
 (if (member 'Groucho '(Harpo Groucho Zeppo))
-    'yep
-    'nope)
-; => 'yep
+    '是的
+    '不是)
+; => '是的
 
-;; `cond' chains a series of tests to select a result
-(cond [(> 2 2) (error "wrong!")]
-      [(< 2 2) (error "wrong again!")]
-      [else 'ok]) ; => 'ok
+;; cond 把一系列测试串起来，以便选择一种结果
+(cond [(> 2 2) (error "错了！")]
+      [(< 2 2) (error "又错了！")]
+      [else '对了]) ; => '对了
 
-;;; Pattern Matching
-
-(define (fizzbuzz? n)
+;;; 模式匹配
+(define (被3和5整除? n)
   (match (list (remainder n 3) (remainder n 5))
-    [(list 0 0) 'fizzbuzz]
-    [(list 0 _) 'fizz]
-    [(list _ 0) 'buzz]
+    [(list 0 0) '同时被3和5整除]
+    [(list 0 _) '被3整除]
+    [(list _ 0) '被5整除]
     [_          #f]))
 
-(fizzbuzz? 15) ; => 'fizzbuzz
-(fizzbuzz? 37) ; => #f
+(被3和5整除? 15) ; => '同时被3和5整除
 
-;;; Loops
+(被3和5整除? 35) ; => '被5整除
 
-;; Looping can be done through (tail-) recursion
+(被3和5整除? 37) ; => #f
+
+;;; 循环
+
+;; 可以通过(尾)递归的方式实现循环
 (define (loop i)
   (when (< i 10)
     (printf "i=~a\n" i)
     (loop (add1 i))))
+
 (loop 5) ; => i=5, i=6, ...
 
-;; Similarly, with a named let
+;; 类似地，也可以用命名式 let 方式实现
 (let loop ((i 0))
   (when (< i 10)
     (printf "i=~a\n" i)
     (loop (add1 i)))) ; => i=0, i=1, ...
 
-;; See below how to add a new `loop' form, but Racket already has a very
-;; flexible `for' form for loops:
+;; 后面会介绍如何增加一种新的 loop 形式，但 Racket 已经
+;; 有一种用于实现循环的非常灵活的 for 形式了：
 (for ([i 10])
   (printf "i=~a\n" i)) ; => i=0, i=1, ...
+
 (for ([i (in-range 5 10)])
   (printf "i=~a\n" i)) ; => i=5, i=6, ...
 
-;;; Iteration Over Other Sequences
-;; `for' allows iteration over many other kinds of sequences:
-;; lists, vectors, strings, sets, hash tables, etc...
-
+;;; 在其它类型的序列上做迭代
+;; for 允许在很多其它类型的序列上做迭代
+;; list, vector, string, set, hash table, 等等……
 (for ([i (in-list '(l i s t))])
   (displayln i))
 
@@ -470,27 +474,28 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3 ))])
   (printf "key:~a value:~a\n" k v))
 
-;;; More Complex Iterations
+;;; 更为复杂的迭代
 
-;; Parallel scan of multiple sequences (stops on shortest)
-(for ([i 10] [j '(x y z)]) (printf "~a:~a\n" i j))
+;; 对多重序列的并行扫描(止于最短的序列结束时)
+(for ([i 10] [j '(x y z)])
+  (printf "~a:~a\n" i j))
 ; => 0:x 1:y 2:z
 
-;; Nested loops
-(for* ([i 2] [j '(x y z)]) (printf "~a:~a\n" i j))
+;; 嵌套的循环 for*
+(for* ([i 2] [j '(x y z)])
+  (printf "~a:~a\n" i j))
 ; => 0:x, 0:y, 0:z, 1:x, 1:y, 1:z
 
-;; Conditions
+;; 条件判断
 (for ([i 1000]
-      #:when (> i 5)
+      #:when   (> i  5)
       #:unless (odd? i)
-      #:break (> i 10))
+      #:break  (> i 40))
   (printf "i=~a\n" i))
 ; => i=6, i=8, i=10
 
-;;; Comprehensions
-;; Very similar to `for' loops -- just collect the results
-
+;;; 对结果打包
+;; 与 for 循环非常相似 - 只是把循环的结果收集起来
 (for/list ([i '(1 2 3)])
   (add1 i)) ; => '(2 3 4)
 
@@ -500,27 +505,34 @@ m ; => '#hash((b . 2) (a . 1) (c . 3))
 (for/list ([i 10] [j '(x y z)])
   (list i j)) ; => '((0 x) (1 y) (2 z))
 
-(for/list ([i 1000] #:when (> i 5) #:unless (odd? i) #:break (> i 10))
+(for/list ([i 1000]
+           #:when (> i 5)
+           #:unless (odd? i)
+           #:break (> i 30))
   i) ; => '(6 8 10)
 
 (for/hash ([i '(1 2 3)])
   (values i (number->string i)))
 ; => '#hash((1 . "1") (2 . "2") (3 . "3"))
 
-;; There are many kinds of other built-in ways to collect loop values:
+;; Racket 中还有许多内置的收集循环结果的方法
 (for/sum ([i 10]) (* i i)) ; => 285
-(for/product ([i (in-range 1 11)]) (* i i)) ; => 13168189440000
+
+(for/product ([i (in-range 1 4)]) (* i i)) ; => 36
+
 (for/and ([i 10] [j (in-range 10 20)]) (< i j)) ; => #t
+
 (for/or ([i 10] [j (in-range 0 20 2)]) (= i j)) ; => #t
-;; And to use any arbitrary combination, use `for/fold'
+
+;; 如果想使用任意的组合，请使用 for/fold
 (for/fold ([sum 0]) ([i '(1 2 3 4)]) (+ sum i)) ; => 10
 ;; (This can often replace common imperative loops)
 
-;;; Exceptions
-
-;; To catch exceptions, use the `with-handlers' form
+;;; 异常
+;; 要想捕获异常，就使用 with-handlers 形式
 (with-handlers ([exn:fail? (lambda (exn) 999)])
   (+ 1 "2")) ; => 999
+
 (with-handlers ([exn:break? (lambda (exn) "no time")])
   (sleep 3)
   "phew") ; => "phew", but if you break it => "no time"
