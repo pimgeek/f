@@ -8,12 +8,78 @@
          web-server/servlet-env)
 
 ; 设定正常访问首页时返回的内容
-(define (main-page)
+(define (main-page req)
   (response/xexpr
     `(html
        (body
-         (h1 "Hello, World!")
-         ))))
+         (h1 "文字输入区域")
+         (br)
+         (form
+           [(method "post")
+            (action "/result")]
+           (textarea
+             ([name "input-text"])
+             "在这里输入文字……")
+           (br)
+           (input
+             [(type "radio")
+              (name "proc-type")
+              (value "echo")]
+             "原样照搬")
+           (br)
+           (input
+             [(type "radio")
+              (name "proc-type")
+              (value "quote")]
+             "打个引号")
+           (br)
+           (input 
+             [(type "submit")
+              (value "提交输入内容")])
+           )))))
+
+; 设定
+(define (result-page req)
+  (response/xexpr
+    `(html
+       (body
+         (h1 "结果显示区域")
+         (br)
+         (div
+           ,(task-runner req)
+           )))))
+
+; 设定
+(define (form-reader req input-name)
+  (if (not (null? req))
+    (let
+      ([bindings (request-bindings req)])
+      (if (exists-binding? input-name bindings)
+        (extract-binding/single input-name bindings)
+        "读取失败"
+        ))
+    "读取失败"))
+
+; 设定
+(define (task-runner req)
+  (let
+    ([input-text (form-reader req 'input-text)]
+     [proc-type  (form-reader req  'proc-type)])
+      (cond
+        [(equal? proc-type  "echo") (text-echo  input-text)]
+        [(equal? proc-type "quote") (text-quote input-text)]
+        [else                       (format
+                                      "未选择处理方式……~%~a~%"
+                                                 proc-type)]
+        )))
+
+; 设定
+(define (text-echo input-text)
+  input-text)
+
+; 设定
+(define (text-quote input-text)
+  (string-append "\"" input-text "\""))
 
 ; 设定非正常访问时返回的错误信息
 (define (error-page)
@@ -26,10 +92,11 @@
 ; 设定 servlet 请求处理入口函数
 (define (pim-app req)
   (let*
-    ([url     (request-uri req)]
+    ([url (request-uri req)]
      [uri-str (url->string url)])
     (cond
-      [(regexp-match "^/$" uri-str) (main-page)] 
+      [(regexp-match "^/$" uri-str) (main-page req)] 
+      [(regexp-match "^/result$" uri-str) (result-page req)] 
       [else (error-page)]
       )))
 
