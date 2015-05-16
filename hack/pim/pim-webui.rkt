@@ -7,16 +7,17 @@
 (require web-server/servlet
          web-server/servlet-env)
 
-; 设定正常访问首页时返回的内容
-(define (main-page req)
+; 设定
+(define (input-page req)
   (response/xexpr
     `(html
        (body
-         (h1 "文字输入区域")
+         (h1 "文字输入区")
          (br)
          (form
            [(method "post")
-            (action "/result")]
+            (action "/result")
+            (target "result-frame")]
            (textarea
              ([name "input-text"])
              "在这里输入文字……")
@@ -38,14 +39,27 @@
               (value "提交输入内容")])
            )))))
 
+; 设定正常访问首页时返回的内容
+(define (main-frame req)
+  (response/xexpr
+    `(html
+       (frameset
+         ([cols "49%,49%"])
+         (frame
+           ([src  "/input"]
+            [name "input-frame"]))
+         (frame
+           ([src "/result"]
+            [name "result-frame"]))
+         ))))
+
 ; 设定
 (define (result-page req)
   (response/xexpr
     `(html
        (body
-         (h1 "结果显示区域")
-         (br)
-         (div
+         (h1 "结果显示区")
+         (pre
            ,(task-runner req)
            )))))
 
@@ -56,9 +70,9 @@
       ([bindings (request-bindings req)])
       (if (exists-binding? input-name bindings)
         (extract-binding/single input-name bindings)
-        "读取失败"
+        "请求项为空"
         ))
-    "读取失败"))
+    "请求为空"))
 
 ; 设定
 (define (task-runner req)
@@ -69,7 +83,7 @@
         [(equal? proc-type  "echo") (text-echo  input-text)]
         [(equal? proc-type "quote") (text-quote input-text)]
         [else                       (format
-                                      "未选择处理方式……~%~a~%"
+                                      "表单给出请求不明确……~%~a~%"
                                                  proc-type)]
         )))
 
@@ -95,7 +109,8 @@
     ([url (request-uri req)]
      [uri-str (url->string url)])
     (cond
-      [(regexp-match "^/$" uri-str) (main-page req)] 
+      [(regexp-match "^/$" uri-str) (main-frame req)] 
+      [(regexp-match "^/input$" uri-str) (input-page req)] 
       [(regexp-match "^/result$" uri-str) (result-page req)] 
       [else (error-page)]
       )))
