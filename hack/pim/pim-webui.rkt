@@ -34,6 +34,18 @@
               (value "quote")]
              "打个引号")
            (br)
+           (input
+             [(type "radio")
+              (name "proc-type")
+              (value "rm-blankline")]
+             "移除多余的空行")
+           (br)
+           (input
+             [(type "radio")
+              (name "proc-type")
+              (value "en-mark")]
+             "改为英文标点")
+           (br)
            (input 
              [(type "submit")
               (value "提交输入内容")])
@@ -80,11 +92,13 @@
     ([input-text (form-reader req 'input-text)]
      [proc-type  (form-reader req  'proc-type)])
       (cond
-        [(equal? proc-type  "echo") (text-echo  input-text)]
-        [(equal? proc-type "quote") (text-quote input-text)]
-        [else                       (format
-                                      "表单给出请求不明确……~%~a~%"
-                                                 proc-type)]
+        [(equal? proc-type         "echo") (text-echo         input-text)]
+        [(equal? proc-type        "quote") (text-quote        input-text)]
+        [(equal? proc-type "rm-blankline") (text-rm-blankline input-text)]
+        [(equal? proc-type      "en-mark") (text-en-mark      input-text)]
+        [else                              (format
+                                             "表单给出请求不明确……~%~a~%"
+                                                               proc-type)]
         )))
 
 ; 设定
@@ -94,6 +108,26 @@
 ; 设定
 (define (text-quote input-text)
   (string-append "\"" input-text "\""))
+
+; 把换行符统一替换为UNIX格式
+(define (text-unix-eol input-text)
+  (regexp-replace* #px"\r\n|\r|\n\r" input-text "\n"))
+
+; 移除多余的空行
+(define (text-rm-blankline input-text)
+  (let
+    ([input-text-with-unix-eol (text-unix-eol input-text)])
+      (regexp-replace* #px"\n{3,}" input-text-with-unix-eol "\n\n")))
+
+; 设定英文标点
+(define (text-en-mark input-text)
+  (let*
+    ([proc-lv1 (text-en-comma input-text)])
+      proc-lv1))
+
+; 设定英文逗号
+(define (text-en-comma input-text)
+  (regexp-replaces #rx"，" input-text ", "))
 
 ; 设定非正常访问时返回的错误信息
 (define (error-page)
