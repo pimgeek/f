@@ -1,5 +1,5 @@
 #!/usr/bin/racket
-; 主要实现 web 访问界面
+; 主要实现 pim 工具的 web 访问界面
 
 #lang racket
 
@@ -45,6 +45,12 @@
               (name "proc-type")
               (value "en-mark")]
              "改为英文标点")
+           (br)
+           (input
+             [(type "radio")
+              (name "proc-type")
+              (value "filter-word")]
+             "过滤含有特定单词的行(默认过滤'my')")
            (br)
            (input 
              [(type "submit")
@@ -96,6 +102,7 @@
         [(equal? proc-type        "quote") (text-quote        input-text)]
         [(equal? proc-type "rm-blankline") (text-rm-blankline input-text)]
         [(equal? proc-type      "en-mark") (text-en-mark      input-text)]
+        [(equal? proc-type  "filter-word") (text-filter-word  input-text)]
         [else                              (format
                                              "表单给出请求不明确……~%~a~%"
                                                                proc-type)]
@@ -117,7 +124,7 @@
 (define (text-rm-blankline input-text)
   (let
     ([input-text-with-unix-eol (text-unix-eol input-text)])
-      (regexp-replace* #px"\n{3,}" input-text-with-unix-eol "\n\n")))
+      (regexp-replace* #px"\n{2,}" input-text-with-unix-eol "\n")))
 
 ; 设定英文标点
 (define (text-en-mark input-text)
@@ -127,7 +134,12 @@
 
 ; 设定英文逗号
 (define (text-en-comma input-text)
-  (regexp-replaces #rx"，" input-text ", "))
+  (regexp-replace* #rx"，" input-text ", "))
+
+; 设定过滤包含某英文单词的行
+(define (text-filter-word input-text [word "my"])
+  (regexp-replace*
+    #px"[^\n]* my [^\n]*" input-text ""))
 
 ; 设定非正常访问时返回的错误信息
 (define (error-page)
