@@ -1,0 +1,19 @@
+<html>
+<head>
+  <script><!--
+var Clicks = 0 ;
+function AddClick(){
+  Clicks = Clicks + 1;
+  document.getElementById('CountedClicks').innerHTML = Clicks + ' 次点击';
+}
+// --></script>
+  <meta charset="utf-8">
+</head>
+<body>
+  <div style="text-align:center;">
+  <div id="CountedClicks" style="font-size:128px;text-align:center;line-height:180%;">0 次点击</div>
+  <br />
+  <button style="font-weight:bolder;font-family:serif;width:75%;height:30%;font-size:128px;border:1px solid dimgray;border-radius:5px;" onclick="AddClick()">点击后 +1</button>
+  </div>
+</body>
+</html>
