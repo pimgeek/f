@@ -451,7 +451,7 @@
               <y:Geometry height="40.75199999999995" width="403.63999999999993" x="-118.01199999999997" y="-74.13553515625"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="316.0" x="43.819999999999936" y="11.025414062499976">我要完整地记录尝试达成某目标的所有可观察到的求解动作<y:LabelModel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="223.345703125" x="90.14714843749996" y="11.025414062499976">我要用 racket 中的数据结构记录求解思路<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
                 <y:ModelParameter>
