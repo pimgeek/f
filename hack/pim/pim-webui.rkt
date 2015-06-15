@@ -1,4 +1,4 @@
-#!/usr/bin/racket
+#!/usr/bin/mzscheme
 ; 主要实现 pim 工具的 web 访问界面
 
 #lang racket
@@ -7,6 +7,10 @@
 (require web-server/servlet
          web-server/servlet-env)
 
+; 设定
+;(define (gen-radio-inputs radio-set)
+;  (for/list ([item radio-set])
+;    (make-radio-input item)))
 ; 设定
 (define (input-page req)
   (response/xexpr
@@ -104,7 +108,7 @@
         [(equal? proc-type      "en-mark") (text-en-mark      input-text)]
         [(equal? proc-type  "filter-word") (text-filter-word  input-text)]
         [else                              (format
-                                             "表单给出请求不明确……~%~a~%"
+                                             "表单的请求不明确……~%~a~%"
                                                                proc-type)]
         )))
 
