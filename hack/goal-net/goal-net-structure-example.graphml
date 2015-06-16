@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
-  <!--Created by yEd 3.14-->
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.14.2-->
   <key attr.name="Description" attr.type="string" for="graph" id="d0"/>
   <key for="port" id="d1" yfiles.type="portgraphics"/>
   <key for="port" id="d2" yfiles.type="portgeometry"/>
@@ -20,7 +20,7 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GroupNode>
-              <y:Geometry height="3194.81848901421" width="1493.3246031746032" x="0.0" y="0.0"/>
+              <y:Geometry height="3601.1945350872656" width="1493.3246031746032" x="0.0" y="-37.37646484375"/>
               <y:Fill color="#F5F5F5" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1493.3246031746032" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
@@ -46,10 +46,10 @@
         <node id="n0::n0">
           <data key="d6">
             <y:ShapeNode>
-              <y:Geometry height="40.75199999999995" width="433.64" x="16.000238095238103" y="37.37646484375"/>
+              <y:Geometry height="40.75199999999995" width="433.64" x="529.8423015873016" y="0.0"/>
               <y:Fill color="#FFCC00" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="333.37890625" x="50.13054687499999" y="3.6748281249999764">我要用 racket 中的数据结构记录求解思路
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="333.37890625" x="50.130546874999936" y="3.6748281249999764">我要用 racket 中的数据结构记录求解思路
 验收标准：利用 racket 生成的 goal-net 数据结构能够通过测试<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
@@ -67,7 +67,7 @@
             <y:ProxyAutoBoundsNode>
               <y:Realizers active="0">
                 <y:GroupNode>
-                  <y:Geometry height="3081.69002417046" width="1461.3246031746032" x="16.0" y="98.12846484374995"/>
+                  <y:Geometry height="3488.066070243516" width="1461.3246031746032" x="16.0" y="60.751999999999725"/>
                   <y:Fill color="#F5F5F5" transparent="false"/>
                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="1461.3246031746032" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
@@ -96,7 +96,7 @@
                 <y:ProxyAutoBoundsNode>
                   <y:Realizers active="0">
                     <y:GroupNode>
-                      <y:Geometry height="3029.31355932671" width="961.684126984127" x="499.6404761904762" y="135.50492968749995"/>
+                      <y:Geometry height="3435.689605399766" width="961.684126984127" x="499.6404761904762" y="98.12846484374973"/>
                       <y:Fill color="#F5F5F5" transparent="false"/>
                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                       <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="961.684126984127" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -106,7 +106,7 @@
                       <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0" right="1" rightF="1.0" top="0" topF="0.0"/>
                     </y:GroupNode>
                     <y:GroupNode>
-                      <y:Geometry height="50.0" width="50.0" x="144.48800000000003" y="148.39953515624998"/>
+                      <y:Geometry height="50.0" width="50.0" x="499.6404761904762" y="98.12846484374995"/>
                       <y:Fill color="#F5F5F5" transparent="false"/>
                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                       <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="154.0" x="-52.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -125,17 +125,17 @@
                     <y:ProxyAutoBoundsNode>
                       <y:Realizers active="0">
                         <y:GroupNode>
-                          <y:Geometry height="1696.0862300160384" width="844.0293650793651" x="601.2952380952381" y="172.88139453124995"/>
+                          <y:Geometry height="2036.521113979718" width="844.0293650793651" x="558.4678571428572" y="135.50492968749973"/>
                           <y:Fill color="#F5F5F5" transparent="false"/>
                           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                           <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="844.0293650793651" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
                           <y:Shape type="roundrectangle"/>
                           <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                           <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0" right="1" rightF="1.0" top="0" topF="0.0"/>
+                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0" right="1" rightF="1.0" top="0" topF="1.1368683772161603E-13"/>
                         </y:GroupNode>
                         <y:GroupNode>
-                          <y:Geometry height="50.0" width="50.0" x="-118.01199999999997" y="-36.167987792968745"/>
+                          <y:Geometry height="50.0" width="50.0" x="601.2952380952381" y="172.88139453124995"/>
                           <y:Fill color="#F5F5F5" transparent="false"/>
                           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                           <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="94.0" x="-22.0" y="0.0">一个执行步骤</y:NodeLabel>
@@ -151,7 +151,7 @@
                     <node id="n0::n1::n0::n0::n0">
                       <data key="d6">
                         <y:ShapeNode>
-                          <y:Geometry height="40.75199999999995" width="373.64000000000004" x="617.2954761904762" y="210.25785937499995"/>
+                          <y:Geometry height="40.75199999999995" width="373.64000000000004" x="793.6625396825397" y="172.88139453124984"/>
                           <y:Fill color="#FFCC00" transparent="false"/>
                           <y:BorderStyle color="#000000" type="line" width="1.0"/>
                           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="316.0" x="28.82000000000005" y="3.6748281249999764">我要完整地记录尝试达成某目标的所有可观察到的求解动作
@@ -172,17 +172,17 @@
                         <y:ProxyAutoBoundsNode>
                           <y:Realizers active="0">
                             <y:GroupNode>
-                              <y:Geometry height="1582.9577651722884" width="812.0293650793651" x="617.2952380952381" y="271.0098593749999"/>
+                              <y:Geometry height="1632.6406491359685" width="812.0293650793651" x="574.4678571428572" y="524.3853945312495"/>
                               <y:Fill color="#F5F5F5" transparent="false"/>
                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="812.0293650793651" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
                               <y:Shape type="roundrectangle"/>
                               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                              <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336381169" right="1" rightF="0.9999999999997726" top="0" topF="0.0"/>
+                              <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336382306" right="1" rightF="1.0" top="0" topF="0.0"/>
                             </y:GroupNode>
                             <y:GroupNode>
-                              <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
+                              <y:Geometry height="50.0" width="50.0" x="693.4607142857143" y="636.5147890624999"/>
                               <y:Fill color="#F5F5F5" transparent="false"/>
                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="184.0" x="-67.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
@@ -201,14 +201,14 @@
                             <y:ProxyAutoBoundsNode>
                               <y:Realizers active="0">
                                 <y:GroupNode>
-                                  <y:Geometry height="1530.5813003285384" width="594.0658730158732" x="819.2587301587303" y="308.3863242187499"/>
+                                  <y:Geometry height="1580.2641842922183" width="594.065873015873" x="776.4313492063493" y="561.7618593749995"/>
                                   <y:Fill color="#F5F5F5" transparent="false"/>
                                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="594.0658730158732" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
+                                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="594.065873015873" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
                                   <y:Shape type="roundrectangle"/>
                                   <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                   <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                  <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0" right="1" rightF="1.0" top="0" topF="0.0"/>
+                                  <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0" right="1" rightF="1.0" top="0" topF="2.2737367544323206E-13"/>
                                 </y:GroupNode>
                                 <y:GroupNode>
                                   <y:Geometry height="50.0" width="373.64" x="547.6407142857142" y="402.07388241152717"/>
@@ -230,10 +230,10 @@
                                 <y:ProxyAutoBoundsNode>
                                   <y:Realizers active="0">
                                     <y:GroupNode>
-                                      <y:Geometry height="402.8800460730545" width="562.0658730158732" x="835.2587301587303" y="345.7627890624999"/>
+                                      <y:Geometry height="557.1266976148592" width="562.065873015873" x="792.4313492063493" y="599.1383242187497"/>
                                       <y:Fill color="#F5F5F5" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="562.0658730158732" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
+                                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="562.065873015873" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
                                       <y:Shape type="roundrectangle"/>
                                       <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                       <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
@@ -256,7 +256,7 @@
                                 <node id="n0::n1::n0::n0::n1::n0::n0::n0">
                                   <data key="d6">
                                     <y:ShapeNode>
-                                      <y:Geometry height="40.75199999999995" width="311.352" x="851.2589206349207" y="383.1392539062499"/>
+                                      <y:Geometry height="40.75199999999995" width="311.352" x="917.7882857142858" y="636.5147890624997"/>
                                       <y:Fill color="#FFCC00" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
                                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="160.0" x="75.67599999999993" y="3.6748281249999764">熟悉心流泳道图的关键要素
@@ -277,14 +277,14 @@
                                     <y:ProxyAutoBoundsNode>
                                       <y:Realizers active="0">
                                         <y:GroupNode>
-                                          <y:Geometry height="289.7515812293045" width="530.0658730158732" x="851.2587301587303" y="443.89125390624986"/>
+                                          <y:Geometry height="327.12804607305463" width="530.065873015873" x="808.4313492063493" y="814.1369757605543"/>
                                           <y:Fill color="#F5F5F5" transparent="false"/>
                                           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                          <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="530.0658730158732" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
+                                          <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="530.065873015873" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
                                           <y:Shape type="roundrectangle"/>
                                           <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                           <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336381169" right="1" rightF="1.0000000000002274" top="0" topF="0.0"/>
+                                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336381169" right="1" rightF="1.0" top="0" topF="0.0"/>
                                         </y:GroupNode>
                                         <y:GroupNode>
                                           <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -306,14 +306,14 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="82.37646484375" width="312.10238095238105" x="1053.2222222222222" y="547.5788120990271"/>
+                                              <y:Geometry height="186.06402303652715" width="312.1023809523808" x="1010.3948412698414" y="851.5134406043043"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="312.10238095238105" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
+                                              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="312.1023809523808" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
                                               <y:Shape type="roundrectangle"/>
                                               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                              <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761904825" top="0" topF="0.0"/>
+                                              <y:BorderInsets bottom="104" bottomF="103.68755819277715" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761902551" top="0" topF="0.0"/>
                                             </y:GroupNode>
                                             <y:GroupNode>
                                               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -332,7 +332,7 @@
                                         <node id="n0::n1::n0::n0::n1::n0::n0::n1::n0::n0">
                                           <data key="d6">
                                             <y:ShapeNode>
-                                              <y:Geometry height="30.0" width="280.102" x="1069.2224126984127" y="584.9552769427771"/>
+                                              <y:Geometry height="30.0" width="280.102" x="1026.395031746032" y="888.8899054480543"/>
                                               <y:Fill hasColor="false" transparent="false"/>
                                               <y:BorderStyle hasColor="false" type="line" width="1.0"/>
                                               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="126.05099999999993" y="5.6494140625">……<y:LabelModel>
@@ -354,7 +354,7 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="237.37511638555455" width="155.96277199621574" x="867.2590901923684" y="481.26771874999986"/>
+                                              <y:Geometry height="237.37511638555455" width="155.96277199621574" x="824.4317092399874" y="888.8899054480543"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="155.96277199621574" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -388,10 +388,10 @@
                                 <y:ProxyAutoBoundsNode>
                                   <y:Realizers active="0">
                                     <y:GroupNode>
-                                      <y:Geometry height="402.8800460730545" width="562.0658730158732" x="835.2587301587303" y="768.6428351355544"/>
+                                      <y:Geometry height="440.2565109168045" width="562.065873015873" x="792.4313492063493" y="1176.265021833609"/>
                                       <y:Fill color="#F5F5F5" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="562.0658730158732" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
+                                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="562.065873015873" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
                                       <y:Shape type="roundrectangle"/>
                                       <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                       <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
@@ -414,7 +414,7 @@
                                 <node id="n0::n1::n0::n0::n1::n0::n1::n0">
                                   <data key="d6">
                                     <y:ShapeNode>
-                                      <y:Geometry height="40.75199999999995" width="311.352" x="851.2589206349207" y="806.0192999793044"/>
+                                      <y:Geometry height="40.75199999999995" width="311.352" x="917.7882857142858" y="1213.641486677359"/>
                                       <y:Fill color="#FFCC00" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
                                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="307.333984375" x="2.009007812499931" y="3.6748281249999764">描述记录求解动作的场景
@@ -435,14 +435,14 @@
                                     <y:ProxyAutoBoundsNode>
                                       <y:Realizers active="0">
                                         <y:GroupNode>
-                                          <y:Geometry height="289.7515812293045" width="530.0658730158732" x="851.2587301587303" y="866.7712999793043"/>
+                                          <y:Geometry height="327.1280460730545" width="530.065873015873" x="808.4313492063493" y="1274.3934866773589"/>
                                           <y:Fill color="#F5F5F5" transparent="false"/>
                                           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                          <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="530.0658730158732" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
+                                          <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="530.065873015873" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
                                           <y:Shape type="roundrectangle"/>
                                           <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                           <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336381169" right="1" rightF="1.0000000000002274" top="0" topF="0.0"/>
+                                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336381169" right="1" rightF="1.0" top="0" topF="0.0"/>
                                         </y:GroupNode>
                                         <y:GroupNode>
                                           <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -464,14 +464,14 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="82.37646484375" width="312.10238095238105" x="1053.2222222222222" y="970.4588581720816"/>
+                                              <y:Geometry height="186.06402303652703" width="312.1023809523808" x="1010.3948412698414" y="1311.7699515211089"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="312.10238095238105" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
+                                              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="312.1023809523808" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
                                               <y:Shape type="roundrectangle"/>
                                               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                              <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761904825" top="0" topF="0.0"/>
+                                              <y:BorderInsets bottom="104" bottomF="103.68755819277703" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761902551" top="0" topF="0.0"/>
                                             </y:GroupNode>
                                             <y:GroupNode>
                                               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -490,7 +490,7 @@
                                         <node id="n0::n1::n0::n0::n1::n0::n1::n1::n0::n0">
                                           <data key="d6">
                                             <y:ShapeNode>
-                                              <y:Geometry height="30.0" width="280.102" x="1069.2224126984127" y="1007.8353230158316"/>
+                                              <y:Geometry height="30.0" width="280.102" x="1026.395031746032" y="1349.1464163648589"/>
                                               <y:Fill hasColor="false" transparent="false"/>
                                               <y:BorderStyle hasColor="false" type="line" width="1.0"/>
                                               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="126.05099999999993" y="5.6494140625">……<y:LabelModel>
@@ -512,7 +512,7 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="237.37511638555455" width="155.96277199621574" x="867.2590901923684" y="904.1477648230543"/>
+                                              <y:Geometry height="237.37511638555455" width="155.96277199621574" x="824.4317092399874" y="1349.1464163648589"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="155.96277199621574" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -546,10 +546,10 @@
                                 <y:ProxyAutoBoundsNode>
                                   <y:Realizers active="0">
                                     <y:GroupNode>
-                                      <y:Geometry height="403.1280460730545" width="562.0658730158732" x="835.2587301587303" y="1191.5228812086089"/>
+                                      <y:Geometry height="440.5045109168045" width="562.065873015873" x="792.4313492063493" y="1636.5215327504134"/>
                                       <y:Fill color="#F5F5F5" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="562.0658730158732" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
+                                      <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="562.065873015873" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
                                       <y:Shape type="roundrectangle"/>
                                       <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                       <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
@@ -572,7 +572,7 @@
                                 <node id="n0::n1::n0::n0::n1::n0::n2::n0">
                                   <data key="d6">
                                     <y:ShapeNode>
-                                      <y:Geometry height="41.0" width="311.352" x="851.2589206349207" y="1228.8993460523589"/>
+                                      <y:Geometry height="41.0" width="311.352" x="917.7882857142858" y="1673.8979975941634"/>
                                       <y:Fill color="#FFCC00" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
                                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="196.0" x="57.67599999999993" y="3.798828125">描述流程、触发条件、传递物
@@ -593,14 +593,14 @@
                                     <y:ProxyAutoBoundsNode>
                                       <y:Realizers active="0">
                                         <y:GroupNode>
-                                          <y:Geometry height="289.7515812293045" width="530.0658730158732" x="851.2587301587303" y="1289.8993460523589"/>
+                                          <y:Geometry height="327.1280460730545" width="530.065873015873" x="808.4313492063493" y="1734.8979975941634"/>
                                           <y:Fill color="#F5F5F5" transparent="false"/>
                                           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                          <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="530.0658730158732" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
+                                          <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="530.065873015873" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
                                           <y:Shape type="roundrectangle"/>
                                           <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                           <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336381169" right="1" rightF="1.0000000000002274" top="0" topF="0.0"/>
+                                          <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0003600336381169" right="1" rightF="1.0" top="0" topF="0.0"/>
                                         </y:GroupNode>
                                         <y:GroupNode>
                                           <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -622,14 +622,14 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="82.37646484375" width="312.10238095238105" x="1053.2222222222222" y="1393.586904245136"/>
+                                              <y:Geometry height="186.06402303652703" width="312.1023809523808" x="1010.3948412698414" y="1772.2744624379134"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
-                                              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="312.10238095238105" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
+                                              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="312.1023809523808" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
                                               <y:Shape type="roundrectangle"/>
                                               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                              <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761904825" top="0" topF="0.0"/>
+                                              <y:BorderInsets bottom="104" bottomF="103.68755819277703" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761902551" top="0" topF="0.0"/>
                                             </y:GroupNode>
                                             <y:GroupNode>
                                               <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
@@ -648,7 +648,7 @@
                                         <node id="n0::n1::n0::n0::n1::n0::n2::n1::n0::n0">
                                           <data key="d6">
                                             <y:ShapeNode>
-                                              <y:Geometry height="30.0" width="280.102" x="1069.2224126984127" y="1430.963369088886"/>
+                                              <y:Geometry height="30.0" width="280.102" x="1026.395031746032" y="1809.6509272816634"/>
                                               <y:Fill hasColor="false" transparent="false"/>
                                               <y:BorderStyle hasColor="false" type="line" width="1.0"/>
                                               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="126.05099999999993" y="5.6494140625">……<y:LabelModel>
@@ -670,7 +670,7 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="237.37511638555455" width="155.96277199621574" x="867.2590901923684" y="1327.2758108961089"/>
+                                              <y:Geometry height="237.37511638555455" width="155.96277199621574" x="824.4317092399874" y="1809.6509272816634"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="155.96277199621574" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -701,7 +701,7 @@
                             <node id="n0::n1::n0::n0::n1::n0::n3">
                               <data key="d6">
                                 <y:ShapeNode>
-                                  <y:Geometry height="30.0" width="280.102" x="835.2589206349207" y="1793.9676245472883"/>
+                                  <y:Geometry height="30.0" width="280.102" x="933.4132857142858" y="2097.026043667218"/>
                                   <y:Fill hasColor="false" transparent="false"/>
                                   <y:BorderStyle hasColor="false" type="line" width="1.0"/>
                                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="126.05099999999993" y="5.6494140625">……<y:LabelModel>
@@ -723,7 +723,7 @@
                             <y:ProxyAutoBoundsNode>
                               <y:Realizers active="0">
                                 <y:GroupNode>
-                                  <y:Geometry height="237.37511638555455" width="155.96277199621574" x="633.2955981288762" y="904.1477648230543"/>
+                                  <y:Geometry height="237.37511638555455" width="155.96277199621574" x="590.4682171764954" y="636.5147890624997"/>
                                   <y:Fill color="#F5F5F5" transparent="false"/>
                                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="155.96277199621574" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -754,7 +754,7 @@
                 <node id="n0::n1::n0::n1">
                   <data key="d6">
                     <y:ShapeNode>
-                      <y:Geometry height="30.0" width="373.64" x="515.6407142857142" y="3119.81848901421"/>
+                      <y:Geometry height="30.0" width="373.64" x="793.6625396825398" y="3488.8180702435156"/>
                       <y:Fill hasColor="false" transparent="false"/>
                       <y:BorderStyle hasColor="false" type="line" width="1.0"/>
                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="172.81999999999994" y="5.6494140625">……<y:LabelModel>
@@ -774,7 +774,7 @@
                     <y:ProxyAutoBoundsNode>
                       <y:Realizers active="0">
                         <y:GroupNode>
-                          <y:Geometry height="1083.910632045047" width="929.684126984127" x="515.6404761904762" y="2015.9078569691633"/>
+                          <y:Geometry height="1276.7920265762978" width="929.684126984127" x="515.6404761904762" y="2192.026043667218"/>
                           <y:Fill color="#F5F5F5" transparent="false"/>
                           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                           <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="929.684126984127" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
@@ -800,10 +800,10 @@
                     <node id="n0::n1::n0::n2::n0">
                       <data key="d6">
                         <y:ShapeNode>
-                          <y:Geometry height="40.75199999999995" width="373.64000000000004" x="531.6407142857142" y="2053.2843218129133"/>
+                          <y:Geometry height="40.75199999999995" width="373.64000000000004" x="793.6625396825397" y="2229.402508510968"/>
                           <y:Fill color="#FFCC00" transparent="false"/>
                           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="314.69921875" x="29.47039062500005" y="3.674828124999749">我要完整地写出所有 goal-net 数据项的测试代码
+                          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="314.69921875" x="29.47039062500005" y="3.6748281250002037">我要完整地写出所有 goal-net 数据项的测试代码
 验收标准：goal-net 的每个数据项至少被测试代码访问一次<y:LabelModel>
                               <y:SmartNodeLabelModel distance="4.0"/>
                             </y:LabelModel>
@@ -821,7 +821,7 @@
                         <y:ProxyAutoBoundsNode>
                           <y:Realizers active="0">
                             <y:GroupNode>
-                              <y:Geometry height="970.7821672012969" width="897.684126984127" x="531.6404761904762" y="2114.0363218129132"/>
+                              <y:Geometry height="1163.6635617325474" width="897.684126984127" x="531.6404761904762" y="2290.1545085109683"/>
                               <y:Fill color="#F5F5F5" transparent="false"/>
                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="897.684126984127" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
@@ -831,7 +831,7 @@
                               <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0000052559655614" right="1" rightF="1.0000000000002274" top="0" topF="0.0"/>
                             </y:GroupNode>
                             <y:GroupNode>
-                              <y:Geometry height="50.0" width="50.0" x="0.0" y="60.0"/>
+                              <y:Geometry height="50.0" width="50.0" x="693.4607142857143" y="819.6432539062498"/>
                               <y:Fill color="#F5F5F5" transparent="false"/>
                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="184.0" x="-67.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
@@ -850,7 +850,7 @@
                             <y:ProxyAutoBoundsNode>
                               <y:Realizers active="0">
                                 <y:GroupNode>
-                                  <y:Geometry height="918.4057023575469" width="668.5182539682539" x="744.8063492063491" y="2151.4127866566632"/>
+                                  <y:Geometry height="1111.2870968887974" width="668.5182539682539" x="744.8063492063491" y="2327.5309733547183"/>
                                   <y:Fill color="#F5F5F5" transparent="false"/>
                                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="668.5182539682539" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -879,14 +879,14 @@
                                 <y:ProxyAutoBoundsNode>
                                   <y:Realizers active="0">
                                     <y:GroupNode>
-                                      <y:Geometry height="93.12846484374995" width="343.3523809523808" x="760.8063492063493" y="2188.7892515004132"/>
+                                      <y:Geometry height="211.445541800324" width="343.3523809523808" x="907.3892857142857" y="2364.9074381984683"/>
                                       <y:Fill color="#F5F5F5" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                       <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="343.3523809523808" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
                                       <y:Shape type="roundrectangle"/>
                                       <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                       <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                      <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761902551" top="0" topF="0.0"/>
+                                      <y:BorderInsets bottom="118" bottomF="118.31707695657406" left="1" leftF="1.0001904761904825" right="1" rightF="1.0001904761904825" top="0" topF="0.0"/>
                                     </y:GroupNode>
                                     <y:GroupNode>
                                       <y:Geometry height="50.0" width="50.0" x="241.63200000000006" y="286.68753515624996"/>
@@ -905,7 +905,7 @@
                                 <node id="n0::n1::n0::n2::n1::n0::n0::n0">
                                   <data key="d6">
                                     <y:ShapeNode>
-                                      <y:Geometry height="40.75199999999995" width="311.352" x="776.8065396825398" y="2226.1657163441632"/>
+                                      <y:Geometry height="40.75199999999995" width="311.352" x="923.3894761904762" y="2402.2839030422183"/>
                                       <y:Fill color="#FFCC00" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
                                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="306.033203125" x="2.659398437499931" y="3.6748281250002037">根据示意图手工创建一系列 goal-net 数据项
@@ -928,7 +928,7 @@
                                 <y:ProxyAutoBoundsNode>
                                   <y:Realizers active="0">
                                     <y:GroupNode>
-                                      <y:Geometry height="702.9007726700474" width="636.5182539682539" x="760.8063492063491" y="2301.9177163441627"/>
+                                      <y:Geometry height="716.5244781318988" width="636.5182539682539" x="760.8063492063491" y="2657.293592111617"/>
                                       <y:Fill color="#F5F5F5" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                       <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="636.5182539682539" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
@@ -954,7 +954,7 @@
                                 <node id="n0::n1::n0::n2::n1::n0::n1::n0">
                                   <data key="d6">
                                     <y:ShapeNode>
-                                      <y:Geometry height="40.75199999999995" width="311.352" x="776.8065396825398" y="2339.2941811879127"/>
+                                      <y:Geometry height="40.75199999999995" width="311.352" x="923.3894761904762" y="2694.670056955367"/>
                                       <y:Fill color="#FFCC00" transparent="false"/>
                                       <y:BorderStyle color="#000000" type="line" width="1.0"/>
                                       <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="258.033203125" x="26.65939843749993" y="3.6748281250002037">从 goal-net 的入口目标开始，遍历所有目标描述
@@ -975,7 +975,7 @@
                                     <y:ProxyAutoBoundsNode>
                                       <y:Realizers active="0">
                                         <y:GroupNode>
-                                          <y:Geometry height="583.584625400973" width="604.5182539682539" x="776.8063492063491" y="2406.233863613237"/>
+                                          <y:Geometry height="603.3960132881484" width="604.5182539682539" x="776.8063492063491" y="2755.422056955367"/>
                                           <y:Fill color="#F5F5F5" transparent="false"/>
                                           <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                           <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="604.5182539682539" x="0.0" y="0.0">若干个可选的执行步骤序列</y:NodeLabel>
@@ -1004,14 +1004,14 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="442.89108360064847" width="375.35238095238117" x="989.9722222222223" y="2443.610328456987"/>
+                                              <y:Geometry height="551.0195484443984" width="375.35238095238117" x="989.9722222222223" y="2792.798521799117"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="375.35238095238117" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
                                               <y:Shape type="roundrectangle"/>
                                               <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                               <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                              <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0" right="1" rightF="1.0" top="0" topF="0.0"/>
+                                              <y:BorderInsets bottom="0" bottomF="4.547473508864641E-13" left="1" leftF="1.0" right="1" rightF="1.0" top="0" topF="0.0"/>
                                             </y:GroupNode>
                                             <y:GroupNode>
                                               <y:Geometry height="50.0" width="50.0" x="989.9722222222223" y="2443.610328456987"/>
@@ -1033,14 +1033,14 @@
                                             <y:ProxyAutoBoundsNode>
                                               <y:Realizers active="0">
                                                 <y:GroupNode>
-                                                  <y:Geometry height="93.12846484374995" width="343.35238095238117" x="1005.9722222222223" y="2480.986793300737"/>
+                                                  <y:Geometry height="211.445541800324" width="343.35238095238117" x="1005.9722222222223" y="2830.174986642867"/>
                                                   <y:Fill color="#F5F5F5" transparent="false"/>
                                                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="343.35238095238117" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
                                                   <y:Shape type="roundrectangle"/>
                                                   <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
                                                   <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
-                                                  <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0001904761903688" right="1" rightF="1.0001904761907099" top="0" topF="0.0"/>
+                                                  <y:BorderInsets bottom="118" bottomF="118.31707695657406" left="1" leftF="1.0001904761903688" right="1" rightF="1.0001904761907099" top="0" topF="0.0"/>
                                                 </y:GroupNode>
                                                 <y:GroupNode>
                                                   <y:Geometry height="50.0" width="50.0" x="241.63200000000006" y="286.68753515624996"/>
@@ -1059,7 +1059,7 @@
                                             <node id="n0::n1::n0::n2::n1::n0::n1::n1::n0::n0::n0">
                                               <data key="d6">
                                                 <y:ShapeNode>
-                                                  <y:Geometry height="40.75199999999995" width="311.352" x="1021.9724126984127" y="2518.363258144487"/>
+                                                  <y:Geometry height="40.75199999999995" width="311.352" x="1021.9724126984127" y="2867.551451486617"/>
                                                   <y:Fill color="#FFCC00" transparent="false"/>
                                                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                                                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="244.0" x="33.67599999999993" y="3.6748281250002037">遍历最浅层的目标，这一层的目标只有一个
@@ -1082,7 +1082,7 @@
                                             <y:ProxyAutoBoundsNode>
                                               <y:Realizers active="0">
                                                 <y:GroupNode>
-                                                  <y:Geometry height="93.12846484374995" width="343.35238095238117" x="1005.9722222222223" y="2778.3729472138857"/>
+                                                  <y:Geometry height="93.12846484374995" width="343.35238095238117" x="1005.9722222222223" y="3122.5611405560157"/>
                                                   <y:Fill color="#F5F5F5" transparent="false"/>
                                                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="343.35238095238117" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
@@ -1108,10 +1108,59 @@
                                             <node id="n0::n1::n0::n2::n1::n0::n1::n1::n0::n1::n0">
                                               <data key="d6">
                                                 <y:ShapeNode>
-                                                  <y:Geometry height="40.75199999999995" width="311.352" x="1021.9724126984127" y="2815.7494120576357"/>
+                                                  <y:Geometry height="40.75199999999995" width="311.352" x="1021.9724126984127" y="3159.9376053997657"/>
                                                   <y:Fill color="#FFCC00" transparent="false"/>
                                                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
                                                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="268.0" x="21.67599999999993" y="3.6748281250002037">遍历次浅层的目标，这一层的目标可能有多个
+验收标准：打印出的目标描述与示意图中一一对应<y:LabelModel>
+                                                      <y:SmartNodeLabelModel distance="4.0"/>
+                                                    </y:LabelModel>
+                                                    <y:ModelParameter>
+                                                      <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                                                    </y:ModelParameter>
+                                                  </y:NodeLabel>
+                                                  <y:Shape type="roundrectangle"/>
+                                                </y:ShapeNode>
+                                              </data>
+                                            </node>
+                                          </graph>
+                                        </node>
+                                        <node id="n0::n1::n0::n2::n1::n0::n1::n1::n0::n2" yfiles.foldertype="group">
+                                          <data key="d4"/>
+                                          <data key="d6">
+                                            <y:ProxyAutoBoundsNode>
+                                              <y:Realizers active="0">
+                                                <y:GroupNode>
+                                                  <y:Geometry height="93.12846484374995" width="343.35238095238117" x="1005.9722222222223" y="3235.6896053997652"/>
+                                                  <y:Fill color="#F5F5F5" transparent="false"/>
+                                                  <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
+                                                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="343.35238095238117" x="0.0" y="0.0">一个执行步骤</y:NodeLabel>
+                                                  <y:Shape type="roundrectangle"/>
+                                                  <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
+                                                  <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+                                                  <y:BorderInsets bottom="0" bottomF="0.0" left="1" leftF="1.0001904761903688" right="1" rightF="1.0001904761907099" top="0" topF="0.0"/>
+                                                </y:GroupNode>
+                                                <y:GroupNode>
+                                                  <y:Geometry height="50.0" width="50.0" x="241.63200000000006" y="286.68753515624996"/>
+                                                  <y:Fill color="#F5F5F5" transparent="false"/>
+                                                  <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
+                                                  <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="94.0" x="-22.0" y="0.0">一个执行步骤</y:NodeLabel>
+                                                  <y:Shape type="roundrectangle"/>
+                                                  <y:State closed="true" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
+                                                  <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
+                                                  <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+                                                </y:GroupNode>
+                                              </y:Realizers>
+                                            </y:ProxyAutoBoundsNode>
+                                          </data>
+                                          <graph edgedefault="directed" id="n0::n1::n0::n2::n1::n0::n1::n1::n0::n2:">
+                                            <node id="n0::n1::n0::n2::n1::n0::n1::n1::n0::n2::n0">
+                                              <data key="d6">
+                                                <y:ShapeNode>
+                                                  <y:Geometry height="40.75199999999995" width="311.352" x="1021.9724126984127" y="3273.0660702435152"/>
+                                                  <y:Fill color="#FFCC00" transparent="false"/>
+                                                  <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                                                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="268.0" x="21.67599999999993" y="3.6748281250002037">遍历所有层次的目标
 验收标准：打印出的目标描述与示意图中一一对应<y:LabelModel>
                                                       <y:SmartNodeLabelModel distance="4.0"/>
                                                     </y:LabelModel>
@@ -1133,7 +1182,7 @@
                                         <y:ProxyAutoBoundsNode>
                                           <y:Realizers active="0">
                                             <y:GroupNode>
-                                              <y:Geometry height="277.3861539131484" width="167.16586250394192" x="792.8063544623147" y="2697.4323351010617"/>
+                                              <y:Geometry height="277.3861539131484" width="167.16586250394192" x="792.8063544623147" y="2867.551451486617"/>
                                               <y:Fill color="#F5F5F5" transparent="false"/>
                                               <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                               <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="167.16586250394192" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -1164,7 +1213,7 @@
                             <node id="n0::n1::n0::n2::n1::n0::n2">
                               <data key="d6">
                                 <y:ShapeNode>
-                                  <y:Geometry height="30.0" width="280.102" x="760.8065396825398" y="3024.81848901421"/>
+                                  <y:Geometry height="30.0" width="280.102" x="939.0144761904762" y="3393.8180702435156"/>
                                   <y:Fill hasColor="false" transparent="false"/>
                                   <y:BorderStyle hasColor="false" type="line" width="1.0"/>
                                   <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="28.0" x="126.05099999999993" y="5.6494140625">……<y:LabelModel>
@@ -1186,7 +1235,7 @@
                             <y:ProxyAutoBoundsNode>
                               <y:Realizers active="0">
                                 <y:GroupNode>
-                                  <y:Geometry height="277.3861539131484" width="167.16586250394192" x="547.6404814464418" y="2400.046181187913"/>
+                                  <y:Geometry height="277.3861539131484" width="167.16586250394192" x="547.6404814464418" y="2402.2839030422183"/>
                                   <y:Fill color="#F5F5F5" transparent="false"/>
                                   <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                                   <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="167.16586250394192" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -1222,7 +1271,7 @@
                 <y:ProxyAutoBoundsNode>
                   <y:Realizers active="0">
                     <y:GroupNode>
-                      <y:Geometry height="448.6333945312499" width="437.64047619047614" x="32.00000000000003" y="1584.6509272816634"/>
+                      <y:Geometry height="448.6333945312499" width="437.64047619047614" x="32.00000000000003" y="172.88139453124984"/>
                       <y:Fill color="#F5F5F5" transparent="false"/>
                       <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
                       <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="437.64047619047614" x="0.0" y="0.0">一系列设想的执行步骤</y:NodeLabel>
@@ -1250,10 +1299,20 @@
         </node>
       </graph>
     </node>
+    <edge id="n0::e0" source="n0::n0" target="n0::n1">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="20.375999999999976" tx="0.0" ty="-1744.0330351217576"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
     <edge id="n0::n1::n0::e0" source="n0::n1::n0::n0" target="n0::n1::n0::n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-411.51468253968255" sy="848.0431150080192" tx="-368.6873015873016" ty="-541.9553160225237"/>
+          <y:Path sx="-3.75" sy="1018.2605569898592" tx="-3.75" ty="-638.3960132881489"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -1263,17 +1322,7 @@
     <edge id="n0::n1::n0::e1" source="n0::n1::n0::n2" target="n0::n1::n0::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-278.0218253968254" sy="541.9553160225232" tx="0.0" ty="-15.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::e0" source="n0::n0" target="n0::n1">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="20.375999999999976" tx="-513.8420634920635" ty="-1540.84501208523"/>
+          <y:Path sx="0.0" sy="638.3960132881489" tx="0.0" ty="-15.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -1283,67 +1332,7 @@
     <edge id="n0::n1::n0::n0::e0" source="n0::n1::n0::n0::n0" target="n0::n1::n0::n0::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="20.375999999999976" tx="-219.19444444444446" ty="-791.4788825861442"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n1::n0::n0::n1::n0::e0" source="n0::n1::n0::n0::n1::n0::n0" target="n0::n1::n0::n0::n1::n0::n1">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="-270.5329365079366" sy="201.44002303652724" tx="-270.5329365079366" ty="-201.44002303652724"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n1::n0::n0::n1::n0::e1" source="n0::n1::n0::n0::n1::n0::n1" target="n0::n1::n0::n0::n1::n0::n2">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="-270.5329365079366" sy="201.44002303652724" tx="-270.5329365079366" ty="-201.56402303652726"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n1::n0::n0::n1::n0::e2" source="n0::n1::n0::n0::n1::n0::n2" target="n0::n1::n0::n0::n1::n0::n3">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="-140.98174603174607" sy="201.56402303652726" tx="0.0" ty="-15.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n1::n0::n0::n1::n0::n0::e0" source="n0::n1::n0::n0::n1::n0::n0::n0" target="n0::n1::n0::n0::n1::n0::n0::n1">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="20.375999999999976" tx="-109.35674603174607" ty="-144.87579061465226"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n1::n0::n0::n1::n0::n1::e0" source="n0::n1::n0::n0::n1::n0::n1::n0" target="n0::n1::n0::n0::n1::n0::n1::n1">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="20.375999999999976" tx="-109.35674603174607" ty="-144.87579061465226"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n1::n0::n0::n1::n0::n2::e0" source="n0::n1::n0::n0::n1::n0::n2::n0" target="n0::n1::n0::n0::n1::n0::n2::n1">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="20.5" tx="-109.35674603174607" ty="-144.87579061465226"/>
+          <y:Path sx="0.0" sy="20.375999999999976" tx="0.0" ty="-816.3203245679839"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -1353,7 +1342,7 @@
     <edge id="n0::n1::n0::n2::e0" source="n0::n1::n0::n2::n0" target="n0::n1::n0::n2::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="20.375999999999976" tx="-262.0218253968254" ty="-485.39108360064847"/>
+          <y:Path sx="0.0" sy="20.376000000000204" tx="0.0" ty="-581.8317808662737"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -1363,7 +1352,7 @@
     <edge id="n0::n1::n0::n2::n1::n0::e0" source="n0::n1::n0::n2::n1::n0::n0" target="n0::n1::n0::n2::n1::n0::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-161.17619047619053" sy="46.56423242187475" tx="-307.75912698412696" ty="-351.45038633502327"/>
+          <y:Path sx="-3.75" sy="105.72277090016223" tx="-3.75" ty="-358.2622390659494"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -1373,7 +1362,7 @@
     <edge id="n0::n1::n0::n2::n1::n0::e1" source="n0::n1::n0::n2::n1::n0::n1" target="n0::n1::n0::n2::n1::n0::n2">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-178.20793650793644" sy="351.4503863350237" tx="0.0" ty="-15.0"/>
+          <y:Path sx="0.0" sy="358.2622390659494" tx="0.0" ty="-15.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -1383,7 +1372,7 @@
     <edge id="n0::n1::n0::n2::n1::n0::n1::e0" source="n0::n1::n0::n2::n1::n0::n1::n0" target="n0::n1::n0::n2::n1::n0::n1::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="20.376000000000204" tx="-146.58293650793644" ty="-291.7923127004865"/>
+          <y:Path sx="0.0" sy="20.376000000000204" tx="0.0" ty="-301.6980066440742"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
@@ -1393,7 +1382,78 @@
     <edge id="n0::n1::n0::n2::n1::n0::n1::n1::n0::e0" source="n0::n1::n0::n2::n1::n0::n1::n1::n0::n0" target="n0::n1::n0::n2::n1::n0::n1::n1::n0::n1">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-161.17619047619064" sy="46.56423242187475" tx="-161.17619047619064" ty="-46.564232421875204"/>
+          <y:Path sx="-3.7500000000002274" sy="105.72277090016223" tx="-3.7500000000002274" ty="-46.564232421875204"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n1::n0::n2::n1::n0::n1::n1::n0::e1" source="n0::n1::n0::n2::n1::n0::n1::n1::n0::n1" target="n0::n1::n0::n2::n1::n0::n1::n1::n0::n2">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-3.7500000000002274" sy="46.56423242187475" tx="-3.7500000000002274" ty="-46.56423242187475"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n1::n0::n0::n1::n0::e0" source="n0::n1::n0::n0::n1::n0::n0" target="n0::n1::n0::n0::n1::n0::n1">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-3.75" sy="278.5633488074295" tx="-3.75" ty="-220.12825545840224"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n1::n0::n0::n1::n0::n0::e0" source="n0::n1::n0::n0::n1::n0::n0::n0" target="n0::n1::n0::n0::n1::n0::n0::n1">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="20.375999999999976" tx="0.0" ty="-163.56402303652737"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n1::n0::n0::n1::n0::e1" source="n0::n1::n0::n0::n1::n0::n1" target="n0::n1::n0::n0::n1::n0::n2">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-3.75" sy="220.12825545840224" tx="-3.75" ty="-220.25225545840226"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n1::n0::n0::n1::n0::n1::e0" source="n0::n1::n0::n0::n1::n0::n1::n0" target="n0::n1::n0::n0::n1::n0::n1::n1">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="20.375999999999976" tx="0.0" ty="-163.56402303652726"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n1::n0::n0::n1::n0::e2" source="n0::n1::n0::n0::n1::n0::n2" target="n0::n1::n0::n0::n1::n0::n3">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="220.25225545840226" tx="0.0" ty="-15.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n1::n0::n0::n1::n0::n2::e0" source="n0::n1::n0::n0::n1::n0::n2::n0" target="n0::n1::n0::n0::n1::n0::n2::n1">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="20.5" tx="0.0" ty="-163.56402303652726"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>

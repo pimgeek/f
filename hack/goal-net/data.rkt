@@ -44,6 +44,26 @@
     null
     (car (goal-step-series goal-net))))
 
+; 定义一个遍历所有 goal 的函数
+; 返回一个列表，给出所有 goal 的文字描述
+(define (traverse-goals goal-net)
+  (cond 
+    [(or (not (goal? goal-net))
+         (null? goal-net)) (list #f)]
+    [(null? (goal-step-series goal-net)) (list (goal-desc goal-net))]
+    [else
+      (list
+        (goal-desc goal-net)
+        (map
+        (lambda (steps)
+          (map traverse-goals steps))
+        (goal-step-series goal-net)))]
+    ))
+
+(traverse-goals goal-net)
+
+; 定义一个把 s-exp 转换为 yaml 格式的函数
+(define ())
 ; 打印出给定 goal-net 的最外层目标的文字描述
 (display (indented-list 0 (goal-desc goal-net)))
 
