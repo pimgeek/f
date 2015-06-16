@@ -55,15 +55,45 @@
       (list
         (goal-desc goal-net)
         (map
-        (lambda (steps)
-          (map traverse-goals steps))
-        (goal-step-series goal-net)))]
+          (lambda (steps)
+            (map traverse-goals steps))
+          (goal-step-series goal-net)))]
     ))
 
 (traverse-goals goal-net)
 
 ; 定义一个把 s-exp 转换为 yaml 格式的函数
-(define ())
+(define (goal-net-sexp-to-yaml goal-net-sexp init-indent-level)
+  (cond
+    [(null? goal-net-sexp)
+     (format "~a- goal: ''\n"
+             (indent init-indent-level))]
+    [(null? (cdr goal-net-sexp))
+     (format "~a- goal: '~a'\n"
+             (indent init-indent-level)
+             (car goal-net-sexp))]
+    [else
+      (format "~a- goal: '~a'\n~agoal-chains:\n~a- goal-chain:\n~a"
+              (indent init-indent-level)
+              (car goal-net-sexp)
+              (indent (+ 1 init-indent-level))
+              (indent (+ 2 init-indent-level))
+              (apply
+                string-append
+                (map
+                  (lambda (goal-chain-sexp)
+                    (apply
+                      string-append
+                      (map
+                        (lambda (goal-net-sexp)
+                          (goal-net-sexp-to-yaml goal-net-sexp (+ 3 init-indent-level)))
+                        goal-chain-sexp)))
+                  (cadr goal-net-sexp))))]
+    ))
+
+(displayln
+  (goal-net-sexp-to-yaml (traverse-goals goal-net) 0))
+
 ; 打印出给定 goal-net 的最外层目标的文字描述
 (display (indented-list 0 (goal-desc goal-net)))
 
