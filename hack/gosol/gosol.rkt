@@ -1,6 +1,6 @@
 #!/usr/bin/racket
 ; gosol.rkt : 一个用于记录目标求解过程的数据结构及其相关操作集合
-;             gosol = gosol + Solution 希望这样比较好记
+;             gosol = Goal + Solution 希望这样比较好记
 ; author    : pimgeek
 ; date      : 2015.06.17
 
@@ -64,7 +64,7 @@
 
 (define (gosol-dump-goals a-gosol)
   (cond
-    [(gosol-null? a-gosol) (list #f)]
+    [(gosol-null? a-gosol) (list null)]
     [(null? (gosol-gosolchain-list a-gosol))
      (list
        (hint-desc (gosol-goal-hint a-gosol)))]
@@ -72,14 +72,46 @@
       (list
         (hint-desc (gosol-goal-hint a-gosol))
         (map
-          (lambda (gosols)
-            (map gosol-dump-goals gosols))
+          (lambda (gosolchain)
+            (map
+              gosol-dump-goals
+              (gosolchain-gosol-list gosolchain)))
           (gosol-gosolchain-list a-gosol)))]
     ))
 
-; 为一个空白的 gosol 添加顶层 goal
+; 打印当前 gosol 的所有描述文字
 
-(define (gosol-insert-top-goal a-gosol goal-desc goal-check-list)
+(define (gosol-dump-goals-yaml a-gosol indent-level)
+  (cond
+    [(gosol-null? a-gosol)
+     (format "~a- gosol: ''\n"
+             (make-string (* 2 indent-level) #\space))]
+    [(null? (gosol-gosolchain-list a-gosol))
+     (format "~a- gosol: '~a'\n"
+             (make-string (* 2 indent-level) #\space)
+             (hint-desc (gosol-goal-hint a-gosol)))]
+    [else
+      (format "~a- gosol: '~a'\n~agosol-chains:\n~a- gosol-chain:\n~a"
+              (make-string (* 2 indent-level) #\space)
+              (hint-desc (gosol-goal-hint a-gosol))
+              (make-string (* 2 (+ 1 indent-level)) #\space)
+              (make-string (* 2 (+ 2 indent-level)) #\space)
+              (apply
+                string-append
+                (map
+                  (lambda (gosolchain)
+                    (apply
+                      string-append
+                      (map
+                        (lambda (gosol)
+                          (gosol-dump-goals-yaml gosol (+ 3 indent-level)))
+                        (gosolchain-gosol-list gosolchain))))
+                  (gosol-gosolchain-list a-gosol))))]
+    ))
+
+; 为一个空白的 gosol 添加 topgoal
+
+(define (gosol-insert-topgoal a-gosol goal-desc goal-check-list)
   (cond
     [(not (gosol-null? a-gosol)) #f]
     [else
@@ -89,17 +121,44 @@
         (set-gosol-check-list! a-gosol goal-check-list))
       #t]))
 
+; 为一个非空白的 gosol 添加 subgoal
+
+(define (gosol-insert-subgoal a-gosol goal-desc goal-check-list)
+  (cond
+    [(gosol-null? a-gosol) #f]
+    [else
+      (let*
+        [(a-subgosol (gosol-init))
+         (flag (gosol-insert-topgoal a-subgosol goal-desc goal-check-list)) 
+         (a-gosolchain (gosolchain '() (list a-subgosol)))]
+        (set-gosol-gosolchain-list! a-gosol (list a-gosolchain))
+        )
+      #t]))
+
 ; #### 尝试调用 gosol 的各项操作
+
 ; 定义初始 gosol
 
 (define new-gosol (gosol-init))
 
-(displayln new-gosol)
+(displayln
+  (gosol-dump-goals-yaml new-gosol 0))
 
-(gosol-insert-top-goal new-gosol
+(gosol-insert-topgoal new-gosol
                        "写出 gosol 的基础操作集合"
                        (list "1 每种操作都要有具体而确定的名称"
                              "2 每种操作具体做什么要写清楚"
                              "3 可以在 workflowy 工具中模拟每种操作"))
 
-(displayln new-gosol)
+(displayln
+  (gosol-dump-goals-yaml new-gosol 0))
+
+(gosol-insert-subgoal new-gosol
+                       "创建初始 gosol 结构"
+                       (list "1 命名为 gosol-init"
+                             "2 创建一个各字段皆为 null 的结构"
+                             "3 在 workflowy 中只要注册并登录即可模拟此操作"))
+
+(displayln (gosol-dump-goals-yaml new-gosol 0))
+
+(gosol-dump-goals new-gosol)
