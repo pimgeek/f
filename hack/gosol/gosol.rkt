@@ -33,7 +33,7 @@
 ; idea-hint  : 与求解思路相关的超链接或多媒体信息 ：hint 类型
 ; gosol-list : 依照求解思路形成的目标列表         ；list 类型
 
-(struct gosolchain (idea-hint gosol-list))
+(struct gosolchain (idea-hint gosol-list) #:mutable)
 
 ; 定义 hint 数据结构
 ; 其中
@@ -41,26 +41,43 @@
 ; uri      : 与 hint 相关的统一访问地址   ；string 类型
 ; img-list : 与 hint 相关的一系列图片地址 ；list   类型
 
-(struct hint (desc uri img-list))
+(struct hint (desc uri img-list) #:mutable)
 
 ; #### 定义 gosol 的数据操作 ####
+
+; 创建一个空的 hint 数据结构
+
+(define (hint-init)
+  (hint "" "" null))
+
+; 定义一个判断 hint 实例是否为空的方法
+
+(define (hint-null? a-hint)
+  (if (and (equal? (hint-desc a-hint) "")
+           (equal? (hint-uri a-hint) "")
+           (null? (hint-img-list a-hint)))
+    #t
+    #f))
 
 ; 创建一个空的 gosol 数据结构
 
 (define (gosol-init)
-  (gosol null null null null))
+  (gosol (hint-init)
+         null
+         null
+         (hint-init)))
 
-; 判断一个 gosol 结构是否为空
+; 定义一个判断 gosol 是否为空的方法
 
 (define (gosol-null? a-gosol)
-  (if (and (null? (gosol-goal-hint a-gosol))
+  (if (and (hint-null? (gosol-goal-hint a-gosol))
            (null? (gosol-check-list a-gosol))
            (null? (gosol-gosolchain-list a-gosol))
-           (null? (gosol-gtd-hint a-gosol)))
+           (hint-null? (gosol-gtd-hint a-gosol)))
     #t
     #f))
 
-; 打印当前 gosol 的所有描述文字
+; 抽取当前 gosol 的所有描述文字，以 s-exp 格式输出
 
 (define (gosol-dump-goals a-gosol)
   (cond
@@ -79,7 +96,7 @@
           (gosol-gosolchain-list a-gosol)))]
     ))
 
-; 打印当前 gosol 的所有描述文字
+; 抽取当前 gosol 的所有描述文字，以 yaml 格式输出
 
 (define (gosol-dump-goals-yaml a-gosol indent-level)
   (cond
@@ -109,28 +126,36 @@
                   (gosol-gosolchain-list a-gosol))))]
     ))
 
-; 为一个空白的 gosol 添加 topgoal
+; 为一个 gosol 添加目标描述
 
-(define (gosol-insert-topgoal a-gosol goal-desc goal-check-list)
+(define (gosol-set-goal-desc a-gosol goal-desc)
+  (cond
+    [(null? (goal-hint a-gosol)) #f]
+    [else
+      (let
+        [(a-goal-hint (hint goal-desc "" '()))]
+        (set-gosol-goal-hint! a-gosol a-goal-hint))
+      #t]))
+
+; 为一个尚未定义目标验收标准的 gosol 添加目标验收标准
+
+(define (gosol-set-goal-desc a-gosol goal-check-list)
   (cond
     [(not (gosol-null? a-gosol)) #f]
     [else
       (let
         [(a-goal-hint (hint goal-desc "" '()))]
-        (set-gosol-goal-hint! a-gosol a-goal-hint)
-        (set-gosol-check-list! a-gosol goal-check-list))
+        (set-gosol-goal-hint! a-gosol a-goal-hint))
       #t]))
 
-; 为一个非空白的 gosol 添加 subgoal
+; 为一个已经设定了目标描述的 gosol 添加一个 subgoal
 
-(define (gosol-insert-subgoal a-gosol goal-desc goal-check-list)
+(define (gosol-insert-subgoal a-gosol a-subgosol)
   (cond
     [(gosol-null? a-gosol) #f]
     [else
-      (let*
-        [(a-subgosol (gosol-init))
-         (flag (gosol-insert-topgoal a-subgosol goal-desc goal-check-list)) 
-         (a-gosolchain (gosolchain '() (list a-subgosol)))]
+      (let
+        [(a-gosolchain (gosolchain '() (list a-subgosol)))]
         (set-gosol-gosolchain-list! a-gosol (list a-gosolchain))
         )
       #t]))
@@ -153,11 +178,13 @@
 (displayln
   (gosol-dump-goals-yaml new-gosol 0))
 
-(gosol-insert-subgoal new-gosol
+(define new-subgosol (gosol-init))
+(gosol-set-goal-)
+gosol-insert-subgoal new-gosol
                        "创建初始 gosol 结构"
                        (list "1 命名为 gosol-init"
                              "2 创建一个各字段皆为 null 的结构"
-                             "3 在 workflowy 中只要注册并登录即可模拟此操作"))
+                             "3 在 workflowy 中只要注册并登录即可模拟此操作")
 
 (displayln (gosol-dump-goals-yaml new-gosol 0))
 
