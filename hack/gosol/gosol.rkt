@@ -53,7 +53,8 @@
 ; 定义一个判断 hint 实例是否为空的方法
 
 (define (hint-null? a-hint)
-  (if (and (equal? (hint-desc a-hint) "")
+  (if (and (hint? a-hint)
+           (equal? (hint-desc a-hint) "")
            (equal? (hint-uri a-hint) "")
            (null? (hint-img-list a-hint)))
     #t
@@ -70,7 +71,8 @@
 ; 定义一个判断 gosol 是否为空的方法
 
 (define (gosol-null? a-gosol)
-  (if (and (hint-null? (gosol-goal-hint a-gosol))
+  (if (and (gosol? a-gosol)
+           (hint-null? (gosol-goal-hint a-gosol))
            (null? (gosol-check-list a-gosol))
            (null? (gosol-gosolchain-list a-gosol))
            (hint-null? (gosol-gtd-hint a-gosol)))
@@ -98,7 +100,7 @@
 
 ; 抽取当前 gosol 的所有描述文字，以 yaml 格式输出
 
-(define (gosol-dump-goals-yaml a-gosol indent-level)
+(define (gosol-dump-goals-yaml a-gosol [indent-level 0])
   (cond
     [(gosol-null? a-gosol)
      (format "~a- gosol: ''\n"
@@ -128,64 +130,69 @@
 
 ; 为一个 gosol 添加目标描述
 
-(define (gosol-set-goal-desc a-gosol goal-desc)
+(define (gosol-set-top-goal! a-gosol [goal-desc "目标描述"] [goal-uri ""] [goal-img-list null])
   (cond
-    [(null? (goal-hint a-gosol)) #f]
+    [(gosol-null? a-gosol)
+     (set-gosol-goal-hint! a-gosol (hint goal-desc "" null))]
     [else
-      (let
-        [(a-goal-hint (hint goal-desc "" '()))]
-        (set-gosol-goal-hint! a-gosol a-goal-hint))
-      #t]))
+      (let*
+        [(old-goal-hint (gosol-goal-hint a-gosol))
+         (new-goal-hint (set-hint-desc! old-goal-hint goal-desc))]
+        (set-gosol-goal-hint! a-gosol new-goal-hint))]))
 
 ; 为一个尚未定义目标验收标准的 gosol 添加目标验收标准
 
-(define (gosol-set-goal-desc a-gosol goal-check-list)
-  (cond
-    [(not (gosol-null? a-gosol)) #f]
-    [else
-      (let
-        [(a-goal-hint (hint goal-desc "" '()))]
-        (set-gosol-goal-hint! a-gosol a-goal-hint))
-      #t]))
+(define (gosol-set-top-check-list! a-gosol [check-list (list "")])
+  (begin
+    (if (gosol-null? a-gosol)
+      (gosol-set-top-goal! a-gosol)
+      null)
+    (set-gosol-check-list! a-gosol check-list)))
 
 ; 为一个已经设定了目标描述的 gosol 添加一个 subgoal
 
-(define (gosol-insert-subgoal a-gosol a-subgosol)
-  (cond
-    [(gosol-null? a-gosol) #f]
-    [else
-      (let
-        [(a-gosolchain (gosolchain '() (list a-subgosol)))]
-        (set-gosol-gosolchain-list! a-gosol (list a-gosolchain))
-        )
-      #t]))
+(define (gosol-insert-subgosol! a-gosol a-subgosol)
+  (begin
+    (if (gosol-null? a-gosol)
+      (gosol-set-top-goal! a-gosol)
+      null)
+    (let
+      [(a-gosolchain (gosolchain (hint-init) (list a-subgosol)))]
+      (set-gosol-gosolchain-list! a-gosol (list a-gosolchain)))))
 
 ; #### 尝试调用 gosol 的各项操作
 
 ; 定义初始 gosol
 
-(define new-gosol (gosol-init))
+(define gosol1 (gosol-init))
 
 (displayln
-  (gosol-dump-goals-yaml new-gosol 0))
+  (gosol-dump-goals-yaml gosol1))
 
-(gosol-insert-topgoal new-gosol
-                       "写出 gosol 的基础操作集合"
-                       (list "1 每种操作都要有具体而确定的名称"
-                             "2 每种操作具体做什么要写清楚"
-                             "3 可以在 workflowy 工具中模拟每种操作"))
+(gosol-set-top-goal! gosol1
+                       "写出 gosol 的基础操作集合")
+
+(gosol-set-top-check-list! gosol1
+                          (list "1 每种操作都要有具体而确定的名称"
+                                "2 每种操作具体做什么要写清楚"
+                                "3 可以在 workflowy 工具中模拟每种操作"))
 
 (displayln
-  (gosol-dump-goals-yaml new-gosol 0))
+  (gosol-dump-goals-yaml gosol1))
 
-(define new-subgosol (gosol-init))
-(gosol-set-goal-)
-gosol-insert-subgoal new-gosol
-                       "创建初始 gosol 结构"
-                       (list "1 命名为 gosol-init"
-                             "2 创建一个各字段皆为 null 的结构"
-                             "3 在 workflowy 中只要注册并登录即可模拟此操作")
+(define subgosol1 (gosol-init))
 
-(displayln (gosol-dump-goals-yaml new-gosol 0))
+(gosol-set-top-goal! subgosol1
+                      "创建初始 gosol 结构")
 
-(gosol-dump-goals new-gosol)
+(gosol-set-top-check-list! subgosol1
+                           (list "1 命名为 gosol-init"
+                            "2 创建一个各字段皆为 null 的结构"
+                            "3 在 workflowy 中只要注册并登录即可模拟此操作"))
+
+(gosol-insert-subgosol! gosol1 subgosol1)
+
+(displayln (gosol-dump-goals-yaml gosol1))
+
+(gosol-dump-goals gosol1)
+
