@@ -26,6 +26,10 @@
              ([name "input-text"])
              "在这里输入文字……")
            (br)
+           (textarea
+             ([name "para-text"])
+             "在这里输入参数……")
+           (br)
            (input
              [(type "radio")
               (name "proc-type")
@@ -54,7 +58,7 @@
              [(type "radio")
               (name "proc-type")
               (value "filter-word")]
-             "过滤含有特定单词的行(默认过滤'my')")
+             "利用单词列表做过滤")
            (br)
            (input 
              [(type "submit")
@@ -100,13 +104,14 @@
 (define (task-runner req)
   (let
     ([input-text (form-reader req 'input-text)]
+     [para-text  (form-reader req  'para-text)]
      [proc-type  (form-reader req  'proc-type)])
       (cond
         [(equal? proc-type         "echo") (text-echo         input-text)]
         [(equal? proc-type        "quote") (text-quote        input-text)]
         [(equal? proc-type "rm-blankline") (text-rm-blankline input-text)]
         [(equal? proc-type      "en-mark") (text-en-mark      input-text)]
-        [(equal? proc-type  "filter-word") (text-filter-word  input-text)]
+        [(equal? proc-type  "filter-word") (text-filter-words input-text para-text)]
         [else                              (format
                                              "表单的请求不明确……~%~a~%"
                                                                proc-type)]
@@ -121,14 +126,12 @@
   (string-append "\"" input-text "\""))
 
 ; 把换行符统一替换为UNIX格式
-(define (text-unix-eol input-text)
-  (regexp-replace* #px"\r\n|\r|\n\r" input-text "\n"))
+(define (text-eol-from-win-to-unix input-text)
+  (regexp-replace* #px"\r\n" input-text "\n"))
 
 ; 移除多余的空行
-(define (text-rm-blankline input-text)
-  (let
-    ([input-text-with-unix-eol (text-unix-eol input-text)])
-      (regexp-replace* #px"\n{2,}" input-text-with-unix-eol "\n")))
+(define (text-rm-blankline input-text-with-unix-eol)
+  (regexp-replace* #px"\n{2,}" input-text-with-unix-eol "\n"))
 
 ; 设定英文标点
 (define (text-en-mark input-text)
@@ -140,10 +143,26 @@
 (define (text-en-comma input-text)
   (regexp-replace* #rx"，" input-text ", "))
 
+; 设定移除多余前导和末尾空格的函数
+(define (multi-line-trim input-text)
+  (let*
+    [(unix-eol-text (text-eol-from-win-to-unix input-text))
+     (split-input-list (string-split unix-eol-text "\n"))
+     (trimmed-input (map string-trim split-input-list))
+     (joined-input (string-join trimmed-input "\n"))]
+    joined-input))
+
 ; 设定过滤包含某英文单词的行
-(define (text-filter-word input-text [word "my"])
-  (regexp-replace*
-    #px"[^\n]* my [^\n]*" input-text ""))
+(define (text-filter-words input-text para-text)
+  (let*
+    [(split-para (string-split (text-eol-from-win-to-unix para-text) "\n"))
+     (trimmed-para-list (map string-trim split-para))
+     (joined-para (string-join trimmed-para-list "|"))
+     (pregex-str (pregexp (string-append "(" joined-para ")")))
+     (trimmed-input (multi-line-trim input-text)) 
+     (replaced-input (regexp-replace* pregex-str trimmed-input ""))]
+    (text-rm-blankline replaced-input)
+    ))
 
 ; 设定非正常访问时返回的错误信息
 (define (error-page)
