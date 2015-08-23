@@ -1,0 +1,51 @@
+<html>
+<head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.async.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.coincidence.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.binding.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.time.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs-dom/2.0.7/rx.dom.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <input type="text" class="operand1" value="1"/><br/>
+        <input type="text" class="operand2" value="3"/><br/>
+        <input type="text" class="sum" value=""/><br/>
+    </h1>
+  </div>
+  <script type="text/javascript">
+      var operand1 = document.querySelector('.operand1');
+      var operand2 = document.querySelector('.operand2');
+      var sum = document.querySelector('.sum');
+
+      var operand1Stream = Rx.Observable.fromEvent(operand1, 'input');
+      var operand2Stream = Rx.Observable.fromEvent(operand2, 'input');
+
+      var readOperand1Stream = operand1Stream.startWith('start input')
+          .map(function(){
+            return operand1.value;
+          });
+      var readOperand2Stream = operand2Stream.startWith('up input')
+          .map(function() {
+              return operand2.value;
+          });
+      var calcStream = readOperand1Stream
+          .combineLatest(
+            readOperand2Stream,
+            function(op1,op2) { return parseInt(op1,10) + parseInt(op2,10); }
+          );
+      var subscription = calcStream.subscribe(
+          function (val) {
+              sum.value = val;
+          },
+          function (err) {
+              console.log('Error: ' + err);
+          },
+          function () {
+              console.log('Completed');
+          });
+  </script>
+</body>
+</html>

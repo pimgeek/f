@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.async.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.coincidence.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.binding.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs/2.2.26/rx.time.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/rxjs-dom/2.0.7/rx.dom.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>
+        <input type="text" class="screen-field" value=""/>
+        <input type="button" class="echo-button" value="echo"/>
+    </h1>
+  </div>
+  <script type="text/javascript">
+      var screenField = document.querySelector('.screen-field');
+      var echoButton = document.querySelector('.echo-button');
+
+      var echoButtonClickStream = Rx.Observable.fromEvent(echoButton, 'click');
+
+      var effectStream = echoButtonClickStream
+          .map(function() {
+            return 'Hello, World!';
+          });
+      function renderField(str, selector) {
+        var targetField = document.querySelector(selector);
+        if (targetField.value === '') {
+            targetField.value = str;
+        } else {
+            if (targetField.value === str) {
+                targetField.value = "Not again!";
+            } else {
+                targetField.value = str;
+            }
+        }
+      }
+      effectStream.subscribe(function (str) {
+          renderField(str, '.screen-field');
+      });
+  </script>
+</body>
+</html>
