@@ -1,6 +1,7 @@
 #!/usr/bin/node
 
 // poset = partial order set
+// infer-partial-order 是 nodejs 的库，可以用 npm install infer-partial-order 安装
 
 var infer = require('infer-partial-order')
 
