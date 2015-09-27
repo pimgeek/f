@@ -1,0 +1,22 @@
+<input type="file" id="local-file" />
+<br />
+<output id="file-content" />
+<script>
+window.onload = function() {
+  var fileInput = document.getElementById('local-file');
+  var fileDisplayArea = document.getElementById('file-content');
+
+  fileInput.addEventListener('change', function(e) {
+    var file = fileInput.files[0];
+    var textTypeRegex = /text.*/;
+    var reader = new FileReader();
+
+    if (file.type.match(textTypeRegex)) {
+      reader.onload = function(e) { fileDisplayArea.innerText = reader.result; };
+      reader.readAsText(file);
+    } else {
+      fileDisplayArea.innerText = "不支持这种类型的文件!";
+    }
+  });
+}
+</script>
