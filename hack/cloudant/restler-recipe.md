@@ -4,7 +4,7 @@
 
 - cloudant 网址
   - https://pimgeek.cloudant.com/dashboard.html
-  - https://docs.cloudant.com/"
+  - https://docs.cloudant.com/
 
 - 利用 restler 获取 json 页面，并操纵之
 
@@ -42,7 +42,7 @@
     '_rev': '1-03756a10670e3946f3778c43e50bb66e',
     'pi': 3.14159265358979
   }).on('complete', function(data, response) {
-    if (response.statusCode == 201) {
+    if (response.statusCode === 201) {
       // you can get at the raw response like this...
       console.log('Doc Updated!');
     } else {
@@ -63,11 +63,86 @@
     { note: 'gosol / hintsnet 知识整理法' }
     ]
   }).on('complete', function(data, response) {
-    if (response.statusCode == 201) {
+    if (response.statusCode === 201) {
       // you can get at the raw response like this...
-      console.log('Doc Updated!');
+      console.log('文档更新完毕！');
     } else {
       console.log(response.statusCode);
     }
+  });
+```
+
+- 利用 restler 为 couchdb 创建 fulltext search index
+  - 创建索引需要 api 的 url 用户名拥有 admin 权限
+
+```nodejs
+  var restler = require('restler');
+  var url = 'https://edstaremallnevendshoothe:0ff0d1715c9c4ecde460e44a6a6112b8402c9a17@pimgeek.cloudant.com/pim-flow/_index';
+  var fulltext_index_json = {
+    'type': 'text',
+    'name': 'fulltext-index',
+    'index': {
+      'fields': [
+        { 'name': 'note', 'type': 'string' }
+      ]
+    }
+  };
+  restler.postJson(url, fulltext_index_json).
+    on('complete', function(data, response) {
+      if (response.statusCode === 200) {
+        console.log('全文索引成功建立！');
+        console.log(data);
+      } else {
+        console.log('出现问题... ');
+        console.log(response.statusCode);
+      }
+    });
+```
+
+- 利用 restler 查询 couchdb 中的 json 数据
+
+```nodejs
+  var restler = require('restler');
+  var url = 'https://edstaremallnevendshoothe:0ff0d1715c9c4ecde460e44a6a6112b8402c9a17@pimgeek.cloudant.com/pim-flow/_find';
+  var fulltext_search_json = {
+    "selector": {
+      "$text": "法"
+    },
+    "fields": [
+      "note"
+    ]
+  };
+  restler.postJson(url,fulltext_search_json).
+    on('complete', function(data, response) {
+      if (response.statusCode === 200) {
+        console.log('搜索请求执行完毕！');
+        console.log(data);
+      } else {
+        console.log(response.statusCode);
+      }
+    });
+```
+
+- 利用 restler 的 post() 函数完成 json 请求
+  - post() 函数的好处是，可以把一些请求过程中使用的参数如 username, password 等单独列举出来。
+
+```nodejs
+  var restler = require('restler');
+  var json_request = JSON.stringify({
+      "selector": {
+        "$text": "法"
+      },
+      "fields": [
+        "note"
+      ]
+    }, null, 2);
+  restler.post('https://pimgeek.cloudant.com/pim-flow/_find', {
+    username: 'edstaremallnevendshoothe',
+    password: '0ff0d1715c9c4ecde460e44a6a6112b8402c9a17',
+    headers: { 'Content-Type': 'application/json' },
+    data: json_request
+  }).on('complete', function(data, response) {
+    console.log(data);
+    console.log(response.statusCode);
   });
 ```
