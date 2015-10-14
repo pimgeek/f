@@ -12,6 +12,7 @@ var dbaasDbName = configJson.dbaasDbName;
 var dbaasUser = configJson.dbaasUser;
 var dbaasPass = configJson.dbaasPass;
 var dbaasFindApiUrl = dbaasHost + '/' + dbaasDbName + '/_find';
+var dbaasCreateApiUrl = dbaasHost + '/' + dbaasDbName;
 
 // 定义变量
 var serverPort = 3000; // web 服务的监听端口
@@ -30,7 +31,7 @@ function renderNotFound(req, res) {
 }
 
 // 展示一条笔记
-function renderNoteForm(req, res) {
+function renderViewNodeForm(req, res) {
   res.writeHead(200, {
     'Content-Type': 'text/html'
   });
@@ -48,7 +49,7 @@ function renderNoteForm(req, res) {
 }
 
 // 生成全文搜索表单
-function renderSearchForm(req, res) {
+function renderSearchNodeForm(req, res) {
   res.writeHead(200, {
     'Content-Type': 'text/html'
   });
@@ -58,7 +59,7 @@ function renderSearchForm(req, res) {
     '<form action="/search" method="POST">' +
     '<input id="keywords" name="keywords" type="text" value="搜索关键词" />' +
     '<br />' +
-    '<input id="search" type="submit" value="全文搜索" />' +
+    '<input id="doSearch" type="submit" value="搜索笔记" />' +
     '</form>'
   );
   res.write(htmlClosing);
@@ -66,7 +67,7 @@ function renderSearchForm(req, res) {
 }
 
 // 生成笔记创建表单
-function renderNewForm(req, res) {
+function renderNewNodeForm(req, res) {
   res.writeHead(200, {
     'Content-Type': 'text/html'
   });
@@ -74,7 +75,7 @@ function renderNewForm(req, res) {
   res.write(
     '<h1>创建新笔记</h1>' +
     '<form action="/new" method="POST">' +
-    '<textarea id="note" name="note-content" value="笔记内容" />' +
+    '<input id="note" name="note" value="笔记内容" />' +
     '<br />' +
     '<input id="newNote" type="submit" value="创建新笔记" />' +
     '</form>'
@@ -84,7 +85,7 @@ function renderNewForm(req, res) {
 }
 
 // 为提交笔记获取请求而创建 JSON 对象
-function makeNoteJson(res, formJson) {
+function makeViewNoteJson(res, formJson) {
   var jsonReq = { // 需要提交的搜索请求 JSON
     "selector": {
       "_id": formJson.formData.noteId
@@ -96,8 +97,8 @@ function makeNoteJson(res, formJson) {
   return jsonReq;
 }
 
-// 为提交全文搜索请求而创建 JSON 对象
-function makeSearchJson(res, formJson) {
+// 为提交笔记搜索请求而创建 JSON 对象
+function makeSearchNoteJson(res, formJson) {
   var jsonReq = { // 需要提交的搜索请求 JSON
     "selector": {
       "$text": formJson.formData.keywords
@@ -105,6 +106,14 @@ function makeSearchJson(res, formJson) {
     "fields": [
       "note"
     ]
+  };
+  return jsonReq;
+}
+
+// 为提交笔记创建请求而创建 JSON 对象
+function makeNewNoteJson(res, formJson) {
+  var jsonReq = { // 需要提交的搜索请求 JSON
+    "note": formJson.formData.note
   };
   return jsonReq;
 }
@@ -170,13 +179,18 @@ function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl) {
 }
 
 // 提交笔记获取请求
-function sendNoteReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeNoteJson, dbaasFindApiUrl);
+function sendViewNoteReq(res, formJson) {
+  sendSecondLevelReq(res, formJson, makeViewNoteJson, dbaasFindApiUrl);
 }
 
-// 提交全文搜索请求
-function sendSearchReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeSearchJson, dbaasFindApiUrl);
+// 提交笔记搜索请求
+function sendSearchNoteReq(res, formJson) {
+  sendSecondLevelReq(res, formJson, makeSearchNoteJson, dbaasFindApiUrl);
+}
+
+// 提交笔记创建请求
+function sendNewNoteReq(res, formJson) {
+  sendSecondLevelReq(res, formJson, makeNewNoteJson, dbaasCreateApiUrl);
 }
 
 // 创建 node webapp 的服务端
@@ -184,17 +198,21 @@ var webapp = http.createServer(
   function(req, res) {
     if (req.method === 'GET') {
       if (req.url === '/note') {
-        renderNoteForm(req, res);
+        renderViewNodeForm(req, res);
       } else if (req.url === '/search') {
-        renderSearchForm(req, res);
+        renderSearchNodeForm(req, res);
+      } else if (req.url === '/new') {
+        renderNewNodeForm(req, res);
       } else {
         renderNotFound(req, res);
       }
     } else if (req.method === 'POST') {
       if (req.url === '/note') {
-        procPostReq(req, res, sendNoteReq);
+        procPostReq(req, res, sendViewNoteReq);
       } else if (req.url === '/search') {
-        procPostReq(req, res, sendSearchReq);
+        procPostReq(req, res, sendSearchNoteReq);
+      } else if (req.url === '/new') {
+        procPostReq(req, res, sendNewNoteReq);
       } else {
         renderNotFound(req, res);
       }
