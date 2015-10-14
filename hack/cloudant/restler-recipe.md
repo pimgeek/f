@@ -2,7 +2,7 @@
 
 - restler 网址(含帮助文档) - https://github.com/danwrong/restler
 
-- cloudant 网址
+- cloudant 官网网址
   - https://pimgeek.cloudant.com/dashboard.html
   - https://docs.cloudant.com/
 
@@ -146,3 +146,4 @@
     console.log(response.statusCode);
   });
 ```
+
