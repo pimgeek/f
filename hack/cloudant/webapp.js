@@ -19,7 +19,7 @@ var htmlOpening = '<html><head><meta charset="utf8" /></head><body>'; // html �
 var htmlClosing = '</body></html>'; // html 结束部分代码
 
 // 处理找不到该页的情况
-function showNotFound(req, res) {
+function renderNotFound(req, res) {
   res.writeHead(404, {
     'Content-Type': 'text/html'
   });
@@ -29,20 +29,18 @@ function showNotFound(req, res) {
   res.end();
 }
 
-// 生成新建笔记表单
-function showNewForm(req, res) {
+// 展示一条笔记
+function renderNoteForm(req, res) {
   res.writeHead(200, {
     'Content-Type': 'text/html'
   });
   res.write(htmlOpening);
   res.write(
-    '<h1>创建新笔记</h1>' +
-    '<form action="/new" method="POST">' +
-    '<input id="note-title" name="note-title" type="text" value="笔记标题" />' +
+    '<h1>查看已有笔记</h1>' +
+    '<form action="/note" method="POST">' +
+    '<input id="noteId" name="noteId" type="text" value="笔记标识" />' +
     '<br />' +
-    '<textarea id="note-content" name="note-content" value="笔记内容" />' +
-    '<br />' +
-    '<input id="new-note" type="submit" value="创建新笔记" />' +
+    '<input id="fetchNote" type="submit" value="获取笔记" />' +
     '</form>'
   );
   res.write(htmlClosing);
@@ -50,7 +48,7 @@ function showNewForm(req, res) {
 }
 
 // 生成全文搜索表单
-function showSearchForm(req, res) {
+function renderSearchForm(req, res) {
   res.writeHead(200, {
     'Content-Type': 'text/html'
   });
@@ -67,8 +65,52 @@ function showSearchForm(req, res) {
   res.end();
 }
 
+// 生成笔记创建表单
+function renderNewForm(req, res) {
+  res.writeHead(200, {
+    'Content-Type': 'text/html'
+  });
+  res.write(htmlOpening);
+  res.write(
+    '<h1>创建新笔记</h1>' +
+    '<form action="/new" method="POST">' +
+    '<textarea id="note" name="note-content" value="笔记内容" />' +
+    '<br />' +
+    '<input id="newNote" type="submit" value="创建新笔记" />' +
+    '</form>'
+  );
+  res.write(htmlClosing);
+  res.end();
+}
+
+// 为提交笔记获取请求而创建 JSON 对象
+function makeNoteJson(res, formJson) {
+  var jsonReq = { // 需要提交的搜索请求 JSON
+    "selector": {
+      "_id": formJson.formData.noteId
+    },
+    "fields": [
+      "note"
+    ]
+  };
+  return jsonReq;
+}
+
+// 为提交全文搜索请求而创建 JSON 对象
+function makeSearchJson(res, formJson) {
+  var jsonReq = { // 需要提交的搜索请求 JSON
+    "selector": {
+      "$text": formJson.formData.keywords
+    },
+    "fields": [
+      "note"
+    ]
+  };
+  return jsonReq;
+}
+
 // 处理来自客户端的各种 POST 请求，从中抽取出表单中的参数并做后续处理
-function procPostRequest(req, res, endProcFunc) {
+function procPostReq(req, res, endProcFunc) {
   // 如果请求长度超过限制，将返回错误代码 413
   // 如何请求长度不超限制，则返回正常代码 200，
   // 并在 json_obj.form_data 中存储表单的参数
@@ -95,32 +137,14 @@ function procPostRequest(req, res, endProcFunc) {
   });
 }
 
-// 处理新建笔记的请求
-function procNewForm(req, res) {
-  var reqBody = '';
-}
-
-// 为提交全文搜索请求而创建 JSON 对象
-function procSearchJson(res, formJson) {
-  var jsonReq = { // 需要提交的搜索请求 JSON
-    "selector": {
-      "$text": formJson.formData.keywords
-    },
-    "fields": [
-      "note"
-    ]
-  };
-  return jsonReq;
-}
-
-// 提交全文搜索请求
-function sendSearchRequest(res, formJson) {
+// 在一级请求的处理过程中提交各种针对 DBaaS 服务器的二级请求
+function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl) {
   var jsonReq = {};
   var jsonReqStr = '';
 
   // 从表单参数的 json 数据对象中提取信息，
   // 并且生成后续的 Web 请求 json 数据对象
-  jsonReq = procSearchJson(res, formJson);
+  jsonReq = jsonProcFunc(res, formJson);
 
   // 为提交 restler 请求，把 JSON 对象转为字符串
   jsonReqStr = JSON.stringify(jsonReq, null, 2);
@@ -130,7 +154,7 @@ function sendSearchRequest(res, formJson) {
     'Content-Type': 'text/html'
   });
   res.write(htmlOpening);
-  restler.post(dbaasFindApiUrl, {
+  restler.post(dbaasProcApiUrl, {
     username: dbaasUser,
     password: dbaasPass,
     headers: {
@@ -138,27 +162,41 @@ function sendSearchRequest(res, formJson) {
     },
     data: jsonReqStr
   }).on('complete', function(jsonResStr, secondLevelRes) {
-    res.write('<h1>' + secondLevelRes.statusCode + '</h1>');
+    res.write('<h1>返回值' + secondLevelRes.statusCode + '</h1>');
     res.write('<pre>' + JSON.stringify(JSON.parse(jsonResStr).docs) + '</pre>');
     res.write(htmlClosing);
     res.end();
   });
 }
 
+// 提交笔记获取请求
+function sendNoteReq(res, formJson) {
+  sendSecondLevelReq(res, formJson, makeNoteJson, dbaasFindApiUrl);
+}
+
+// 提交全文搜索请求
+function sendSearchReq(res, formJson) {
+  sendSecondLevelReq(res, formJson, makeSearchJson, dbaasFindApiUrl);
+}
+
 // 创建 node webapp 的服务端
 var webapp = http.createServer(
   function(req, res) {
     if (req.method === 'GET') {
-      if (req.url === '/favicon.ico') {
-        showNotFound(req, res);
+      if (req.url === '/note') {
+        renderNoteForm(req, res);
+      } else if (req.url === '/search') {
+        renderSearchForm(req, res);
       } else {
-        showSearchForm(req, res);
+        renderNotFound(req, res);
       }
     } else if (req.method === 'POST') {
-      if (req.url === '/search') {
-        procPostRequest(req, res, sendSearchRequest);
+      if (req.url === '/note') {
+        procPostReq(req, res, sendNoteReq);
+      } else if (req.url === '/search') {
+        procPostReq(req, res, sendSearchReq);
       } else {
-        showNotFound(req, res);
+        renderNotFound(req, res);
       }
     } else {
       return res.end();
