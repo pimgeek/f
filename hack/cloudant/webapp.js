@@ -11,6 +11,7 @@ var dbaasHost = configJson.dbaasHost;
 var dbaasDbName = configJson.dbaasDbName;
 var dbaasUser = configJson.dbaasUser;
 var dbaasPass = configJson.dbaasPass;
+var dbaasQueryApiUrl = dbaasHost + '/' + dbaasDbName;
 var dbaasFindApiUrl = dbaasHost + '/' + dbaasDbName + '/_find';
 var dbaasCreateApiUrl = dbaasHost + '/' + dbaasDbName;
 
@@ -147,9 +148,13 @@ function procPostReq(req, res, endProcFunc) {
 }
 
 // 在一级请求的处理过程中提交各种针对 DBaaS 服务器的二级请求
-function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl) {
+function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl, method) {
   var jsonReq = {};
   var jsonReqStr = '';
+  var reqOptions = {
+    username: dbaasUser,
+    password: dbaasPass,
+  };
 
   // 从表单参数的 json 数据对象中提取信息，
   // 并且生成后续的 Web 请求 json 数据对象
@@ -163,29 +168,42 @@ function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl) {
     'Content-Type': 'text/html'
   });
   res.write(htmlOpening);
-  restler.post(dbaasProcApiUrl, {
-    username: dbaasUser,
-    password: dbaasPass,
-    headers: {
+  if (method === 'POST') {
+    reqOptions.headers = {
       'Content-Type': 'application/json'
-    },
-    data: jsonReqStr
-  }).on('complete', function(jsonResStr, secondLevelRes) {
-    res.write('<h1>返回值' + secondLevelRes.statusCode + '</h1>');
-    res.write('<pre>' + JSON.stringify(JSON.parse(jsonResStr).docs) + '</pre>');
-    res.write(htmlClosing);
-    res.end();
-  });
+    };
+    reqOptions.data = jsonReqStr;
+    restler.post(dbaasProcApiUrl, reqOptions
+      ).on('complete', function(jsonResStr, secondLevelRes) {
+      res.write('<h1>返回值' + secondLevelRes.statusCode + '</h1>');
+      res.write('<pre>' + JSON.stringify(JSON.parse(jsonResStr).docs) + '</pre>');
+      res.write(htmlClosing);
+      res.end();
+    });
+  } else if (method === 'GET') {
+    restler.get(dbaasProcApiUrl + '/' + jsonReq.selector._id, reqOptions
+      ).on('complete', function(secondLevelGetRes) {
+      res.write('<h1>笔记内容</h1>');
+      res.write('<pre>' + secondLevelGetRes + '</pre>');
+      res.write(htmlClosing);
+      res.end();
+    });
+  }
 }
 
 // 提交笔记获取请求
 function sendViewNoteReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeViewNoteJson, dbaasFindApiUrl);
+  sendSecondLevelReq(res, formJson, makeViewNoteJson, dbaasFindApiUrl, 'POST');
+}
+
+// 提交笔记获取请求 - GET 模式
+function sendViewNoteGetReq(res, formJson) {
+  sendSecondLevelReq(res, formJson, makeViewNoteJson, dbaasQueryApiUrl, 'GET');
 }
 
 // 提交笔记搜索请求
 function sendSearchNoteReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeSearchNoteJson, dbaasFindApiUrl);
+  sendSecondLevelReq(res, formJson, makeSearchNoteJson, dbaasFindApiUrl, 'POST');
 }
 
 // 提交笔记创建请求
@@ -208,7 +226,7 @@ var webapp = http.createServer(
       }
     } else if (req.method === 'POST') {
       if (req.url === '/note') {
-        procPostReq(req, res, sendViewNoteReq);
+        procPostReq(req, res, sendViewNoteGetReq);
       } else if (req.url === '/search') {
         procPostReq(req, res, sendSearchNoteReq);
       } else if (req.url === '/new') {
