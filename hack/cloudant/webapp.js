@@ -16,7 +16,7 @@ var dbaasFindApiUrl = dbaasHost + '/' + dbaasDbName + '/_find';
 var dbaasCreateApiUrl = dbaasHost + '/' + dbaasDbName;
 
 // 定义变量
-var serverPort = 3000; // web 服务的监听端口
+var serverPort = 80; // web 服务的监听端口
 var htmlOpening = '<html><head><meta charset="utf8" /></head><body>'; // html 开始部分代码
 var htmlClosing = '</body></html>'; // html 结束部分代码
 
@@ -208,7 +208,7 @@ function sendSearchNoteReq(res, formJson) {
 
 // 提交笔记创建请求
 function sendNewNoteReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeNewNoteJson, dbaasCreateApiUrl);
+  sendSecondLevelReq(res, formJson, makeNewNoteJson, dbaasCreateApiUrl, 'POST');
 }
 
 // 创建 node webapp 的服务端
@@ -239,5 +239,5 @@ var webapp = http.createServer(
     }
   }).listen(serverPort,
   function() {
-    console.log('NodeJS App 正通过 http://192.168.56.101:3000 提供服务');
+    console.log('NodeJS App 正通过 80 端口提供服务');
   });
