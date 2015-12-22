@@ -128,7 +128,7 @@
 
 ```nodejs
   var restler = require('restler');
-  var json_request = JSON.stringify({
+  var jsonReq = JSON.stringify({
       "selector": {
         "$text": "法"
       },
@@ -140,10 +140,46 @@
     username: 'edstaremallnevendshoothe',
     password: '0ff0d1715c9c4ecde460e44a6a6112b8402c9a17',
     headers: { 'Content-Type': 'application/json' },
-    data: json_request
+    data: jsonReq
   }).on('complete', function(data, response) {
     console.log(data);
     console.log(response.statusCode);
   });
 ```
 
+- 利用 restler 的 _all_docs api 获取所有文档列表
+
+```nodejs
+  var restler = require('restler');
+  restler.post('https://pimgeek.cloudant.com/pim-flow/_all_docs', {
+    username: 'edstaremallnevendshoothe',
+    password: '0ff0d1715c9c4ecde460e44a6a6112b8402c9a17',
+    query: { 
+      // 可参考 https://docs.cloudant.com/database.html#get-documents 了解更多参数
+      include_docs: true,
+      limit: 10
+    },
+    data: '{}'
+  }).on('complete', function(data, res) {
+    console.log(data);
+    console.log(res.statusCode);
+  });
+```
+
+- 利用 restler 的 del 函数完成笔记删除请求
+
+```nodejs
+  var restler = require('restler');
+  var jsonReq = JSON.stringify({
+      _id: '647f5d53217c6cf8f73c8b9dc365d51f'
+    }, null, 2);
+  restler.del('https://pimgeek.cloudant.com/pim-flow', {
+    username: 'edstaremallnevendshoothe',
+    password: '0ff0d1715c9c4ecde460e44a6a6112b8402c9a17',
+    headers: { 'Content-Type': 'application/json' },
+    data: jsonReq
+  }).on('complete', function(data, response) {
+    console.log(data);
+    console.log(response.statusCode);
+  });
+```
