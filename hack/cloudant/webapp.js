@@ -119,11 +119,12 @@ function makeNewNoteJson(res, formJson) {
   return jsonReq;
 }
 
-// 处理来自客户端的各种 POST 请求，从中抽取出表单中的参数并做后续处理
+// 处理来自客户端的各种 POST 请求，
+// 从中抽取出表单中的参数并做后续处理
 function procPostReq(req, res, endProcFunc) {
   // 如果请求长度超过限制，将返回错误代码 413
   // 如何请求长度不超限制，则返回正常代码 200，
-  // 并在 json_obj.form_data 中存储表单的参数
+  // 并在 formJson.formData 中存储表单的参数
   var reqBody = '';
   var formJson = {
     responseStatus: '',
@@ -134,31 +135,38 @@ function procPostReq(req, res, endProcFunc) {
   req.on('data', function(data) {
     reqBody += data;
     if (reqBody.length > 1e7) {
-      formJson.response_status = 413;
-      formJson.error_message = '请求内容长度超出限制！';
+      formJson.responseStatus = 413;
+      formJson.errorMessage = '请求内容长度超出限制！';
       return formJson; // 返回处理失败的状态码
     }
   });
+
   req.on('end', function() {
-    var jsonReq = '';
-    formJson.response_status = 200; // 返回处理成功的状态码
+    formJson.responseStatus = 200; // 返回处理成功的状态码
     formJson.formData = qs.parse(reqBody); // 返回表单中的参数
     endProcFunc(res, formJson);
   });
 }
 
-// 在一级请求的处理过程中提交各种针对 DBaaS 服务器的二级请求
-function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl, method) {
+// 从 web 请求结果中读取 json 信息
+function genJsonReq(res, formJson, jsonProcFunc){
   var jsonReq = {};
-  var jsonReqStr = '';
+
+  // 从表单参数的 json 数据对象中提取信息，
+  // 并且生成后续的 Web 请求 json 数据对象
+  jsonReq = jsonProcFunc(res, formJson);
+
+  return jsonReq;
+}
+
+// 在一级请求的处理过程中提交针对 DBaaS 服务器的二级请求
+function sendSecondLevelReq(res, jsonReq, dbaasProcApiUrl, method) {
   var reqOptions = {
     username: dbaasUser,
     password: dbaasPass,
   };
 
-  // 从表单参数的 json 数据对象中提取信息，
-  // 并且生成后续的 Web 请求 json 数据对象
-  jsonReq = jsonProcFunc(res, formJson);
+  var jsonReqStr = '';
 
   // 为提交 restler 请求，把 JSON 对象转为字符串
   jsonReqStr = JSON.stringify(jsonReq, null, 2);
@@ -176,7 +184,8 @@ function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl, method
     restler.post(dbaasProcApiUrl, reqOptions
       ).on('complete', function(jsonResStr, secondLevelRes) {
       res.write('<h1>返回值' + secondLevelRes.statusCode + '</h1>');
-      res.write('<pre>' + JSON.stringify(JSON.parse(jsonResStr).docs) + '</pre>');
+      res.write('<pre>' + jsonResStr + '</pre>');
+      // res.write('<pre>' + JSON.stringify(JSON.parse(jsonResStr).docs) + '</pre>');
       res.write(htmlClosing);
       res.end();
     });
@@ -191,24 +200,41 @@ function sendSecondLevelReq(res, formJson, jsonProcFunc, dbaasProcApiUrl, method
   }
 }
 
-// 提交笔记获取请求
+// 提交笔记读取请求
 function sendViewNoteReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeViewNoteJson, dbaasFindApiUrl, 'POST');
+  var jsonReq = genJsonReq(res, formJson, makeViewNoteJson);
+  sendSecondLevelReq(res, jsonReq, dbaasFindApiUrl, 'POST');
 }
 
-// 提交笔记获取请求 - GET 模式
+// 提交笔记读取请求 - GET 模式
 function sendViewNoteGetReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeViewNoteJson, dbaasQueryApiUrl, 'GET');
+  var jsonReq = genJsonReq(res, formJson, makeViewNoteJson);
+  sendSecondLevelReq(res, jsonReq, dbaasQueryApiUrl, 'GET');
 }
 
 // 提交笔记搜索请求
 function sendSearchNoteReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeSearchNoteJson, dbaasFindApiUrl, 'POST');
+  var jsonReq = genJsonReq(res, formJson, makeSearchNoteJson);
+  sendSecondLevelReq(res, jsonReq, dbaasFindApiUrl, 'POST');
 }
 
 // 提交笔记创建请求
 function sendNewNoteReq(res, formJson) {
-  sendSecondLevelReq(res, formJson, makeNewNoteJson, dbaasCreateApiUrl, 'POST');
+  var jsonReq = genJsonReq(res, formJson, makeNewNoteJson);
+  sendSecondLevelReq(res, jsonReq, dbaasCreateApiUrl, 'POST');
+}
+
+// 查阅笔记
+function viewNote(req, res){
+  procPostReq(req, res, sendViewNoteGetReq);
+}
+// 搜索笔记
+function searchNote(req, res){
+  procPostReq(req, res, sendSearchNoteReq);
+}
+// 创建笔记
+function createNote(req, res){
+  procPostReq(req, res, sendNewNoteReq);
 }
 
 // 创建 node webapp 的服务端
@@ -226,11 +252,11 @@ var webapp = http.createServer(
       }
     } else if (req.method === 'POST') {
       if (req.url === '/note') {
-        procPostReq(req, res, sendViewNoteGetReq);
+        viewNote(req, res);
       } else if (req.url === '/search') {
-        procPostReq(req, res, sendSearchNoteReq);
+        searchNote(req, res);
       } else if (req.url === '/new') {
-        procPostReq(req, res, sendNewNoteReq);
+        createNote(req, res);
       } else {
         renderNotFound(req, res);
       }
@@ -239,5 +265,5 @@ var webapp = http.createServer(
     }
   }).listen(serverPort,
   function() {
-    console.log('NodeJS App 正通过 80 端口提供服务');
+    console.log('NodeJS App 正通过 ' + serverPort + ' 端口提供服务');
   });
