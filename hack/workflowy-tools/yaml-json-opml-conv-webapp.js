@@ -2,7 +2,7 @@
 
 // 定义全局变量
 var serverPort = 80;
-var htmlOpening = '<html><head><meta charset="utf8" /></head><body>'; // html 开始部分代码
+var htmlOpening = '<html><head><meta charset="utf8" /><style>TEXTAREA { height: 50%; width:60%; }</style></head><body>'; // html 开始部分代码
 var htmlClosing = '</body></html>'; // html 结束部分代码
 
 // 处理找不到该页的情况
